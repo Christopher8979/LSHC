@@ -1,3 +1,4 @@
 $(document).on('initialize-game', function() {
-  console.info('Initialized game js');
+  var stage = new createjs.Stage('game-holder');
+  console.log(stage);
 });
