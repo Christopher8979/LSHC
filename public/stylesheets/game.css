@@ -1,0 +1,9 @@
+#game-holder {
+  margin: 0 auto;
+  width: 70%;
+  display: block;
+  max-width: 900px;
+  max-height: 580px;
+  background: #fff;
+  border: 5px solid #c1c1c1;
+}
