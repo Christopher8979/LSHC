@@ -1,7 +1,8 @@
 $(document).on('initialize-game', function() {
   var stage, w, h, loader;
   var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance, speed = 0,
-    createTreeStrip, addTrees, treeStrip, updateTreeLocation, ditch;
+    createTreeStrip, addTrees, treeStrip, updateTreeLocation, ditch, buildings;
+
 
   stage = new createjs.Stage('game-holder');
 
@@ -42,8 +43,20 @@ $(document).on('initialize-game', function() {
       src: "Trees-3.png",
       id: "tree3"
     }, {
+      src: "Building-1.png",
+      id: "building1"
+    }, {
+      src: "Building-2.png",
+      id: "building2"
+    }, {
+      src: "Building-3.png",
+      id: "building3"
+    }, {
       src: "Ambulance.png",
       id: "amb"
+    }, {
+      src: "Ditch.png",
+      id: "ditch"
     }
   ];
 
@@ -92,10 +105,31 @@ $(document).on('initialize-game', function() {
     frontBg.regX = w * 15;
     frontBg.y = h - (frontBgImg.height + roadImg.height);
 
+
+    var ditchImg = loader.getResult("ditch");
+    ditch = new createjs.Shape();
+    ditch.graphics.beginBitmapFill(ditchImg).drawRect(0, 0, ditchImg.width, ditchImg.height);
+    ditch.x = (0.5 + Math.random()) * w;
+    ditch.y = h - (0.75 * roadImg.height);
+
+
     function createBuildingStrip() {
-      return [];
+      var refObj = ["building1", "building2", "building3"];
+
+      var refImg, layer, layers = [];
+      refObj.forEach(function(item, itemIndex) {
+        refImg = loader.getResult(item);
+        layer = new createjs.Shape();
+        layer.graphics.beginBitmapFill(refImg).drawRect(0, 0, refImg.width, refImg.height);
+        layer.x = (Math.random() * (w * 0.8) + (w * 0.1));
+        layer.y = h - (roadImg.height + refImg.height) + 2;
+
+        layers.push(layer);
+      });
+      return layers;
     };
-    var buildings = createBuildingStrip();
+
+    buildings = createBuildingStrip();
 
     // Method to get tree objects to be added on road
     createTreeStrip = function() {
@@ -131,8 +165,18 @@ $(document).on('initialize-game', function() {
       tree.y = h - (roadImg.height + treeImage.height) + 2;
     }
 
+    updateBuildingLocation = function(index, building) {
+      var refObj = ["building1", "building2", "building3"];
+
+      var buildingImage = loader.getResult(refObj[index]);
+      building = new createjs.Shape();
+      building.graphics.beginBitmapFill(buildingImage).drawRect(0, 0, buildingImage.width, buildingImage.height);
+      building.x = w + (Math.random() * (w * 0.8) + (w * 0.1));
+      building.y = h - (roadImg.height + buildingImage.height) + 2;
+    }
+
     // Adding layers based on their sequence
-    stage.addChild(sky, sun, clouds, backBg, frontBg, road);
+    stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch);
 
     buildings.forEach(function(building) {
       stage.addChild(building);
@@ -141,12 +185,33 @@ $(document).on('initialize-game', function() {
     addTrees();
 
 
-    var ambulanceImg = loader.getResult('amb');
-    ambulance = new createjs.Shape();
-    ambulance.graphics.beginBitmapFill(ambulanceImg).drawRect(0, 0, ambulanceImg.width, ambulanceImg.height);
-    ambulance.x = 0.1 * w;
-    ambulance.y = h - (ambulanceImg.height + (roadImg.height / 2));
+    // var ambulanceImg = loader.getResult('amb');
+    // ambulance = new createjs.Shape();
+    // ambulance.graphics.beginBitmapFill(ambulanceImg).drawRect(0, 0, ambulanceImg.width, ambulanceImg.height);
+    // ambulance.x = 0.1 * w;
+    // ambulance.y = h - (ambulanceImg.height + (roadImg.height / 2));
+    // stage.addChild(ambulance);
+    //
+
+
+    var spriteSheet = new createjs.SpriteSheet({
+				framerate: 30,
+				"images": [loader.getResult("amb")],
+				"frames": {"regX": -82, "height": 150, "count": 7, "regY": 0, "width": 104},
+				// define two animations, run (loops, 1.5x speed) and jump (returns to run):
+				"animations": {
+					"run": [0, 5, "run", 1.5],
+					"hickup": [6, 7, "run"]
+				}
+			});
+
+		ambulance = new createjs.Sprite(spriteSheet, "run");
+    ambulance.x = w * 0.1;
+		ambulance.y = h - (roadImg.height * 1.4);
+
+
     stage.addChild(ambulance);
+
 
     createjs.Ticker.timingMode = createjs.Ticker.RAF;
     createjs.Ticker.interval = 100;
@@ -184,6 +249,17 @@ $(document).on('initialize-game', function() {
       x: -w
     }, speed * 45);
 
+    createjs.Tween.get(ditch, {
+      loop: true
+    }).to({
+      x: -w
+    }, speed * 95).addEventListener('change', function() {
+      var pt = ambulance.localToLocal(ambulance.width, ambulance.height, ditch);
+      if (ditch.hitTest(pt.x, pt.y)) {
+        alert('success');
+      }
+    });
+
 
     treeStrip.forEach(function(tree, treeIndex) {
       createjs.Tween.get(tree, {
@@ -192,6 +268,17 @@ $(document).on('initialize-game', function() {
         x: -w
       }, speed * 45).call(function() {
         updateTreeLocation(treeIndex, tree)
+      });
+    });
+
+
+    buildings.forEach(function(building, itsIndex) {
+      createjs.Tween.get(building, {
+        loop: true
+      }).to({
+        x: -w
+      }, speed * 45).call(function() {
+        updateBuildingLocation(itsIndex, building)
       });
     });
 
