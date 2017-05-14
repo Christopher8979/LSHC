@@ -197,8 +197,6 @@ $(document).on('initialize-game', function() {
       flag = false;
     }
     
-
-    // Animating clouds irrespective of background
     createjs.Tween.get(clouds).to({
       x: w
     }, speed * 2000);
@@ -234,7 +232,7 @@ $(document).on('initialize-game', function() {
 
     ditch.x = (ditch.x < 0) ?  w +(0.5 + Math.random()) * w : ditch.x - fSpeed;
 
-    // console.log(ambulance.hitTest(ditch.x, ambulance.y - 30));
+    // Check if collsion has occured
     var pt = ditch.localToLocal(0, 0, ambulance);
     if (ambulance.hitTest(pt.x, pt.y)) {
       ambulance.gotoAndPlay("hickup");
@@ -254,7 +252,6 @@ $(document).on('initialize-game', function() {
             createjs.Tween.get(ambulance).to({
               x: ((ambulance.x + bounds.width) < w) ? ambulance.x + 10 : ambulance.x
             }, 30);
-            // ambulance.x = (true) ? ambulance.x + 30 : ambulance.x;
           }
 
 
