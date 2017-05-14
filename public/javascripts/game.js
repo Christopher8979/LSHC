@@ -72,20 +72,20 @@ $(document).on('initialize-game', function() {
 
     var roadImg = loader.getResult("road");
     road = new createjs.Shape();
-    road.graphics.beginBitmapFill(roadImg).drawRect(0, 0, roadImg.width, roadImg.height);
+    road.graphics.beginBitmapFill(roadImg).drawRect(0, 0, roadImg.width * 30, roadImg.height * 30);
     road.tileW = 0;
     road.y = h - roadImg.height;
 
     var backBgImg = loader.getResult("backBg");
     backBg = new createjs.Shape();
-    backBg.graphics.beginBitmapFill(backBgImg).drawRect(0, 0, backBgImg.width, backBgImg.height);
-    backBg.tileW = 0;
+    backBg.graphics.beginBitmapFill(backBgImg).drawRect(0, 0, backBgImg.width * 30, backBgImg.height * 30);
+    backBg.regX = w * 15;
     backBg.y = h - (backBgImg.height + roadImg.height);
 
     var frontBgImg = loader.getResult("frontBg");
     frontBg = new createjs.Shape();
-    frontBg.graphics.beginBitmapFill(frontBgImg).drawRect(0, 0, frontBgImg.width, frontBgImg.height);
-    frontBg.tileW = 0;
+    frontBg.graphics.beginBitmapFill(frontBgImg).drawRect(0, 0, frontBgImg.width * 30, frontBgImg.height * 30);
+    frontBg.regX = w * 15;
     frontBg.y = h - (frontBgImg.height + roadImg.height);
 
     function createBuildingStrip() {
@@ -126,35 +126,56 @@ $(document).on('initialize-game', function() {
     ambulance = new createjs.Shape();
     ambulance.graphics.beginBitmapFill(ambulanceImg).drawRect(0, 0, ambulanceImg.width, ambulanceImg.height);
     ambulance.x = 0.1 * w;
-    ambulance.y = h - (ambulanceImg.height + (roadImg.height/2));
+    ambulance.y = h - (ambulanceImg.height + (roadImg.height / 2));
     stage.addChild(ambulance);
 
-    // stage.addEventListener("stagemousedown", handleJumpStart);
+    stage.addEventListener("pressup", handleSpeed);
     createjs.Ticker.timingMode = createjs.Ticker.RAF;
     createjs.Ticker.addEventListener("tick", tickHandler);
   };
 
 
   function tickHandler(event) {
-    console.log(event);
-    // var deltaS = event.delta / 1000;
-    // var position = grant.x + 150 * deltaS;
-    //
-    // var grantW = grant.getBounds().width * grant.scaleX;
-    // grant.x = (position >= w + grantW) ? -grantW : position;
-    //
-    // ground.x = (ground.x - deltaS * 150) % ground.tileW;
-    // hill.x = (hill.x - deltaS * 30);
-    // if (hill.x + hill.image.width * hill.scaleX <= 0) {
-    // 	hill.x = w;
-    // }
-    // hill2.x = (hill2.x - deltaS * 45);
-    // if (hill2.x + hill2.image.width * hill2.scaleX <= 0) {
-    // 	hill2.x = w;
-    // }
+
+    // console.log(event);
+    var deltaS = event.delta / 1000;
+
+
+    var speed = 100;
+    // Animating clouds irrespective of background
+    createjs.Tween.get(clouds).to({
+      x: w
+    }, 80 * speed * speed);
+
+    createjs.Tween.get(backBg, {
+      loop: true
+    }).to({
+      x: -w
+    }, speed * speed * 10);
+
+    createjs.Tween.get(frontBg, {
+      loop: true
+    }).to({
+      x: -w
+    }, speed * speed * 6);
+
+    createjs.Tween.get(road, {
+      loop: true
+    }).to({
+      x: -w
+    }, speed * speed * 0.9);
+
 
     stage.update(event);
   }
+
+
+  function handleSpeed(e) {
+    console.log('key press event');
+    console.log(e);
+  }
+
+  $(window).on('keydown', handleSpeed);
   /**
    * Create background
    *  - have global variables for height and width of canvas
