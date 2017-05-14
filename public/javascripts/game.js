@@ -1,6 +1,7 @@
 $(document).on('initialize-game', function() {
   var stage, w, h, loader;
-  var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance;
+  var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance, speed = 0,
+    createTreeStrip, addTrees, treeStrip, updateTreeLocation, ditch;
 
   stage = new createjs.Stage('game-holder');
 
@@ -66,33 +67,38 @@ $(document).on('initialize-game', function() {
     // Adding clouds in sky
     var cloudImg = loader.getResult("clouds");
     clouds = new createjs.Shape();
-    clouds.graphics.beginBitmapFill(cloudImg).drawRect(0, 0, cloudImg.width, cloudImg.height);
+    clouds.graphics.beginBitmapFill(cloudImg).drawRect(0, 0, cloudImg.width * 5, cloudImg.height);
     clouds.tileW = w - cloudImg.width;
     clouds.y = 0;
 
+    //Initializing road
     var roadImg = loader.getResult("road");
     road = new createjs.Shape();
-    road.graphics.beginBitmapFill(roadImg).drawRect(0, 0, roadImg.width * 30, roadImg.height * 30);
+    road.graphics.beginBitmapFill(roadImg).drawRect(0, 0, roadImg.width * 30, roadImg.height);
     road.tileW = 0;
     road.y = h - roadImg.height;
 
+    //Initializing backgrounds
     var backBgImg = loader.getResult("backBg");
     backBg = new createjs.Shape();
-    backBg.graphics.beginBitmapFill(backBgImg).drawRect(0, 0, backBgImg.width * 30, backBgImg.height * 30);
+    backBg.graphics.beginBitmapFill(backBgImg).drawRect(0, 0, backBgImg.width * 30, backBgImg.height);
     backBg.regX = w * 15;
     backBg.y = h - (backBgImg.height + roadImg.height);
 
+    //Initializing backgrounds
     var frontBgImg = loader.getResult("frontBg");
     frontBg = new createjs.Shape();
-    frontBg.graphics.beginBitmapFill(frontBgImg).drawRect(0, 0, frontBgImg.width * 30, frontBgImg.height * 30);
+    frontBg.graphics.beginBitmapFill(frontBgImg).drawRect(0, 0, frontBgImg.width * 30, frontBgImg.height);
     frontBg.regX = w * 15;
     frontBg.y = h - (frontBgImg.height + roadImg.height);
 
     function createBuildingStrip() {
       return [];
     };
+    var buildings = createBuildingStrip();
 
-    function createTreeStrip() {
+    // Method to get tree objects to be added on road
+    createTreeStrip = function() {
       var refObj = ["tree1", "tree2", "tree3"];
 
       var refImg, layer, layers = [];
@@ -100,7 +106,7 @@ $(document).on('initialize-game', function() {
         refImg = loader.getResult(item);
         layer = new createjs.Shape();
         layer.graphics.beginBitmapFill(refImg).drawRect(0, 0, refImg.width, refImg.height);
-        layer.x = Math.random() * (w * 0.8) + (w * 0.1);
+        layer.x = (Math.random() * (w * 0.8) + (w * 0.1));
         layer.y = h - (roadImg.height + refImg.height) + 2;
 
         layers.push(layer);
@@ -108,18 +114,31 @@ $(document).on('initialize-game', function() {
       return layers;
     };
 
+    addTrees = function() {
+      treeStrip = createTreeStrip();
+      treeStrip.forEach(function(tree) {
+        stage.addChild(tree);
+      });
+    }
 
-    var buildings = createBuildingStrip();
-    var treeStrip = createTreeStrip();
+    updateTreeLocation = function(index, tree) {
+      var refObj = ["tree1", "tree2", "tree3"];
 
+      var treeImage = loader.getResult(refObj[index]);
+      tree = new createjs.Shape();
+      tree.graphics.beginBitmapFill(treeImage).drawRect(0, 0, treeImage.width, treeImage.height);
+      tree.x = w + (Math.random() * (w * 0.8) + (w * 0.1));
+      tree.y = h - (roadImg.height + treeImage.height) + 2;
+    }
+
+    // Adding layers based on their sequence
     stage.addChild(sky, sun, clouds, backBg, frontBg, road);
+
     buildings.forEach(function(building) {
       stage.addChild(building);
     });
 
-    treeStrip.forEach(function(tree) {
-      stage.addChild(tree);
-    });
+    addTrees();
 
 
     var ambulanceImg = loader.getResult('amb');
@@ -129,8 +148,8 @@ $(document).on('initialize-game', function() {
     ambulance.y = h - (ambulanceImg.height + (roadImg.height / 2));
     stage.addChild(ambulance);
 
-    stage.addEventListener("pressup", handleSpeed);
     createjs.Ticker.timingMode = createjs.Ticker.RAF;
+    createjs.Ticker.interval = 100;
     createjs.Ticker.addEventListener("tick", tickHandler);
   };
 
@@ -139,52 +158,92 @@ $(document).on('initialize-game', function() {
 
     // console.log(event);
     var deltaS = event.delta / 1000;
+    var maxSpeed = 1000;
 
 
-    var speed = 100;
     // Animating clouds irrespective of background
     createjs.Tween.get(clouds).to({
       x: w
-    }, 80 * speed * speed);
+    }, 800000);
 
     createjs.Tween.get(backBg, {
       loop: true
     }).to({
       x: -w
-    }, speed * speed * 10);
+    }, speed * 500);
 
     createjs.Tween.get(frontBg, {
       loop: true
     }).to({
       x: -w
-    }, speed * speed * 6);
+    }, speed * 300);
 
     createjs.Tween.get(road, {
       loop: true
     }).to({
       x: -w
-    }, speed * speed * 0.9);
+    }, speed * 45);
 
+
+    treeStrip.forEach(function(tree, treeIndex) {
+      createjs.Tween.get(tree, {
+        loop: true
+      }).to({
+        x: -w
+      }, speed * 45).call(function() {
+        updateTreeLocation(treeIndex, tree)
+      });
+    });
 
     stage.update(event);
   }
 
 
   function handleSpeed(e) {
-    console.log('key press event');
-    console.log(e);
+    // 39 - right arrow
+    // 37 - left arrow
+    if (e.keyCode === 39 || e.keyCode === 37) {
+      if (speed === 0) {
+        speed = 50;
+      }
+
+      if (speed > 10 && speed < 80) {
+
+
+        if (e.keyCode === 39) {
+          speed = speed - 6;
+        }
+
+
+        if (e.keyCode === 37) {
+          speed = speed + 3;
+        }
+
+        stage.update();
+
+        if (speed < 10) {
+          speed = 10
+        }
+        if (speed > 80) {
+          speed = 80
+        }
+      }
+      // console.log('speed');
+      // console.log(speed);
+    }
   }
+
 
   $(window).on('keydown', handleSpeed);
   /**
    * Create background
-   *  - have global variables for height and width of canvas
-   *  - sky
-   *  - sun
-   *  - clouds (at its own pace)
-   *  - buildings backgrounds(3 layers at their own pace)
-   *  - create building scquence randomly on load and have it as a background
-   *  - road
+   *  - Done:: have global variables for height and width of canvas
+   *  - Done:: sky
+   *  - Done:: sun
+   *  - Done:: clouds (at its own pace)
+   *  - Done:: buildings backgrounds(3 layers at their own pace)
+   *  - Done:: create building scquence randomly on load and have it as a background
+   *  - Done:: road
    *  - diches(each ditch should have a configuration for pop up)
    *  - sprite for ambulance.(jerk on hitting dich, indication of poinits on catching items, direction change, moment of ambulance)
    *  - have all the above movements driven with variables that will later be adjusted with key press
