@@ -1,7 +1,7 @@
 $(document).on('initialize-game', function() {
   var stage, w, h, loader;
   var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance, speed = 100,
-    createTreeStrip, addTrees, treeStrip, ditch, buildings, flag = true;
+    createTreeStrip, addTrees, treeStrip, ditch, buildings, tokens, flag = true;
 
 
   stage = new createjs.Stage('game-holder');
@@ -57,6 +57,12 @@ $(document).on('initialize-game', function() {
     }, {
       src: "Ditch.png",
       id: "ditch"
+    }, {
+      src: "Token-1.png",
+      id: "token1"
+    }, {
+      src: "Token-2.png",
+      id: "token2"
     }
   ];
 
@@ -169,6 +175,44 @@ $(document).on('initialize-game', function() {
 		ambulance.y = h - (roadImg.height * 2);
     ambulance.setBounds(0, 0, 150, 104);
 
+    // Initialize tokens
+    createTokens = function () {
+        var tokenCount = 1;
+        tokens = [];
+        while (loader.getResult("token"+tokenCount)) {
+          token = loader.getResult("token"+tokenCount++);
+          layer = new createjs.Shape();
+          layer.graphics.beginBitmapFill(token).drawRect(0, 0, token.width, token.height);
+          tokens.push(layer);
+        }
+        // var tokens = ["token1","token1"];
+        // tokens.forEach(function (token) {
+        //   token
+        // })
+    }
+
+    // Drop Tokens
+    dropTokens = function () {
+      var tokenIndex = Math.floor(Math.random() * tokens.length-1) + 1;
+      var token = tokens[tokenIndex];
+
+      // Check for animation
+      if (token.isAnimating) {return;}
+      token.isAnimating = true;
+
+      token.x = Math.floor(Math.random() * w) + 1;
+      token.y = - 200;
+      stage.addChild(token);
+      createjs.Tween.get(token).to({
+        y: w
+      }, speed * 45).call(function () {
+        token.isAnimating = false
+        stage.removeChild(token)
+      })
+    }
+
+    
+
     // Adding layers based on their sequence
     stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch);
 
@@ -182,27 +226,23 @@ $(document).on('initialize-game', function() {
       stage.addChild(tree);
     });
 
-    stage.addChild(ambulance);
+    createTokens();
 
+    stage.addChild(ambulance);
 
     createjs.Ticker.timingMode = createjs.Ticker.RAF;
     createjs.Ticker.interval = 100;
     createjs.Ticker.on("tick", tickHandler);
+    initTweens();
   };
 
+  function initTweens(params) {
+    createjs.Tween.get(road, {
+      loop: true
+    }).to({
+      x: -w
+    }, speed * 45);
 
-  function tickHandler(event) {
-
-    // console.log(event);
-    var deltaS = event.delta;
-    var maxSpeed = 1000;
-    var fSpeed = deltaS / 5;
-
-    if (flag) {
-      console.log(deltaS, event);
-      flag = false;
-    }
-    
     createjs.Tween.get(clouds, {
       loop: true
     }).to({
@@ -220,13 +260,14 @@ $(document).on('initialize-game', function() {
     }).to({
       x: -w
     }, speed * 80);
+  }
 
-    createjs.Tween.get(road, {
-      loop: true
-    }).to({
-      x: -w
-    }, speed * 45);
 
+  function tickHandler(event) {
+    var deltaS = event.delta;
+    var maxSpeed = 1000;
+    var fSpeed = deltaS / 5;
+    
     treeStrip.forEach(function(tree, treeIndex) {
       treeBounds = tree.getBounds();
       tree.x = ((tree.x + treeBounds.width) <= 0) ? tree.x = w + treeBounds.width + (Math.random() * w) : tree.x - fSpeed;
@@ -246,31 +287,37 @@ $(document).on('initialize-game', function() {
       ambulance.gotoAndPlay("hickup");
     }
 
+    // Randomly drop tokens
+    if (Math.random() * 1000 > 980) {
+      console.log("token");
+      dropTokens();
+    }
+
     stage.update(event);
   }
 
 
   function moveSprite(e) {
-      // 39 - right arrow
-      // 37 - left arrow
-      if (e.keyCode === 39 || e.keyCode === 37) {
+    // 39 - right arrow
+    // 37 - left arrow
+    if (e.keyCode === 39 || e.keyCode === 37) {
 
-          if (e.keyCode === 39) {
-            var bounds = ambulance.getBounds();
-            createjs.Tween.get(ambulance).to({
-              x: ((ambulance.x + bounds.width) < w) ? ambulance.x + 10 : ambulance.x
-            }, 30);
-          }
-
-
-          if (e.keyCode === 37) {
-            var bounds = ambulance.getBounds();
-            createjs.Tween.get(ambulance).to({
-              x: (ambulance.x > 0) ? ambulance.x - 10 : ambulance.x
-            }, 30);
-          }
-
+      if (e.keyCode === 39) {
+        var bounds = ambulance.getBounds();
+        createjs.Tween.get(ambulance).to({
+          x: ((ambulance.x + bounds.width) < w) ? ambulance.x + 10 : ambulance.x
+        }, 30);
       }
+
+
+      if (e.keyCode === 37) {
+        var bounds = ambulance.getBounds();
+        createjs.Tween.get(ambulance).to({
+          x: (ambulance.x > 0) ? ambulance.x - 10 : ambulance.x
+        }, 30);
+      }
+
+    }
   }
 
 
