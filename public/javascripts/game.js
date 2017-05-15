@@ -2,6 +2,10 @@ $(document).on('initialize-game', function() {
   var stage, w, h, loader;
   var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance, speed = 100,
     createTreeStrip, addTrees, treeStrip, ditch, buildings, tokens, flag = true;
+  var score = {
+    value: 0,
+    ob: {}
+  };
 
 
   stage = new createjs.Stage('game-holder');
@@ -183,12 +187,9 @@ $(document).on('initialize-game', function() {
           token = loader.getResult("token"+tokenCount++);
           layer = new createjs.Shape();
           layer.graphics.beginBitmapFill(token).drawRect(0, 0, token.width, token.height);
+          layer.notCollectd = true;
           tokens.push(layer);
         }
-        // var tokens = ["token1","token1"];
-        // tokens.forEach(function (token) {
-        //   token
-        // })
     }
 
     // Drop Tokens
@@ -199,6 +200,7 @@ $(document).on('initialize-game', function() {
       // Check for animation
       if (token.isAnimating) {return;}
       token.isAnimating = true;
+      token.notCollectd = true;
 
       token.x = Math.floor(Math.random() * w) + 1;
       token.y = - 200;
@@ -211,10 +213,23 @@ $(document).on('initialize-game', function() {
       })
     }
 
-    
+    // Token Collection Handler
+    tokenCollected = function (token) {
+      stage.removeChild(token);
+      if (token.notCollectd) {
+        token.notCollectd = false;
+        score.value = score.value + 10;
+        score.ob.text = "SCORE: " + (score.value);
+      }
+    }
+
+    // Initialize Score
+    score.ob = new createjs.Text("SCORE: " + score.value, "30px monospace", "#00000");
+    score.ob.x = 10;
+    score.ob.y = 10;
 
     // Adding layers based on their sequence
-    stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch);
+    stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch, score.ob);
 
     buildings = createBuildingStrip();
     buildings.forEach(function(building) {
@@ -289,9 +304,16 @@ $(document).on('initialize-game', function() {
 
     // Randomly drop tokens
     if (Math.random() * 1000 > 980) {
-      console.log("token");
       dropTokens();
     }
+
+    // Check if token collected
+    tokens.forEach(function(token) {
+      var pt = token.localToLocal(20, 0, ambulance);
+      if (ambulance.hitTest(pt.x, pt.y)) {
+        tokenCollected(token);
+      }
+    }, this);
 
     stage.update(event);
   }
