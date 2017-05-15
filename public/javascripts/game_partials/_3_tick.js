@@ -3,6 +3,8 @@ function tickHandler(event) {
     var maxSpeed = 1000;
     var fSpeed = deltaS / 5; // foreground speed
 
+    if (event.paused) {return;}
+
     // Animate trees
     treeStrip.forEach(function (tree, treeIndex) {
         treeBounds = tree.getBounds();
@@ -24,10 +26,7 @@ function tickHandler(event) {
 
     // Check if collsion has occured
     var pt = ditch.localToLocal(0, 0, ambulance);
-    if (ambulance.hitTest(pt.x, pt.y)) {
-        ambulance.gotoAndPlay("hickup");
-        hitDitch(ditch);
-    }
+    hitDitch(ambulance.hitTest(pt.x, pt.y));
 
     // Randomly drop tokens
     if (Math.random() * 1000 > 980) {

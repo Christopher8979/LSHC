@@ -5,6 +5,10 @@ var score = {
   value: 0,
   ob: {}
 };
+var star = {
+  value: 0,
+  ob: {}
+};
 
 
 stage = new createjs.Stage('game-holder');
@@ -46,6 +50,9 @@ var IMAGES_HOLDER = [{
 }, {
   src: "ambulance-sprite.png",
   id: "amb"
+}, {
+  src: "star-sprite.png",
+  id: "star"
 }, {
   src: "ditch.png",
   id: "ditch"
@@ -152,10 +159,10 @@ $(document).on('initialize-game', function () {
         createTreeStrip = function () {
             var layers = [];
             for (var treeIndex = 0; treeIndex < 4; treeIndex++) {
-                var tree = new createjs.Sprite(treeSprite, treeIndex);
+                var tree = new createjs.Sprite(treeSprite);
                 var treeBounds = treeSprite.getFrameBounds(treeIndex);
+                tree.gotoAndStop(treeIndex);
                 tree.setTransform(Math.random() * w, h - (roadImg.height + treeBounds.height) + 2);
-                tree.cache(0, 0, treeBounds.width, treeBounds.height);
 
                 layers.push(tree);
             }
@@ -197,17 +204,27 @@ $(document).on('initialize-game', function () {
         score.ob.x = 10;
         score.ob.y = 10;
 
-        // Adding layers based on their sequence
-        stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch, score.ob);
-
-        // buildings = createBuildingStrip();
-        buildings.forEach(function (building) {
-            stage.addChild(building);
+        // Initialize Stars
+        var spriteSheet = new createjs.SpriteSheet({
+            "images": [loader.getResult("star")],
+            "frames": { "height": 27, "width": 112 }
         });
+        star.ob = new createjs.Sprite(spriteSheet);
+        star.ob.numFrames = spriteSheet.getNumFrames();
+        star.ob.x = 10;
+        star.ob.y = 50;
+
+        // Adding layers based on their sequence
+        stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch, score.ob, star.ob);
 
         treeStrip = createTreeStrip();
         treeStrip.forEach(function (tree) {
             stage.addChild(tree);
+        });
+
+        // buildings = createBuildingStrip();
+        buildings.forEach(function (building) {
+            stage.addChild(building);
         });
 
         createTokens();
@@ -251,6 +268,8 @@ function tickHandler(event) {
     var maxSpeed = 1000;
     var fSpeed = deltaS / 5; // foreground speed
 
+    if (event.paused) {return;}
+
     // Animate trees
     treeStrip.forEach(function (tree, treeIndex) {
         treeBounds = tree.getBounds();
@@ -272,10 +291,7 @@ function tickHandler(event) {
 
     // Check if collsion has occured
     var pt = ditch.localToLocal(0, 0, ambulance);
-    if (ambulance.hitTest(pt.x, pt.y)) {
-        ambulance.gotoAndPlay("hickup");
-        hitDitch(ditch);
-    }
+    hitDitch(ambulance.hitTest(pt.x, pt.y));
 
     // Randomly drop tokens
     if (Math.random() * 1000 > 980) {
@@ -321,14 +337,18 @@ tokenCollected = function (token) {
         token.notCollectd = false;
         score.value = score.value + 10;
         score.ob.text = "SCORE: " + (score.value);
+        $(document).trigger("token-collected");
     }
 }
 
 // Encountered Ditch
-hitDitch = function () {
-    if(!hitFlags.ditch) {
+hitDitch = function (hit) {
+    if(!hitFlags.ditch && hit) {
         hitFlags.ditch = true;
+        ambulance.gotoAndPlay("hickup");
         $(document).trigger("hit-ditch");
+    } else if (!hit && hitFlags.ditch) {
+        hitFlags.ditch = false;
     }
 }
 
@@ -336,7 +356,7 @@ hitDitch = function () {
 function moveSprite(e) {
     // 39 - right arrow
     // 37 - left arrow
-    if (e.keyCode === 39 || e.keyCode === 37) {
+    if (e.keyCode === 39 || e.keyCode === 37 || e.keyCode === 32) {
 
         if (e.keyCode === 39) {
             var bounds = ambulance.getBounds();
@@ -353,6 +373,10 @@ function moveSprite(e) {
             }, 30);
         }
 
+        if (e.keyCode === 32) {
+            $(document).trigger("play-pause")
+        }
+
     }
 }
 
@@ -364,6 +388,25 @@ $("#mute-btn").on("click", function () {
     sound.volume = (sound.volume == 0) ? 0.1 : 0;
 })
 
+// Game events
 $(document).on("hit-ditch", function () {
     console.log("HIT THE DITCH");
+    $(document).trigger("play-pause");
+});
+
+$(document).on("play-pause", function () {
+    createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
+    sound.volume = (sound.volume == 0) ? 0.1 : 0;
+});
+
+$(document).on("update-star", function () {
+    star.ob.gotoAndStop(++star.ob.currentFrame % star.ob.numFrames);
 })
+
+
+/**
+ * Emmitted events
+ * 
+ * 1. hit-ditch
+ * 2. token-collected
+ */

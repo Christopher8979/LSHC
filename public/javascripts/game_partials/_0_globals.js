@@ -5,6 +5,10 @@ var score = {
   value: 0,
   ob: {}
 };
+var star = {
+  value: 0,
+  ob: {}
+};
 
 
 stage = new createjs.Stage('game-holder');
@@ -46,6 +50,9 @@ var IMAGES_HOLDER = [{
 }, {
   src: "ambulance-sprite.png",
   id: "amb"
+}, {
+  src: "star-sprite.png",
+  id: "star"
 }, {
   src: "ditch.png",
   id: "ditch"

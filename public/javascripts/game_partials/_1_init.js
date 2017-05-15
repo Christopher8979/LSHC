@@ -91,10 +91,10 @@ $(document).on('initialize-game', function () {
         createTreeStrip = function () {
             var layers = [];
             for (var treeIndex = 0; treeIndex < 4; treeIndex++) {
-                var tree = new createjs.Sprite(treeSprite, treeIndex);
+                var tree = new createjs.Sprite(treeSprite);
                 var treeBounds = treeSprite.getFrameBounds(treeIndex);
+                tree.gotoAndStop(treeIndex);
                 tree.setTransform(Math.random() * w, h - (roadImg.height + treeBounds.height) + 2);
-                tree.cache(0, 0, treeBounds.width, treeBounds.height);
 
                 layers.push(tree);
             }
@@ -136,17 +136,27 @@ $(document).on('initialize-game', function () {
         score.ob.x = 10;
         score.ob.y = 10;
 
-        // Adding layers based on their sequence
-        stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch, score.ob);
-
-        // buildings = createBuildingStrip();
-        buildings.forEach(function (building) {
-            stage.addChild(building);
+        // Initialize Stars
+        var spriteSheet = new createjs.SpriteSheet({
+            "images": [loader.getResult("star")],
+            "frames": { "height": 27, "width": 112 }
         });
+        star.ob = new createjs.Sprite(spriteSheet);
+        star.ob.numFrames = spriteSheet.getNumFrames();
+        star.ob.x = 10;
+        star.ob.y = 50;
+
+        // Adding layers based on their sequence
+        stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch, score.ob, star.ob);
 
         treeStrip = createTreeStrip();
         treeStrip.forEach(function (tree) {
             stage.addChild(tree);
+        });
+
+        // buildings = createBuildingStrip();
+        buildings.forEach(function (building) {
+            stage.addChild(building);
         });
 
         createTokens();
