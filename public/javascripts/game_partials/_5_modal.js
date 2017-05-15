@@ -6,7 +6,15 @@ $('.modal').modal({
 });
 
 $(document).on('showhint', function() {
-  Materialize.toast('I am a toast!', 40000000);
+  // Show hint only if its not displayed already
+  if (!hintDislayed) {
+    var text = $('.question').eq(nextQuestionIndex).find('.hint').text();
+    // dont show hint if its not present
+    if (text !== '') {
+      Materialize.toast(text, 40000000);
+      hintDislayed = true;
+    }
+  }
 });
 
 $(document).on('showquestion', function() {
@@ -16,14 +24,22 @@ $(document).on('showquestion', function() {
 });
 
 $('#questionClose').on('click', function() {
-  nextQuestionIndex++;
   $('.toast').remove();
+  if ($('.question').eq(nextQuestionIndex).hasClass('valid')) {
+    setTimeout(function() {
+      // trigger method to increment star
+    }, 600);
+  }
   $('#questions-modal').modal('close');
   $('#questionSubmit').removeAttr('disabled');
   $('#questionClose').attr('disabled', true);
+  nextQuestionIndex++;
+  hintDislayed = false;
 });
 
-
+$('.question input').on('click', function() {
+  $('#questionSubmit').removeAttr('disabled');
+});
 
 $('#questionSubmit').on('click', function() {
 

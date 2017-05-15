@@ -30,6 +30,7 @@
   color: #000;
   background: #e4e4e4;
   box-shadow: none;
+  max-width: 150px;
 }
 
 .question [type="radio"]:not(:checked)+label, .question [type="radio"]:checked+label {
