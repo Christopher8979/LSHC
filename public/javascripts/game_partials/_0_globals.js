@@ -1,5 +1,5 @@
 var stage, w, h, loader;
-var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance, speed = 100,
+var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance, speed = 100, hitFlags = {},
   createTreeStrip, addTrees, treeStrip, ditch, buildings, tokens, sound, flag = true;
 var score = {
   value: 0,
