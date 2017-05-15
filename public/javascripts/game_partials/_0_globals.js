@@ -47,7 +47,7 @@ var IMAGES_HOLDER = [{
   src: "ambulance-sprite.png",
   id: "amb"
 }, {
-  src: "Ditch.png",
+  src: "ditch.png",
   id: "ditch"
 }, {
   src: "Token-1.png",
