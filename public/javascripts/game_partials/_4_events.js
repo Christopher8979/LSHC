@@ -30,10 +30,13 @@ tokenCollected = function (token) {
 }
 
 // Encountered Ditch
-hitDitch = function () {
-    if(!hitFlags.ditch) {
+hitDitch = function (hit) {
+    if(!hitFlags.ditch && hit) {
         hitFlags.ditch = true;
+        ambulance.gotoAndPlay("hickup");
         $(document).trigger("hit-ditch");
+    } else if (!hit && hitFlags.ditch) {
+        hitFlags.ditch = false;
     }
 }
 
@@ -41,7 +44,7 @@ hitDitch = function () {
 function moveSprite(e) {
     // 39 - right arrow
     // 37 - left arrow
-    if (e.keyCode === 39 || e.keyCode === 37) {
+    if (e.keyCode === 39 || e.keyCode === 37 || e.keyCode === 32) {
 
         if (e.keyCode === 39) {
             var bounds = ambulance.getBounds();
@@ -58,6 +61,11 @@ function moveSprite(e) {
             }, 30);
         }
 
+        if (e.keyCode === 32) {
+            createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
+            sound.volume = (sound.volume == 0) ? 0.1 : 0;
+        }
+
     }
 }
 
@@ -69,6 +77,17 @@ $("#mute-btn").on("click", function () {
     sound.volume = (sound.volume == 0) ? 0.1 : 0;
 })
 
+// Game events
 $(document).on("hit-ditch", function () {
     console.log("HIT THE DITCH");
-})
+    $(document).trigger("play-pause");
+});
+
+$(document).on("ditch-escape", function () {
+    // if ()
+});
+
+$(document).on("play-pause", function () {
+    createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
+    sound.volume = (sound.volume == 0) ? 0.1 : 0;
+});

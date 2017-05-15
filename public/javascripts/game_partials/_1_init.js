@@ -139,14 +139,14 @@ $(document).on('initialize-game', function () {
         // Adding layers based on their sequence
         stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch, score.ob);
 
-        // buildings = createBuildingStrip();
-        buildings.forEach(function (building) {
-            stage.addChild(building);
-        });
-
         treeStrip = createTreeStrip();
         treeStrip.forEach(function (tree) {
             stage.addChild(tree);
+        });
+
+        // buildings = createBuildingStrip();
+        buildings.forEach(function (building) {
+            stage.addChild(building);
         });
 
         createTokens();
