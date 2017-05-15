@@ -83,25 +83,28 @@ $(document).on('initialize-game', function() {
     clouds.graphics.beginBitmapFill(cloudImg).drawRect(0, 0, cloudImg.width * 5, cloudImg.height);
     clouds.tileW = w - cloudImg.width;
     clouds.y = 0;
-
+    clouds.cache(0, 0, cloudImg.width * 5, cloudImg.height);
     //Initializing road
     var roadImg = loader.getResult("road");
     road = new createjs.Shape();
     road.graphics.beginBitmapFill(roadImg).drawRect(0, 0, roadImg.width * 2, roadImg.height);
     road.tileW = 0;
     road.y = h - roadImg.height;
+    road.cache(0, 0, roadImg.width * 2, roadImg.height);
 
     //Initializing backgrounds
     var backBgImg = loader.getResult("backBg");
     backBg = new createjs.Shape();
     backBg.graphics.beginBitmapFill(backBgImg).drawRect(0, 0, backBgImg.width * 2, backBgImg.height);
     backBg.y = h - (backBgImg.height + roadImg.height);
+    backBg.cache(0, 0, backBgImg.width * 2, backBgImg.height);
 
     //Initializing backgrounds
     var frontBgImg = loader.getResult("frontBg");
     frontBg = new createjs.Shape();
     frontBg.graphics.beginBitmapFill(frontBgImg).drawRect(0, 0, frontBgImg.width * 2, frontBgImg.height);
     frontBg.y = h - (frontBgImg.height + roadImg.height);
+    frontBg.cache(0, 0, frontBgImg.width * 2, frontBgImg.height);
 
     // Initialize Ditch
     var ditchImg = loader.getResult("ditch");
@@ -109,6 +112,7 @@ $(document).on('initialize-game', function() {
     ditch.graphics.beginBitmapFill(ditchImg).drawRect(0, 0, ditchImg.width, ditchImg.height);
     ditch.x = (0.5 + Math.random()) * w;
     ditch.y = h - (0.75 * roadImg.height);
+    ditch.cache(0, 0, ditchImg.width, ditchImg.height);
 
     // Initialize buildings
     function createBuildingStrip() {
@@ -122,6 +126,7 @@ $(document).on('initialize-game', function() {
         layer.x = (Math.random() * (w * 0.8) + (w * 0.1));
         layer.y = h - (roadImg.height + refImg.height) + 2;
         layer.setBounds(0, 0, refImg.width, refImg.height);
+        layer.cache(0, 0, refImg.width, refImg.height);
 
         layers.push(layer);
       });
@@ -139,6 +144,7 @@ $(document).on('initialize-game', function() {
         layer.graphics.beginBitmapFill(refImg).drawRect(0, 0, refImg.width, refImg.height);
         layer.setTransform(Math.random() * w, h - (roadImg.height + refImg.height) + 2);
         layer.setBounds(0, 0, refImg.width, refImg.height);
+        layer.cache(0, 0, refImg.width, refImg.height);
 
         layers.push(layer);
       });
