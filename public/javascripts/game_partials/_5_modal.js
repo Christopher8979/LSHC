@@ -33,6 +33,9 @@ $('#questionClose').on('click', function() {
   if ($('.question').eq(nextQuestionIndex).hasClass('valid')) {
     setTimeout(function() {
       // trigger method to increment star
+      $(document).trigger("update-star");
+      $(document).trigger("update-star");
+
     }, 600);
   }
   $('#questions-modal').modal('close');
@@ -41,7 +44,8 @@ $('#questionClose').on('click', function() {
   nextQuestionIndex++;
   hintDislayed = false;
 
-  // trigger event to play on canvas 
+  // trigger event to play on canvas
+  $(document).trigger("play-pause");
 });
 
 // event to enable submit button only onclicking any input button.

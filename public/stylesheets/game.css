@@ -35,7 +35,9 @@
 
 .question [type="radio"]:not(:checked)+label, .question [type="radio"]:checked+label {
   color: black;
-  display: block;
+  display: inline-block;
+  width: 100%;
+  height: auto;
 }
 
 .question [type="radio"]:checked+label:after, .question [type="radio"].with-gap:checked+label:after {
