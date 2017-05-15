@@ -25,12 +25,12 @@ router.post('/check-answer/:id', function(req, res) {
   GameService.checkAnswer(questionNo, answeredAs, function (err, response) {
     if (err) {
       return res.status(400).jsonp({
-        'answeredTrue': false;
+        'answeredTrue': false
       });
     }
 
     res.status(200).jsonp({
-      'answeredTrue': true;
+      'answeredTrue': true
     });
   });
 });
