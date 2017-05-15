@@ -26,6 +26,7 @@ tokenCollected = function (token) {
         token.notCollectd = false;
         score.value = score.value + 10;
         score.ob.text = "SCORE: " + (score.value);
+        $(document).trigger("token-collected");
     }
 }
 
@@ -90,3 +91,11 @@ $(document).on("play-pause", function () {
 $(document).on("update-star", function () {
     star.ob.gotoAndStop(++star.ob.currentFrame % star.ob.numFrames);
 })
+
+
+/**
+ * Emmitted events
+ * 
+ * 1. hit-ditch
+ * 2. token-collected
+ */
