@@ -60,24 +60,27 @@ $(document).on('initialize-game', function () {
         ditch.y = h - (0.75 * roadImg.height);
         ditch.cache(0, 0, ditchImg.width, ditchImg.height);
 
-        // Initialize buildings
-        function createBuildingStrip() {
-            var refObj = ["building1", "building2", "building3"];
-
-            var refImg, layer, layers = [];
-            refObj.forEach(function (item, itemIndex) {
-                refImg = loader.getResult(item);
-                layer = new createjs.Shape();
-                layer.graphics.beginBitmapFill(refImg).drawRect(0, 0, refImg.width, refImg.height);
-                layer.x = (Math.random() * (w * 0.8) + (w * 0.1));
-                layer.y = h - (roadImg.height + refImg.height) + 2;
-                layer.setBounds(0, 0, refImg.width, refImg.height);
-                layer.cache(0, 0, refImg.width, refImg.height);
-
-                layers.push(layer);
+        // Initialize building sprite
+        var refObj = [
+            { id: "hospital", width: 350, height: 170 },
+            { id: "clinic", width: 127, height: 96 },
+            { id: "store", width: 148, height: 73 },
+        ];
+        buildings = [];
+        refObj.forEach(function(building) {
+            var spriteSheet = new createjs.SpriteSheet({
+                images: [loader.getResult(building.id)],
+                frames: { width: building.width, height: building.height },
             });
-            return layers;
-        };
+
+            var sprite = new createjs.Sprite(spriteSheet);
+            var spriteBounds = spriteSheet.getFrameBounds(0);
+            sprite.setTransform(Math.random() * w, h - (roadImg.height + spriteBounds.height) + 2);
+            sprite.numFrames = spriteSheet.getNumFrames();
+            
+            // Add to buildings  
+            buildings.push(sprite);     
+        }, this);
 
         // Initialize Tree Sprite
         var treeSprite = new createjs.SpriteSheet({
@@ -91,7 +94,6 @@ $(document).on('initialize-game', function () {
                 var tree = new createjs.Sprite(treeSprite, treeIndex);
                 var treeBounds = treeSprite.getFrameBounds(treeIndex);
                 tree.setTransform(Math.random() * w, h - (roadImg.height + treeBounds.height) + 2);
-                // tree.setBounds(0, 0, treeBounds.width, treeBounds.height);
                 tree.cache(0, 0, treeBounds.width, treeBounds.height);
 
                 layers.push(tree);
@@ -137,7 +139,7 @@ $(document).on('initialize-game', function () {
         // Adding layers based on their sequence
         stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch, score.ob);
 
-        buildings = createBuildingStrip();
+        // buildings = createBuildingStrip();
         buildings.forEach(function (building) {
             stage.addChild(building);
         });
