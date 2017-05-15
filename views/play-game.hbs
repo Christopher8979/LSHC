@@ -1,2 +1,32 @@
-<canvas id="game-holder"  width="900" height="450"></canvas>
+<canvas id="game-holder" width="900" height="450"></canvas>
+
 <div id="mute-btn">Mute</div>
+
+<div id="questions-modal" class="modal">
+  <div class="modal-content">
+    {{#each questions}}
+      <div class="question" id= {{this.id}}>
+        <h5>{{this.title}}</h5>
+
+        <div class="options">
+          {{#each this.options}}
+            <p>
+              <input name="{{../id}}" type="radio" value="{{this.value}}" id="{{../id}}-{{@index}}" />
+              <label for="{{../id}}-{{@index}}">{{this.label}}</label>
+            </p>
+          {{/each}}
+        </div>
+        <span class="hint hide">{{this.hint}}</span>
+      </div>
+    {{/each}}
+  </div>
+  <div class="modal-footer">
+    <div class="center">
+      <button type="button" id="questionClose" name="button" class="btn waves-effect waves-light red" disabled>Close</button>
+      <button type="button" id="questionSubmit" name="button" class="btn waves-effect waves-light green">Submit</button>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="btn " id="showQuestion" name="button">Show Question</button>
+<button type="button" class="btn " id="showHint" name="button">Show Hint</button>
