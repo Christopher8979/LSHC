@@ -26,7 +26,7 @@ tokenCollected = function (token) {
         token.notCollectd = false;
         score.value = score.value + 10;
         score.ob.text = "SCORE: " + (score.value);
-        $(document).trigger("token-collected");
+        $(document).trigger("showhint");
     }
 }
 
@@ -79,8 +79,8 @@ $("#mute-btn").on("click", function () {
 
 // Game events
 $(document).on("hit-ditch", function () {
-    console.log("HIT THE DITCH");
     $(document).trigger("play-pause");
+    $(document).trigger('showquestion');
 });
 
 $(document).on("play-pause", function () {
@@ -95,7 +95,7 @@ $(document).on("update-star", function () {
 
 /**
  * Emmitted events
- * 
+ *
  * 1. hit-ditch
  * 2. token-collected
  */
