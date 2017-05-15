@@ -23,8 +23,13 @@ $(document).on('showquestion', function() {
   $('#questions-modal').modal('open');
 });
 
+
+// Event to close modal pop up.
 $('#questionClose').on('click', function() {
-  $('.toast').remove();
+  $('.toast').fadeOut(600, function() {
+    $('.toast').remove();
+  });
+
   if ($('.question').eq(nextQuestionIndex).hasClass('valid')) {
     setTimeout(function() {
       // trigger method to increment star
@@ -35,12 +40,17 @@ $('#questionClose').on('click', function() {
   $('#questionClose').attr('disabled', true);
   nextQuestionIndex++;
   hintDislayed = false;
+
+  // trigger event to play on canvas 
 });
 
+// event to enable submit button only onclicking any input button.
 $('.question input').on('click', function() {
   $('#questionSubmit').removeAttr('disabled');
 });
 
+
+// event on submit.
 $('#questionSubmit').on('click', function() {
 
   var question = $('.question').eq(nextQuestionIndex);
@@ -64,15 +74,4 @@ $('#questionSubmit').on('click', function() {
       $('#questionClose').removeAttr('disabled');
     }
   });
-});
-
-
-
-$('#showHint').on('click', function() {
-  $(document).trigger("showhint");
-});
-
-
-$('#showQuestion').on('click', function() {
-  $(document).trigger("showquestion");
 });
