@@ -1,7 +1,7 @@
 $(document).on('initialize-game', function() {
   var stage, w, h, loader;
   var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance, speed = 100,
-    createTreeStrip, addTrees, treeStrip, ditch, buildings, tokens, flag = true;
+    createTreeStrip, addTrees, treeStrip, ditch, buildings, tokens, sound, flag = true;
   var score = {
     value: 0,
     ob: {}
@@ -74,8 +74,15 @@ $(document).on('initialize-game', function() {
   loader.addEventListener("complete", handleComplete);
   loader.loadManifest(IMAGES_HOLDER, true, "../images/");
 
+  // Sounds
+  createjs.Sound.alternateExtensions = ["wav"];
+  createjs.Sound.on("fileload", function () {
+    sound = createjs.Sound.play("music", {interrupt: createjs.Sound.INTERRUPT_NONE, loop: -1, volume: 0.4});
+  }, this);
+  createjs.Sound.registerSound("../audio/bg-music.wav", "music");
+
+  // Manifest Loading complete handler
   function handleComplete(e) {
-    // console.log(e);
     // Adding sky as background
     sky = new createjs.Shape();
     sky.graphics.beginBitmapFill(loader.getResult("sky")).drawRect(0, 0, w, h);
@@ -227,6 +234,11 @@ $(document).on('initialize-game', function() {
     score.ob = new createjs.Text("SCORE: " + score.value, "30px monospace", "#00000");
     score.ob.x = 10;
     score.ob.y = 10;
+
+    // Mute Button
+    $("#mute-btn").on("click", function () {
+      sound.volume = (sound.volume == 0) ? 0.1 : 0;
+    })
 
     // Adding layers based on their sequence
     stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch, score.ob);
