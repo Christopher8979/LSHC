@@ -35,14 +35,14 @@ var IMAGES_HOLDER = [{
   src: "tree-sprite.png",
   id: "tree"
 }, {
-  src: "Building-1.png",
-  id: "building1"
+  src: "hospital-sprite.png",
+  id: "hospital"
 }, {
-  src: "Building-2.png",
-  id: "building2"
+  src: "clinic-sprite.png",
+  id: "clinic"
 }, {
-  src: "Building-3.png",
-  id: "building3"
+  src: "store-sprite.png",
+  id: "store"
 }, {
   src: "ambulance-sprite.png",
   id: "amb"
