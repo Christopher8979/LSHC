@@ -1,5 +1,6 @@
 {
   "questions": [{
+      "id": "Q1",
       "title": "A fixed share of percentage that a Member is obliged to pay for covered medical services is",
       "options": [{
           "label": "Coinsurance",
@@ -22,6 +23,7 @@
       "hint": ""
     },
     {
+      "id": "Q2",
       "title": "Health savings accounts were created by which of the following laws",
       "options": [{
           "label": "COBRA",
@@ -44,6 +46,7 @@
       "hint": ""
     },
     {
+      "id": "Q3",
       "title": "Consumer-directed health plans are not a new concept. They actually got their start in the late 1970s with the advent of",
       "options": [{
           "label": "Health savings accounts (HSAs)",
@@ -66,6 +69,7 @@
       "hint": ""
     },
     {
+      "id": "Q4",
       "title": "An exclusive provider organization (EPO) operates much like a PPO. However, one difference between an EPO and a PPO is that an EPO",
       "options": [{
           "label": "Is regulated under federal HMO legislation",
@@ -88,6 +92,7 @@
       "hint": ""
     },
     {
+      "id": "Q5",
       "title": "In most cases, medical errors are caused by breakdowns in the healthcare system rather than by provider mistakes.",
       "options": [{
           "label": "True",
@@ -102,6 +107,7 @@
       "hint": ""
     },
     {
+      "id": "Q6",
       "title": "Appropriateness of treatment provided is determined by developing criteria that if unmet will prompt further investigation of a claim which are also called",
       "options": [{
           "label": "Codes",
@@ -124,6 +130,7 @@
       "hint": ""
     },
     {
+      "id": "Q7",
       "title": "By definition, a health plan's network refers to the",
       "options": [{
           "label": "Organizations and individuals involved in the consumption of healthcare provided by the plan",
@@ -146,6 +153,7 @@
       "hint": ""
     },
     {
+      "id": "Q8",
       "title": "By definition, the marketing process of defining a certain place or market niche for a product relative to competitors and their products and then using the marketing mix to attract certain market segments is known as",
       "options": [{
           "label": "Branding",
@@ -168,6 +176,7 @@
       "hint": ""
     },
     {
+      "id": "Q9",
       "title": "If most of the physicians, or many of the physicians in a particular specialty, are affiliated with a single entity, then a health plan building a network in the service area _____________",
       "options": [{
           "label": "Has many contracting options available.",
@@ -190,6 +199,7 @@
       "hint": ""
     },
     {
+      "id": "Q10",
       "title": "Amendments to the HMO act 1973 do not permit federally qualified HMO’s to use",
       "options": [{
           "label": "Retrospective experience rating",
@@ -212,7 +222,8 @@
       "hint": ""
     },
     {
-      "title": "Health plans use the following to determine the number of providers to add to a network",
+      "id": "Q11",
+      "title": "Health plans use the following to determine the number of Qproviders to add to a network",
       "options": [{
           "label": "Staffing ratios",
           "value": "a"
@@ -234,6 +245,7 @@
       "hint": ""
     },
     {
+      "id": "Q12",
       "title": "In order to compensate for lost revenue resulting from services provided free or at a significantly reduced cost to other patients, many healthcare providers spread these unreimbursed costs to paying patients or third-party payors. This practice is known",
       "options": [{
           "label": "Dual choice",
@@ -256,6 +268,7 @@
       "hint": ""
     },
     {
+      "id": "Q13",
       "title": "______________ HMOs can't medically underwrite any group – incl small groups",
       "options": [{
           "label": "State",
@@ -278,6 +291,7 @@
       "hint": ""
     },
     {
+      "id": "Q14",
       "title": "Because a health plan cannot decline coverage for individuals who are eligible for conversion of group health coverage to individual health coverage, the bulk of the health plan's underwriting for conversion policies is accomplished through health plan design.",
       "options": [{
           "label": "True",
@@ -292,6 +306,7 @@
       "hint": ""
     },
     {
+      "id": "Q15",
       "title": "One true statement about cash-basis accounting is that",
       "options": [{
           "label": "Cash receipt, but not cash disbursement, is an important component of cash-basis accounting",
@@ -314,6 +329,7 @@
       "hint": ""
     },
     {
+      "id": "Q16",
       "title": "A product is often described as having a thin margin or a wide margin. With regard to the factors that help determine the size of the margin of a health plan's product, it can correctly be stated that the",
       "options": [{
           "label": "Greater the risk a health plan assumes in a health plan, the thinner the product margin should be.",
@@ -336,6 +352,7 @@
       "hint": ""
     },
     {
+      "id": "Q17",
       "title": "From the following answer choices, choose the term that best corresponds to this description. Barrington Health Services, Inc. contracts with a state Medicaid agency as a fiscal intermediary. Barrington does not provide medical services, but contracts with medical providers on behalf of the state Medicaid agency.",
       "options": [{
           "label": "Health insuring organization (HIO)",
@@ -358,6 +375,7 @@
       "hint": ""
     },
     {
+      "id": "Q18",
       "title": "Health plans typically divide their costs into medical and administrative expenses. Examples of medical expenses are.",
       "options": [{
           "label": "Equipment costs",
@@ -380,6 +398,7 @@
       "hint": ""
     },
     {
+      "id": "Q19",
       "title": "The insurance professionals who perform RATING are called _________.",
       "options": [{
           "label": "Actuaries",
@@ -402,6 +421,7 @@
       "hint": ""
     },
     {
+      "id": "Q20",
       "title": "What are generic Drugs and what is their impact on the pharmaceutical industry?",
       "options": [{
           "label": "Generic drugs are those that do not require a prescription",
@@ -424,6 +444,7 @@
       "hint": "Test Hint"
     },
     {
+      "id": "Q21",
       "title": "What is OIG?",
       "options": [{
           "label": "Office of the Investigation Guidelines",
@@ -446,6 +467,7 @@
       "hint": "Test Hint"
     },
     {
+      "id": "Q22",
       "title": "How long is the Patent exclusivity, as granted by the US Patent and Trademark office(USPTO)?",
       "options": [{
           "label": "20 years",
@@ -468,6 +490,7 @@
       "hint": "Test Hint"
     },
     {
+      "id": "Q23",
       "title": "At what point in the development process does a pharmaceutical or a biotechnology company typically start manufacturing a new product?",
       "options": [{
           "label": "During Phase I Clinical trials",
@@ -490,6 +513,7 @@
       "hint": "Test Hint"
     },
     {
+      "id": "Q24",
       "title": "Which phase of the clinical trials a drug can be tested on more than 1000 people?",
       "options": [{
           "label": "Phase I",
@@ -512,6 +536,7 @@
       "hint": "Test Hint"
     },
     {
+      "id": "Q25",
       "title": "Immediate care is provided by an on - duty physician. The center is usually owned by private corporations in states where permitted or non - profit facilities; also called emergency care center.",
       "options": [{
           "label": "Hospice Care",
@@ -534,6 +559,7 @@
       "hint": "Test Hint"
     },
     {
+      "id": "Q26",
       "title": "Provides practice management services, including administrative and support services, to individual physician practices",
       "options": [{
           "label": "Subacute Care",
@@ -556,6 +582,7 @@
       "hint": "Test Hint"
     },
     {
+      "id": "Q27",
       "title": "Long term care facilities that specialize in the care of patients diagnosed with dementia. → Dementia care facilities",
       "options": [{
           "label": "True",
@@ -570,6 +597,7 @@
       "hint": "Test Hint"
     },
     {
+      "id": "Q28",
       "title": "Specializes in treating individuals with mental health diagnoses. → Federal medical centers (FMC)",
       "options": [{
           "label": "True",
@@ -584,6 +612,7 @@
       "hint": "Test Hint"
     },
     {
+      "id": "Q29",
       "title": "Organizations that do not have physician partners or employment affiliations with other practice organizations",
       "options": [{
           "label": "Hospice Care",
@@ -606,6 +635,7 @@
       "hint": "Test Hint"
     },
     {
+      "id": "Q30",
       "title": "Same as ambulatory care. → Outpatient care",
       "options": [{
           "label": "True",
@@ -619,6 +649,7 @@
       "answer": "a",
       "hint": "Test Hint"
     },{
+      "id": "Q31",
       "title": "Provides benefits to subscribers who receive health care services from network providers.",
       "options": [{
           "label": "Intensive Case Management",
