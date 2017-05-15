@@ -62,8 +62,7 @@ function moveSprite(e) {
         }
 
         if (e.keyCode === 32) {
-            createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
-            sound.volume = (sound.volume == 0) ? 0.1 : 0;
+            $(document).trigger("play-pause")
         }
 
     }
@@ -91,3 +90,7 @@ $(document).on("play-pause", function () {
     createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
     sound.volume = (sound.volume == 0) ? 0.1 : 0;
 });
+
+$(document).on("update-star", function () {
+    star.ob.gotoAndStop(++star.ob.currentFrame % star.ob.numFrames);
+})

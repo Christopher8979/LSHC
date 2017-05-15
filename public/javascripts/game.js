@@ -5,6 +5,10 @@ var score = {
   value: 0,
   ob: {}
 };
+var star = {
+  value: 0,
+  ob: {}
+};
 
 
 stage = new createjs.Stage('game-holder');
@@ -46,6 +50,9 @@ var IMAGES_HOLDER = [{
 }, {
   src: "ambulance-sprite.png",
   id: "amb"
+}, {
+  src: "star-sprite.png",
+  id: "star"
 }, {
   src: "ditch.png",
   id: "ditch"
@@ -152,10 +159,10 @@ $(document).on('initialize-game', function () {
         createTreeStrip = function () {
             var layers = [];
             for (var treeIndex = 0; treeIndex < 4; treeIndex++) {
-                var tree = new createjs.Sprite(treeSprite, treeIndex);
+                var tree = new createjs.Sprite(treeSprite);
                 var treeBounds = treeSprite.getFrameBounds(treeIndex);
+                tree.gotoAndStop(treeIndex);
                 tree.setTransform(Math.random() * w, h - (roadImg.height + treeBounds.height) + 2);
-                tree.cache(0, 0, treeBounds.width, treeBounds.height);
 
                 layers.push(tree);
             }
@@ -197,8 +204,18 @@ $(document).on('initialize-game', function () {
         score.ob.x = 10;
         score.ob.y = 10;
 
+        // Initialize Stars
+        var spriteSheet = new createjs.SpriteSheet({
+            "images": [loader.getResult("star")],
+            "frames": { "height": 27, "width": 112 }
+        });
+        star.ob = new createjs.Sprite(spriteSheet);
+        star.ob.numFrames = spriteSheet.getNumFrames();
+        star.ob.x = 10;
+        star.ob.y = 50;
+
         // Adding layers based on their sequence
-        stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch, score.ob);
+        stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch, score.ob, star.ob);
 
         treeStrip = createTreeStrip();
         treeStrip.forEach(function (tree) {
@@ -356,8 +373,7 @@ function moveSprite(e) {
         }
 
         if (e.keyCode === 32) {
-            createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
-            sound.volume = (sound.volume == 0) ? 0.1 : 0;
+            $(document).trigger("play-pause")
         }
 
     }
@@ -385,3 +401,7 @@ $(document).on("play-pause", function () {
     createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
     sound.volume = (sound.volume == 0) ? 0.1 : 0;
 });
+
+$(document).on("update-star", function () {
+    star.ob.gotoAndStop(++star.ob.currentFrame % star.ob.numFrames);
+})
