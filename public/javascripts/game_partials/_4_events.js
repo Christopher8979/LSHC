@@ -82,10 +82,6 @@ $(document).on("hit-ditch", function () {
     $(document).trigger("play-pause");
 });
 
-$(document).on("ditch-escape", function () {
-    // if ()
-});
-
 $(document).on("play-pause", function () {
     createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
     sound.volume = (sound.volume == 0) ? 0.1 : 0;
