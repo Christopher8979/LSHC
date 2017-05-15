@@ -80,10 +80,10 @@ $(document).on('initialize-game', function() {
     // Adding clouds in sky
     var cloudImg = loader.getResult("clouds");
     clouds = new createjs.Shape();
-    clouds.graphics.beginBitmapFill(cloudImg).drawRect(0, 0, cloudImg.width * 5, cloudImg.height);
-    clouds.tileW = w - cloudImg.width;
-    clouds.y = 0;
+    clouds.graphics.beginBitmapFill(cloudImg).drawRect(0, 0, cloudImg.width * 5, cloudImg.height)
+    clouds.x = - (cloudImg.width * 4);
     clouds.cache(0, 0, cloudImg.width * 5, cloudImg.height);
+
     //Initializing road
     var roadImg = loader.getResult("road");
     road = new createjs.Shape();
@@ -203,9 +203,11 @@ $(document).on('initialize-game', function() {
       flag = false;
     }
     
-    createjs.Tween.get(clouds).to({
+    createjs.Tween.get(clouds, {
+      loop: true
+    }).to({
       x: w
-    }, speed * 2000);
+    }, speed * 5000);
 
     createjs.Tween.get(backBg, {
       loop: true
@@ -236,7 +238,7 @@ $(document).on('initialize-game', function() {
       building.x = ((building.x + buildingBounds.width) <= 0) ? building.x = w + buildingBounds.width + (Math.random() * w) : building.x - fSpeed;
     });
 
-    ditch.x = (ditch.x < 0) ?  w +(0.5 + Math.random()) * w : ditch.x - fSpeed;
+    ditch.x = ((ditch.x + 200) < 0) ?  w +(0.5 + Math.random()) * w : ditch.x - fSpeed;
 
     // Check if collsion has occured
     var pt = ditch.localToLocal(0, 0, ambulance);
