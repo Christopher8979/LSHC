@@ -17,35 +17,24 @@ $(document).on('initialize-game', function() {
   var IMAGES_HOLDER = [{
       src: "Sky.png",
       id: "sky"
-    },
-    {
+    }, {
       src: "Sun.png",
       id: "sun"
-    },
-    {
+    }, {
       src: "Buildings-Back.png",
       id: "backBg"
-    },
-    {
+    }, {
       src: "Buildings-Front.png",
       id: "frontBg"
-    },
-    {
+    }, {
       src: "Road.png",
       id: "road"
-    },
-    {
+    }, {
       src: "Clouds.png",
       id: "clouds"
     }, {
-      src: "Trees-1.png",
-      id: "tree1"
-    }, {
-      src: "Trees-2.png",
-      id: "tree2"
-    }, {
-      src: "Trees-3.png",
-      id: "tree3"
+      src: "tree-sprite.png",
+      id: "tree"
     }, {
       src: "Building-1.png",
       id: "building1"
@@ -150,23 +139,25 @@ $(document).on('initialize-game', function() {
       return layers;
     };
 
-    // Initialize Trees
-    createTreeStrip = function() {
-      var refObj = ["tree1", "tree2", "tree3"];
+    // Initialize Tree Sprite
+    var treeSprite = new createjs.SpriteSheet({
+        images: [loader.getResult("tree")],
+        frames: {width:100, height:150},
+    });
 
-      var refImg, layer, layers = [];
-      refObj.forEach(function(item) {
-        refImg = loader.getResult(item);
-        layer = new createjs.Shape();
-        layer.graphics.beginBitmapFill(refImg).drawRect(0, 0, refImg.width, refImg.height);
-        layer.setTransform(Math.random() * w, h - (roadImg.height + refImg.height) + 2);
-        layer.setBounds(0, 0, refImg.width, refImg.height);
-        layer.cache(0, 0, refImg.width, refImg.height);
+    createTreeStrip = function () {
+      var layers = [];
+      for (var treeIndex = 0; treeIndex < 4; treeIndex++) {
+        var tree = new createjs.Sprite(treeSprite, treeIndex);
+        var treeBounds = treeSprite.getFrameBounds(treeIndex);
+        tree.setTransform(Math.random() * w, h - (roadImg.height + treeBounds.height) + 2);
+        // tree.setBounds(0, 0, treeBounds.width, treeBounds.height);
+        tree.cache(0, 0, treeBounds.width, treeBounds.height);
 
-        layers.push(layer);
-      });
+        layers.push(tree);
+      }
       return layers;
-    };
+    }
 
 
     // Initialize abmulance sprite
@@ -174,7 +165,6 @@ $(document).on('initialize-game', function() {
 				framerate: 3,
 				"images": [loader.getResult("amb")],
 				"frames": {"regX": 0, "height": 104, "count": 7, "regY": 0, "width": 150},
-				// define two animations, run (loops, 1.5x speed) and jump (returns to run):
 				"animations": {
 					"run": [0, 4, "run", 1.5],
 					"hickup": [5, 6, "run"]
