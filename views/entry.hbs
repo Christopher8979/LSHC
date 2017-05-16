@@ -1,2 +1,33 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class="container">
+  <h1 class="center">{{title}}</h1>
+  <div class="row valign-wrapper">
+    <div class="col s6">
+      <h4>{{description}}</h4>
+    </div>
+    <div class="col s6">
+      <div class="card">
+        <div class="card-content">
+          <form class="col s12" id="credForm">
+            <div class="input-field col s12">
+              <input autocomplete="off" id="name" type="text" class="validate" required>
+              <label for="name">Name</label>
+            </div>
+            <div class="input-field col s12">
+              <input autocomplete="off" id="email" type="email" class="validate" required>
+              <label for="email">Email</label>
+            </div>
+            <div class="input-field col s12">
+              <input autocomplete="off" id="serviceLine" type="text" class="validate" required>
+              <label for="serviceLine">Service Line</label>
+            </div>
+            <button type="button" id="enterGame" class="btn waves-effect waves-light right col s6">Start Game</button>
+            <p class="red-text lighten-2 err-msg left col s6">Please fill all the fields to continue</p>
+          </form>
+          <br>
+          <h6>* all fields are mandatory</h6>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

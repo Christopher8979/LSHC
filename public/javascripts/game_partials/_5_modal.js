@@ -39,7 +39,6 @@ $('#questionClose').on('click', function() {
     }, 600);
   }
   $('#questions-modal').modal('close');
-  $('#questionSubmit').removeAttr('disabled');
   $('#questionClose').attr('disabled', true);
   nextQuestionIndex++;
   hintDislayed = false;
