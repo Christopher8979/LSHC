@@ -41,7 +41,7 @@ var GameService = {
     if (questionObj.answer === answered) {
       callBack(null, true);
     } else {
-      callBack(true, null);
+      callBack(null, false);
     }
   }
 }
