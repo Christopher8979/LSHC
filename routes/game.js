@@ -5,7 +5,7 @@ var GameService = require('../services/gameService.js');
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('entry', {
-    title: 'Initializing game'
+    title: 'Some description about game...'
   });
 });
 
