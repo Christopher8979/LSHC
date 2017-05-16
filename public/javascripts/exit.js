@@ -11,6 +11,8 @@ $(document).on('initialize-exit', function() {
 
     $('.name').text(name);
     $('.min').text(minutes);
-    $('.sec').text(seconds);
+    $('.sec').text((seconds).toFixed(2));
+    localStorage.removeItem('player');
+    localStorage.removeItem('completedIn');
   }
 });

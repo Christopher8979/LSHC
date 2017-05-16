@@ -44,6 +44,7 @@ $('#questionClose').on('click', function() {
         $(document).trigger("play-pause");
         $(document).trigger("show-loader");
         localStorage.setItem('completedIn', createjs.Ticker.getTime(false));
+        location.href = "/game-over";
       }
     }, 600);
     $('.question').eq(nextQuestionIndex).remove();

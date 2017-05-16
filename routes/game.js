@@ -43,5 +43,8 @@ router.get('/game-over', function(req, res) {
   });
 });
 
+router.get('/*', function(req, res) {
+  res.redirect('/');
+});
 
 module.exports = router;
