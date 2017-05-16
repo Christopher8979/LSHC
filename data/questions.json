@@ -20,7 +20,7 @@
         }
       ],
       "answer": "a",
-      "hint": "Hint: This rate may differ if services are received from an approved provider (i.e., a provider with whom the insurer has a contract or an agreement specifying payment levels and other contract requirements) or if received by providers not on the approved list."
+      "hint": "This rate may differ if services are received from an approved provider (i.e., a provider with whom the insurer has a contract or an agreement specifying payment levels and other contract requirements) or if received by providers not on the approved list."
     },
     {
       "id": "Q2",
@@ -43,7 +43,7 @@
         }
       ],
       "answer": "c",
-      "hint": "Hint: Signed into law by President George W. Bush on December 8, 2003"
+      "hint": "Signed into law by President George W. Bush on December 8, 2003"
     },
     {
       "id": "Q3",
@@ -66,7 +66,7 @@
         }
       ],
       "answer": "d",
-      "hint": "Hint: This allows an employee to set aside a portion of earnings to pay for qualified expenses as established in the cafeteria plan, most commonly for medical expenses but often for dependent care or other expenses."
+      "hint": "This allows an employee to set aside a portion of earnings to pay for qualified expenses as established in the cafeteria plan, most commonly for medical expenses but often for dependent care or other expenses."
     },
     {
       "id": "Q4",
@@ -372,7 +372,7 @@
         }
       ],
       "answer": "a",
-      "hint": "Hint: Responsible for payment to the primary care provider chosen by the client and to any specialists who provide services"
+      "hint": "Responsible for payment to the primary care provider chosen by the client and to any specialists who provide services"
     },
     {
       "id": "Q18",
@@ -418,7 +418,7 @@
         }
       ],
       "answer": "a",
-      "hint": "Hint:  Is a business professional who deals with the measurement and management of risk and uncertainty"
+      "hint": "Is a business professional who deals with the measurement and management of risk and uncertainty"
     }, {
       "id": "Q20",
       "title": "What is OIG?",
@@ -440,7 +440,7 @@
         }
       ],
       "answer": "b",
-      "hint": "Hint: Office in the Federal Government, with more than 1700 employees dedicated to combating fraud."
+      "hint": "Office in the Federal Government, with more than 1700 employees dedicated to combating fraud."
     },
     {
       "id": "Q21",
@@ -532,7 +532,7 @@
         }
       ],
       "answer": "d",
-      "hint": "Hint:  category of walk-in clinic focused on the delivery of ambulatory care in a dedicated medical facility outside of a traditional emergency room"
+      "hint": "Category of walk-in clinic focused on the delivery of ambulatory care in a dedicated medical facility outside of a traditional emergency room"
     },
     {
       "id": "Q25",
@@ -555,7 +555,7 @@
         }
       ],
       "answer": "c",
-      "hint": "Hint:  owned by a group of physicians, a physician hospital joint venture, or investors in conjunction with physicians"
+      "hint": "Owned by a group of physicians, a physician hospital joint venture, or investors in conjunction with physicians"
     },
     {
       "id": "Q26",
@@ -608,7 +608,7 @@
         }
       ],
       "answer": "b",
-      "hint": "Hint:  Usually characterized by a small staff and typically have a limited patient base"
+      "hint": "Usually characterized by a small staff and typically have a limited patient base"
     },
     {
       "id": "Q29",
@@ -645,7 +645,7 @@
         }
       ],
       "answer": "b",
-      "hint": "Hint:  Usually characterized by a small staff and typically have a limited patient base"
+      "hint": "Usually characterized by a small staff and typically have a limited patient base"
     }
   ]
 }

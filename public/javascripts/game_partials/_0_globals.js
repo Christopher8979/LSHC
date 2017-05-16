@@ -1,5 +1,6 @@
 var stage, w, h, loader;
-var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance, speed = 100, hitFlags = {},
+var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance, speed = 100,
+  hitFlags = {},
   createTreeStrip, addTrees, treeStrip, ditch, buildings, tokens, sound, flag = true;
 var score = {
   value: 0,
@@ -62,7 +63,6 @@ var IMAGES_HOLDER = [{
 }, {
   src: "Token-2.png",
   id: "token2"
-}
-];
+}];
 
 loader = new createjs.LoadQueue(false);

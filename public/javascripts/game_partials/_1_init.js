@@ -1,5 +1,9 @@
 $(document).on('initialize-game', function () {
 
+    if (localStorage.getItem('player') === null) {
+        location.href = '/';
+    }
+
     loader.addEventListener("complete", handleComplete);
     loader.loadManifest(IMAGES_HOLDER, true, "../images/");
 
@@ -77,9 +81,9 @@ $(document).on('initialize-game', function () {
             var spriteBounds = spriteSheet.getFrameBounds(0);
             sprite.setTransform(Math.random() * w, h - (roadImg.height + spriteBounds.height) + 2);
             sprite.numFrames = spriteSheet.getNumFrames();
-            
-            // Add to buildings  
-            buildings.push(sprite);     
+
+            // Add to buildings
+            buildings.push(sprite);
         }, this);
 
         // Initialize Tree Sprite

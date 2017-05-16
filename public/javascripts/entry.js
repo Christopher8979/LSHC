@@ -13,7 +13,7 @@ $(document).on('initialize-entry', function() {
 
     if (fieldsFilled === noOfFiels) {
       $(form).removeClass('fill-all');
-      localStorage.setItem('user', $('#name').val());
+      localStorage.setItem('player', $('#name').val());
       location.href = "/play-game";
     } else {
       $(form).addClass('fill-all');
