@@ -1,9 +1,16 @@
 var hintDislayed = false;
 var nextQuestionIndex = 0;
+var currectAnswers = 0;
+var maxQuestions = 10;
 
 $('.modal').modal({
   dismissible: false
 });
+
+var resetQuestion = function(elem) {
+  $(elem).removeClass('invalid');
+  $(elem).find('input').prop('checked', false).removeAttr('disabled');
+}
 
 $(document).on('showhint', function() {
   // Show hint only if its not displayed already
@@ -32,14 +39,25 @@ $('#questionClose').on('click', function() {
 
   if ($('.question').eq(nextQuestionIndex).hasClass('valid')) {
     setTimeout(function() {
-      // trigger method to increment star
       $(document).trigger("update-star");
-
+      if (currectAnswers === maxQuestions) {
+        $(document).trigger("play-pause");
+        $(document).trigger("show-loader");
+        localStorage.setItem('completedIn', createjs.Ticker.getTime(false));
+      }
     }, 600);
+    $('.question').eq(nextQuestionIndex).remove();
+  } else {
+    resetQuestion($('.question').eq(nextQuestionIndex));
+    // If the current question is last question then set index to 0 and start the questions again
+    if ($('.question').length - 1 === nextQuestionIndex) {
+      nextQuestionIndex = 0;
+    } else {
+      nextQuestionIndex++;
+    }
   }
   $('#questions-modal').modal('close');
   $('#questionClose').attr('disabled', true);
-  nextQuestionIndex++;
   hintDislayed = false;
 
   // trigger event to play on canvas
@@ -70,6 +88,7 @@ $('#questionSubmit').on('click', function() {
     success: function(resp) {
       if (resp.correctAns) {
         $(question).addClass('valid');
+        currectAnswers++;
       } else {
         $(question).addClass('invalid');
       }
