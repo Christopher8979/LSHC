@@ -68,12 +68,15 @@ $('#questionSubmit').on('click', function() {
       answeredAs: value
     },
     success: function(resp) {
-      $(question).addClass('valid');
+      if (resp.correctAns) {
+        $(question).addClass('valid');
+      } else {
+        $(question).addClass('invalid');
+      }
       $('#questionClose').removeAttr('disabled');
     },
     error: function(err) {
-      $(question).addClass('invalid');
-      $('#questionClose').removeAttr('disabled');
+      console.info(err);
     }
   });
 });

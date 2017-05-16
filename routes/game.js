@@ -23,15 +23,16 @@ router.post('/check-answer/:id', function(req, res) {
   var questionNo = req.params.id;
   var answeredAs = req.body.answeredAs;
 
-  GameService.checkAnswer(questionNo, answeredAs, function (err, response) {
+  GameService.checkAnswer(questionNo, answeredAs, function(err, response) {
     if (err) {
       return res.status(400).jsonp({
-        'answeredTrue': false
+        'status': 'something went wrong',
+        'err': err
       });
     }
 
     res.status(200).jsonp({
-      'answeredTrue': true
+      'correctAns': response
     });
   });
 });
