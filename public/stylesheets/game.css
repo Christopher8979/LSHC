@@ -1,3 +1,15 @@
+ body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+    align-items: center;
+    display: flex;
+}
+
 #game-holder {
   margin: 0 auto;
   width: 70%;
@@ -5,7 +17,6 @@
   max-width: 900px;
   max-height: 580px;
   background: #fff;
-  border: 5px solid #c1c1c1;
 }
 
 #mute-btn {
