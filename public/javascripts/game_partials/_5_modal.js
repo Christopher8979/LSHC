@@ -34,7 +34,6 @@ $('#questionClose').on('click', function() {
     setTimeout(function() {
       // trigger method to increment star
       $(document).trigger("update-star");
-      $(document).trigger("update-star");
 
     }, 600);
   }
