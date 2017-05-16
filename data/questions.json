@@ -419,32 +419,8 @@
       ],
       "answer": "a",
       "hint": "Hint:  Is a business professional who deals with the measurement and management of risk and uncertainty"
-    },
-    {
+    }{
       "id": "Q20",
-      "title": "What are generic Drugs and what is their impact on the pharmaceutical industry?",
-      "options": [{
-          "label": "Generic drugs are those that do not require a prescription",
-          "value": "a"
-        },
-        {
-          "label": "The introduction of a generic steeply reduces the prices of the equivalent branded drug",
-          "value": "b"
-        },
-        {
-          "label": "A generic drug is one which is bioequivalent to a branded drug w.r.t. pharmacokinetic and pharmacodynamics properties",
-          "value": "c"
-        },
-        {
-          "label": "A generic is different from original,patent protected drug, but treats the same disease/condition.",
-          "value": "d"
-        }
-      ],
-      "answer": "b",
-      "hint": ""
-    },
-    {
-      "id": "Q21",
       "title": "What is OIG?",
       "options": [{
           "label": "Office of the Investigation Guidelines",
@@ -467,7 +443,7 @@
       "hint": "Hint: Office in the Federal Government, with more than 1700 employees dedicated to combating fraud."
     },
     {
-      "id": "Q22",
+      "id": "Q21",
       "title": "How long is the Patent exclusivity, as granted by the US Patent and Trademark office(USPTO)?",
       "options": [{
           "label": "20 years",
@@ -490,7 +466,7 @@
       "hint": ""
     },
     {
-      "id": "Q23",
+      "id": "Q22",
       "title": "At what point in the development process does a pharmaceutical or a biotechnology company typically start manufacturing a new product?",
       "options": [{
           "label": "During Phase I Clinical trials",
@@ -513,7 +489,7 @@
       "hint": ""
     },
     {
-      "id": "Q24",
+      "id": "Q23",
       "title": "Which phase of the clinical trials a drug can be tested on more than 1000 people?",
       "options": [{
           "label": "Phase I",
@@ -536,7 +512,7 @@
       "hint": ""
     },
     {
-      "id": "Q25",
+      "id": "Q24",
       "title": "Immediate care is provided by an on - duty physician. The center is usually owned by private corporations in states where permitted or non - profit facilities; also called emergency care center.",
       "options": [{
           "label": "Hospice Care",
@@ -559,7 +535,7 @@
       "hint": "Hint:  category of walk-in clinic focused on the delivery of ambulatory care in a dedicated medical facility outside of a traditional emergency room"
     },
     {
-      "id": "Q26",
+      "id": "Q25",
       "title": "Provides practice management services, including administrative and support services, to individual physician practices",
       "options": [{
           "label": "Subacute Care",
@@ -582,7 +558,7 @@
       "hint": "Hint:  owned by a group of physicians, a physician hospital joint venture, or investors in conjunction with physicians"
     },
     {
-      "id": "Q27",
+      "id": "Q26",
       "title": "Long term care facilities that specialize in the care of patients diagnosed with dementia. → Dementia care facilities",
       "options": [{
           "label": "True",
@@ -597,7 +573,7 @@
       "hint": ""
     },
     {
-      "id": "Q28",
+      "id": "Q27",
       "title": "Specializes in treating individuals with mental health diagnoses. → Federal medical centers (FMC)",
       "options": [{
           "label": "True",
@@ -612,7 +588,7 @@
       "hint": ""
     },
     {
-      "id": "Q29",
+      "id": "Q28",
       "title": "Organizations that do not have physician partners or employment affiliations with other practice organizations",
       "options": [{
           "label": "Hospice Care",
@@ -635,7 +611,7 @@
       "hint": "Hint:  Usually characterized by a small staff and typically have a limited patient base"
     },
     {
-      "id": "Q30",
+      "id": "Q29",
       "title": "Same as ambulatory care. → Outpatient care",
       "options": [{
           "label": "True",
@@ -649,7 +625,7 @@
       "answer": "a",
       "hint": ""
     },{
-      "id": "Q31",
+      "id": "Q30",
       "title": "Provides benefits to subscribers who receive health care services from network providers.",
       "options": [{
           "label": "Intensive Case Management",
