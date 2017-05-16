@@ -7,3 +7,9 @@ body {
   background: #e4e4e4;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
