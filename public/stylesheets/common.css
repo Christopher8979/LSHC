@@ -11,14 +11,14 @@ body {
 }
 
 body:after {
-    content: "";
-    display: block;
-    clear: both;
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    z-index: -1;
-    background-color: rgba(4, 7, 0, 0.82);
+  content: "";
+  display: block;
+  clear: both;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: -1;
+  background-color: rgba(4, 7, 0, 0.82);
 }
 
 .clearfix:after {
@@ -36,21 +36,61 @@ body:after {
 }
 
 .title {
-    text-transform: uppercase;
-    font-size: 38px;
-    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.26);
-    font-weight: bold;
-    color: #fcfcfc;
-    padding: 16px;
-    background-color: #22b728;
-    border-radius: 2px;
-    margin-top: 60px;
+  text-transform: uppercase;
+  font-size: 38px;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.26);
+  font-weight: bold;
+  color: #fcfcfc;
+  padding: 16px;
+  background-color: #22b728;
+  border-radius: 2px;
+  margin-top: 60px;
 }
 
 .extra-text {
-    font-size: 25px;
-    text-align: center;
-    padding: 30px;
-    color: white;
-    background-color: rgba(255, 255, 255, 0.08);
+  font-size: 25px;
+  text-align: center;
+  padding: 30px;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.go-wrapper {
+  margin-top: 40vh;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 50px 100px;
+  position: relative;
+  width: 60%;
+}
+
+.holder h5 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.holder span {
+  border-bottom: 2px dotted #fff;
+  padding: 0 5px;
+}
+
+.holder span.name {
+  min-width: 100px;
+  display: inline-block;
+  padding: 0 25px;
+}
+
+.holder p {
+  font-size: 1.3rem;
+}
+
+.holder .print-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+@media print {
+  .holder .print-icon {
+    display: none;
+  }
 }
