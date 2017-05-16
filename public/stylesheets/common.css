@@ -6,10 +6,19 @@
 body {
   background: #e4e4e4;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url('../images/bg.png');
 }
 
 .clearfix:after {
-    content: "";
-    display: table;
-    clear: both;
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#credForm .err-msg {
+  display: none;
+}
+
+#credForm.fill-all .err-msg {
+  display: block;
 }
