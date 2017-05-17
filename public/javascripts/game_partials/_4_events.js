@@ -73,9 +73,9 @@ $(window).on('keydown', moveSprite);
 
 // Sound
 // Mute Button
-$("#mute-btn").on("click", function () {
-    sound.volume = (sound.volume == 0) ? 0.1 : 0;
-})
+// $("#mute-btn").on("click", function () {
+//     sound.volume = (sound.volume == 0) ? 0.1 : 0;
+// })
 
 // Game events
 $(document).on("hit-ditch", function () {
@@ -85,7 +85,7 @@ $(document).on("hit-ditch", function () {
 
 $(document).on("play-pause", function () {
     createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
-    sound.volume = (sound.volume == 0) ? 0.1 : 0;
+    // sound.volume = (sound.volume == 0) ? 0.1 : 0;
 });
 
 $(document).on("update-star", function () {
