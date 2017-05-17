@@ -36,9 +36,7 @@ hitDitch = function (hit) {
         hitFlags.ditch = true;
         ambulance.gotoAndPlay("hickup");
         $(document).trigger("hit-ditch");
-    } else if (!hit && hitFlags.ditch) {
-        hitFlags.ditch = false;
-    }
+    } 
 }
 
 
