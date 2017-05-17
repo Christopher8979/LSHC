@@ -269,7 +269,13 @@ function initTweens(params) {
         x: -w
     }, speed * 80);
 }
+var paused = false;
+
 function tickHandler(event) {
+    if (!paused) {
+      $(document).trigger("play-pause");
+      paused = true;
+    }
     var deltaS = event.delta;
     var maxSpeed = 1000;
     var fSpeed = deltaS / 5; // foreground speed
@@ -315,6 +321,7 @@ function tickHandler(event) {
     // Update stage
     stage.update(event);
 }
+
 // Drop Tokens
 dropTokens = function () {
     var tokenIndex = Math.floor(Math.random() * tokens.length - 1) + 1;
