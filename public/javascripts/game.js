@@ -10,13 +10,7 @@ var star = {
   value: 0,
   ob: {}
 };
-
-
-stage = new createjs.Stage('game-holder');
-
-// get canvas width and height for later calculations:
-w = stage.canvas.width;
-h = stage.canvas.height;
+var paused = false;
 
 var IMAGES_HOLDER = [{
   src: "Sky.png",
@@ -40,8 +34,8 @@ var IMAGES_HOLDER = [{
   src: "tree-sprite.png",
   id: "tree"
 }, {
-  src: "hospital-sprite.png",
-  id: "hospital"
+  src: "biggerBuilding-sprite.png",
+  id: "biggerBuildings"
 }, {
   src: "clinic-sprite.png",
   id: "clinic"
@@ -65,23 +59,29 @@ var IMAGES_HOLDER = [{
   id: "token2"
 }];
 
-loader = new createjs.LoadQueue(false);
-
 $(document).on('initialize-game', function () {
 
     if (localStorage.getItem('player') === null) {
         location.href = '/';
     }
 
+    stage = new createjs.Stage('game-holder');
+
+    // get canvas width and height for later calculations:
+    w = stage.canvas.width;
+    h = stage.canvas.height;
+
+    loader = new createjs.LoadQueue(false);
+
     loader.addEventListener("complete", handleComplete);
     loader.loadManifest(IMAGES_HOLDER, true, "../images/");
 
     // Sounds
-    // createjs.Sound.alternateExtensions = ["wav"];
-    // createjs.Sound.on("fileload", function () {
-    //     sound = createjs.Sound.play("music", { interrupt: createjs.Sound.INTERRUPT_NONE, loop: -1, volume: 0.4 });
-    // }, this);
-    // createjs.Sound.registerSound("../audio/bg-music.wav", "music");
+    createjs.Sound.alternateExtensions = ["wav"];
+    createjs.Sound.on("fileload", function () {
+        sound = createjs.Sound.play("music", { interrupt: createjs.Sound.INTERRUPT_NONE, loop: -1, volume: 0.4 });
+    }, this);
+    createjs.Sound.registerSound("../audio/bg-music.wav", "music");
 
     // Manifest Loading complete handler
     function handleComplete(e) {
@@ -135,11 +135,12 @@ $(document).on('initialize-game', function () {
 
         // Initialize building sprite
         var refObj = [
-            { id: "hospital", width: 350, height: 170 },
+            { id: "biggerBuildings", width: 350, height: 170 },
             { id: "clinic", width: 127, height: 96 },
-            { id: "store", width: 148, height: 73 },
+            { id: "store", width: 148, height: 73 }
         ];
         buildings = [];
+
         refObj.forEach(function(building) {
             var spriteSheet = new createjs.SpriteSheet({
                 images: [loader.getResult(building.id)],
@@ -269,8 +270,6 @@ function initTweens(params) {
         x: -w
     }, speed * 80);
 }
-var paused = false;
-
 function tickHandler(event) {
     if (!paused) {
       $(document).trigger("play-pause");
@@ -397,9 +396,9 @@ $(window).on('keydown', moveSprite);
 
 // Sound
 // Mute Button
-// $("#mute-btn").on("click", function () {
-//     sound.volume = (sound.volume == 0) ? 0.1 : 0;
-// })
+$("#mute-btn").on("click", function () {
+    sound.volume = (sound.volume == 0) ? 0.1 : 0;
+})
 
 // Game events
 $(document).on("hit-ditch", function () {
@@ -409,7 +408,7 @@ $(document).on("hit-ditch", function () {
 
 $(document).on("play-pause", function () {
     createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
-    // sound.volume = (sound.volume == 0) ? 0.1 : 0;
+    sound.volume = (sound.volume == 0) ? 0.1 : 0;
 });
 
 $(document).on("update-star", function () {

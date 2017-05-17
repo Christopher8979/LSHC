@@ -10,13 +10,7 @@ var star = {
   value: 0,
   ob: {}
 };
-
-
-stage = new createjs.Stage('game-holder');
-
-// get canvas width and height for later calculations:
-w = stage.canvas.width;
-h = stage.canvas.height;
+var paused = false;
 
 var IMAGES_HOLDER = [{
   src: "Sky.png",
@@ -40,8 +34,8 @@ var IMAGES_HOLDER = [{
   src: "tree-sprite.png",
   id: "tree"
 }, {
-  src: "hospital-sprite.png",
-  id: "hospital"
+  src: "biggerBuilding-sprite.png",
+  id: "biggerBuildings"
 }, {
   src: "clinic-sprite.png",
   id: "clinic"
@@ -64,5 +58,3 @@ var IMAGES_HOLDER = [{
   src: "Token-2.png",
   id: "token2"
 }];
-
-loader = new createjs.LoadQueue(false);

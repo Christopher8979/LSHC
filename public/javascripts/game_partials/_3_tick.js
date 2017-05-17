@@ -1,5 +1,3 @@
-var paused = false;
-
 function tickHandler(event) {
     if (!paused) {
       $(document).trigger("play-pause");
