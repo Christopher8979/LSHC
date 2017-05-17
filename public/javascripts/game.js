@@ -438,7 +438,10 @@ $(document).on('showhint', function() {
 $(document).on('showquestion', function() {
   $('.question').addClass('hide');
   $('.question').eq(nextQuestionIndex).removeClass('hide');
-  $('#questions-modal').modal('open');
+  $('#questions-modal').modal('open').css({
+    'display',
+    'block'
+  });
 });
 
 
@@ -462,7 +465,7 @@ $('#questionClose').on('click', function() {
   } else {
     resetQuestion($('.question').eq(nextQuestionIndex));
     // If the current question is last question then set index to 0 and start the questions again
-    if ($('.question').length - 1 === nextQuestionIndex) {
+    if ($('.question').length === nextQuestionIndex) {
       nextQuestionIndex = 0;
     } else {
       nextQuestionIndex++;
