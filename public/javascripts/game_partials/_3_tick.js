@@ -26,7 +26,12 @@ function tickHandler(event) {
     });
 
     // Animate Ditch
-    ditch.x = ((ditch.x + 200) < 0) ? w + (0.5 + Math.random()) * w : ditch.x - fSpeed;
+    if((ditch.x + 200) < 0) {
+        ditch.x = w + (0.5 + Math.random()) * w;
+        hitFlags.ditch = false;
+    } else {
+        ditch.x =  ditch.x - fSpeed;
+    }
 
     // Check if collsion has occured
     var pt = ditch.localToLocal(0, 0, ambulance);
