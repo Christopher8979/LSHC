@@ -63,7 +63,9 @@ function moveSprite(e) {
         }
 
         if (e.keyCode === 32) {
-            $(document).trigger("play-pause")
+            if(!$('#questions-modal').hasClass('open')) {
+              $(document).trigger("play-pause")
+            }
         }
 
     }
