@@ -444,7 +444,8 @@ $(document).on('showhint', function() {
 $(document).on('showquestion', function() {
   $('.question').addClass('hide');
   $('.question').eq(nextQuestionIndex).removeClass('hide');
-  $('#questions-modal').modal('open').css({
+  $('#questions-modal').modal('open');
+  $('#questions-modal').css({
     'display': 'block'
   });
 });
