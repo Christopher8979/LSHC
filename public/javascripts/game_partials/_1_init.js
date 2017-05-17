@@ -18,12 +18,16 @@ $(document).on('initialize-game', function () {
     // Sounds
     createjs.Sound.alternateExtensions = ["wav"];
     createjs.Sound.on("fileload", function () {
-        sound = createjs.Sound.play("music", { interrupt: createjs.Sound.INTERRUPT_NONE, loop: -1, volume: 0.4 });
+        sound = createjs.Sound.play("music", { interrupt: createjs.Sound.INTERRUPT_NONE, loop: -1, volume: 0});
     }, this);
     createjs.Sound.registerSound("../audio/bg-music.wav", "music");
 
     // Manifest Loading complete handler
     function handleComplete(e) {
+
+        // Removing loading symbol
+        $('.preloader').removeClass('loading');
+
         // Adding sky as background
         sky = new createjs.Shape();
         sky.graphics.beginBitmapFill(loader.getResult("sky")).drawRect(0, 0, w, h);
