@@ -52,9 +52,6 @@ var IMAGES_HOLDER = [{
   src: "ditch.png",
   id: "ditch"
 }, {
-  src: "Token-1.png",
-  id: "token1"
-}, {
-  src: "Token-2.png",
-  id: "token2"
+  src: "positive-sprite.png",
+  id: "ptoken"
 }];

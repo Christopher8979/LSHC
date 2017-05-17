@@ -52,11 +52,8 @@ var IMAGES_HOLDER = [{
   src: "ditch.png",
   id: "ditch"
 }, {
-  src: "Token-1.png",
-  id: "token1"
-}, {
-  src: "Token-2.png",
-  id: "token2"
+  src: "positive-sprite.png",
+  id: "ptoken"
 }];
 
 $(document).on('initialize-game', function () {
@@ -197,16 +194,28 @@ $(document).on('initialize-game', function () {
         ambulance.setBounds(0, 0, 150, 104);
 
         // Initialize tokens
+        var ptokenSpriteSheet = new createjs.SpriteSheet({
+            images: [loader.getResult("ptoken")],
+            frames: { width: 47, height: 47 },
+        });
         createTokens = function () {
-            var tokenCount = 1;
             tokens = [];
-            while (loader.getResult("token" + tokenCount)) {
-                token = loader.getResult("token" + tokenCount++);
-                layer = new createjs.Shape();
-                layer.graphics.beginBitmapFill(token).drawRect(0, 0, token.width, token.height);
-                layer.notCollectd = true;
-                tokens.push(layer);
+            for (var index = 1; index <= 4; index++) {
+                var pSprite = new createjs.Sprite(ptokenSpriteSheet);
+                // var pBounds = pSprite.getFrameBounds(index);
+                pSprite.gotoAndStop(index);
+                tokens.push(pSprite);
             }
+
+            // var tokenCount = 1;
+            // tokens = [];
+            // while (loader.getResult("token" + tokenCount)) {
+            //     token = loader.getResult("token" + tokenCount++);
+            //     layer = new createjs.Shape();
+            //     layer.graphics.beginBitmapFill(token).drawRect(0, 0, token.width, token.height);
+            //     layer.notCollectd = true;
+            //     tokens.push(layer);
+            // }
         }
 
         // Initialize Score
@@ -277,7 +286,7 @@ function initTweens(params) {
 function tickHandler(event) {
     if (!paused) {
       // setting initial vloume
-      sound.volume = (sound.volume == 0) ? 0.4 : 0;
+      sound.volume = (sound.volume == 0) ? 0.1 : 0;
       $(document).trigger("play-pause");
       paused = true;
     }

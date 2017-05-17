@@ -136,16 +136,28 @@ $(document).on('initialize-game', function () {
         ambulance.setBounds(0, 0, 150, 104);
 
         // Initialize tokens
+        var ptokenSpriteSheet = new createjs.SpriteSheet({
+            images: [loader.getResult("ptoken")],
+            frames: { width: 47, height: 47 },
+        });
         createTokens = function () {
-            var tokenCount = 1;
             tokens = [];
-            while (loader.getResult("token" + tokenCount)) {
-                token = loader.getResult("token" + tokenCount++);
-                layer = new createjs.Shape();
-                layer.graphics.beginBitmapFill(token).drawRect(0, 0, token.width, token.height);
-                layer.notCollectd = true;
-                tokens.push(layer);
+            for (var index = 1; index <= 4; index++) {
+                var pSprite = new createjs.Sprite(ptokenSpriteSheet);
+                // var pBounds = pSprite.getFrameBounds(index);
+                pSprite.gotoAndStop(index);
+                tokens.push(pSprite);
             }
+
+            // var tokenCount = 1;
+            // tokens = [];
+            // while (loader.getResult("token" + tokenCount)) {
+            //     token = loader.getResult("token" + tokenCount++);
+            //     layer = new createjs.Shape();
+            //     layer.graphics.beginBitmapFill(token).drawRect(0, 0, token.width, token.height);
+            //     layer.notCollectd = true;
+            //     tokens.push(layer);
+            // }
         }
 
         // Initialize Score
