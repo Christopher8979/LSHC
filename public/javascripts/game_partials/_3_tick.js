@@ -1,4 +1,10 @@
+var paused = false;
+
 function tickHandler(event) {
+    if (!paused) {
+      $(document).trigger("play-pause");
+      paused = true;
+    }
     var deltaS = event.delta;
     var maxSpeed = 1000;
     var fSpeed = deltaS / 5; // foreground speed

@@ -77,11 +77,11 @@ $(document).on('initialize-game', function () {
     loader.loadManifest(IMAGES_HOLDER, true, "../images/");
 
     // Sounds
-    createjs.Sound.alternateExtensions = ["wav"];
-    createjs.Sound.on("fileload", function () {
-        sound = createjs.Sound.play("music", { interrupt: createjs.Sound.INTERRUPT_NONE, loop: -1, volume: 0.4 });
-    }, this);
-    createjs.Sound.registerSound("../audio/bg-music.wav", "music");
+    // createjs.Sound.alternateExtensions = ["wav"];
+    // createjs.Sound.on("fileload", function () {
+    //     sound = createjs.Sound.play("music", { interrupt: createjs.Sound.INTERRUPT_NONE, loop: -1, volume: 0.4 });
+    // }, this);
+    // createjs.Sound.registerSound("../audio/bg-music.wav", "music");
 
     // Manifest Loading complete handler
     function handleComplete(e) {
@@ -269,7 +269,13 @@ function initTweens(params) {
         x: -w
     }, speed * 80);
 }
+var paused = false;
+
 function tickHandler(event) {
+    if (!paused) {
+      $(document).trigger("play-pause");
+      paused = true;
+    }
     var deltaS = event.delta;
     var maxSpeed = 1000;
     var fSpeed = deltaS / 5; // foreground speed
@@ -315,6 +321,7 @@ function tickHandler(event) {
     // Update stage
     stage.update(event);
 }
+
 // Drop Tokens
 dropTokens = function () {
     var tokenIndex = Math.floor(Math.random() * tokens.length - 1) + 1;
@@ -390,9 +397,9 @@ $(window).on('keydown', moveSprite);
 
 // Sound
 // Mute Button
-$("#mute-btn").on("click", function () {
-    sound.volume = (sound.volume == 0) ? 0.1 : 0;
-})
+// $("#mute-btn").on("click", function () {
+//     sound.volume = (sound.volume == 0) ? 0.1 : 0;
+// })
 
 // Game events
 $(document).on("hit-ditch", function () {
@@ -402,7 +409,7 @@ $(document).on("hit-ditch", function () {
 
 $(document).on("play-pause", function () {
     createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
-    sound.volume = (sound.volume == 0) ? 0.1 : 0;
+    // sound.volume = (sound.volume == 0) ? 0.1 : 0;
 });
 
 $(document).on("update-star", function () {
@@ -438,7 +445,9 @@ $(document).on('showhint', function() {
 $(document).on('showquestion', function() {
   $('.question').addClass('hide');
   $('.question').eq(nextQuestionIndex).removeClass('hide');
-  $('#questions-modal').modal('open');
+  $('#questions-modal').modal('open').css({
+    'display': 'block'
+  });
 });
 
 
@@ -462,7 +471,7 @@ $('#questionClose').on('click', function() {
   } else {
     resetQuestion($('.question').eq(nextQuestionIndex));
     // If the current question is last question then set index to 0 and start the questions again
-    if ($('.question').length - 1 === nextQuestionIndex) {
+    if ($('.question').length === nextQuestionIndex) {
       nextQuestionIndex = 0;
     } else {
       nextQuestionIndex++;
