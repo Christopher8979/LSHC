@@ -276,6 +276,8 @@ function initTweens(params) {
 }
 function tickHandler(event) {
     if (!paused) {
+      // setting initial vloume
+      sound.volume = (sound.volume == 0) ? 0.4 : 0;
       $(document).trigger("play-pause");
       paused = true;
     }
