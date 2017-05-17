@@ -24,7 +24,6 @@ $(document).on('initialize-game', function () {
 
     // Manifest Loading complete handler
     function handleComplete(e) {
-        console.log(e);
 
         // Removing loading symbol
         $('.preloader').removeClass('loading');
@@ -79,7 +78,7 @@ $(document).on('initialize-game', function () {
 
         // Initialize building sprite
         var refObj = [
-            { id: "hospital", width: 300, height: 146 },
+            // { id: "hospital", width: 300, height: 146 },
             { id: "clinic", width: 127, height: 96 },
             { id: "store", width: 148, height: 73 }
         ];
