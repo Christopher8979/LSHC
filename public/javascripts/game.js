@@ -82,6 +82,7 @@ $(document).on('initialize-game', function () {
 
     // Manifest Loading complete handler
     function handleComplete(e) {
+        console.log(e);
 
         // Removing loading symbol
         $('.preloader').removeClass('loading');
