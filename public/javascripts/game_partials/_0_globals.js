@@ -34,8 +34,8 @@ var IMAGES_HOLDER = [{
   src: "tree-sprite.png",
   id: "tree"
 }, {
-  src: "biggerBuilding-sprite.png",
-  id: "biggerBuildings"
+  src: "hospital-sprite.png",
+  id: "hospital"
 }, {
   src: "clinic-sprite.png",
   id: "clinic"

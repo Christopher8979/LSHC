@@ -78,7 +78,7 @@ $(document).on('initialize-game', function () {
 
         // Initialize building sprite
         var refObj = [
-            { id: "biggerBuildings", width: 350, height: 170 },
+            { id: "hospital", width: 300, height: 146 },
             { id: "clinic", width: 127, height: 96 },
             { id: "store", width: 148, height: 73 }
         ];
@@ -148,16 +148,6 @@ $(document).on('initialize-game', function () {
                 pSprite.gotoAndStop(index);
                 tokens.push(pSprite);
             }
-
-            // var tokenCount = 1;
-            // tokens = [];
-            // while (loader.getResult("token" + tokenCount)) {
-            //     token = loader.getResult("token" + tokenCount++);
-            //     layer = new createjs.Shape();
-            //     layer.graphics.beginBitmapFill(token).drawRect(0, 0, token.width, token.height);
-            //     layer.notCollectd = true;
-            //     tokens.push(layer);
-            // }
         }
 
         // Initialize Score
