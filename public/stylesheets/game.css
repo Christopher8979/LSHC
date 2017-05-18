@@ -9,6 +9,7 @@
    flex: 1 0 auto;
    align-items: center;
    display: flex;
+   /*position: relative;*/
  }
 
  .loading {
@@ -97,3 +98,22 @@
  .modal .modal-footer .btn {
    margin-left: 20px;
  }
+
+.preloader {
+  position: relative;
+}
+.preloader #start-btn {
+    content: "PLAY";
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.37);
+    border-radius: 10px;
+    font-size: 40px;
+    font-weight: bold;
+    padding: 20px 40px;
+    cursor: pointer;
+}

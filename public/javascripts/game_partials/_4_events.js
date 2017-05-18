@@ -80,6 +80,12 @@ $("#mute-btn").on("click", function () {
     sound.volume = (sound.volume == 0) ? 0.1 : 0;
 })
 
+// Play Button
+$("#start-btn").on("click", function () {
+    console.log("here");
+    $(document).trigger("play-pause");
+})
+
 // Game events
 $(document).on("hit-ditch", function () {
     $(document).trigger("play-pause");
@@ -88,6 +94,7 @@ $(document).on("hit-ditch", function () {
 
 $(document).on("play-pause", function () {
     createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
+    $("#start-btn").toggle();
     sound.volume = (sound.volume == 0) ? 0.1 : 0;
 });
 
