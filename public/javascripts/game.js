@@ -1,7 +1,7 @@
 var stage, w, h, loader;
 var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance, speed = 100,
   hitFlags = {},
-  createTreeStrip, addTrees, treeStrip, ditch, buildings, tokens, sound, flag = true;
+  createTreeStrip, addTrees, treeStrip, ditch, buildings, ptokens, ntokens, sound, flag = true;
 var score = {
   value: 0,
   ob: {}
@@ -54,6 +54,9 @@ var IMAGES_HOLDER = [{
 }, {
   src: "positive-sprite.png",
   id: "ptoken"
+}, {
+  src: "negative-sprites.png",
+  id: "ntoken"
 }];
 
 $(document).on('initialize-game', function () {
@@ -136,7 +139,7 @@ $(document).on('initialize-game', function () {
 
         // Initialize building sprite
         var refObj = [
-            // { id: "hospital", width: 300, height: 146 },
+            { id: "hospital", width: 300, height: 146 },
             { id: "clinic", width: 127, height: 96 },
             { id: "store", width: 148, height: 73 }
         ];
@@ -198,13 +201,24 @@ $(document).on('initialize-game', function () {
             images: [loader.getResult("ptoken")],
             frames: { width: 47, height: 47 },
         });
+        var ntokenSpriteSheet = new createjs.SpriteSheet({
+            images: [loader.getResult("ntoken")],
+            frames: { width: 47, height: 47 },
+        });
         createTokens = function () {
-            tokens = [];
+            ptokens = [];
             for (var index = 1; index <= 4; index++) {
                 var pSprite = new createjs.Sprite(ptokenSpriteSheet);
                 // var pBounds = pSprite.getFrameBounds(index);
                 pSprite.gotoAndStop(index);
-                tokens.push(pSprite);
+                ptokens.push(pSprite);
+            }
+            ntokens = [];
+            for (var index = 1; index <= 2; index++) {
+                var nSprite = new createjs.Sprite(ntokenSpriteSheet);
+                // var pBounds = pSprite.getFrameBounds(index);
+                nSprite.gotoAndStop(index);
+                ntokens.push(nSprite);
             }
         }
 
@@ -231,7 +245,6 @@ $(document).on('initialize-game', function () {
             stage.addChild(tree);
         });
 
-        // buildings = createBuildingStrip();
         buildings.forEach(function (building) {
             stage.addChild(building);
         });
@@ -315,15 +328,22 @@ function tickHandler(event) {
     hitDitch(ambulance.hitTest(pt.x, pt.y));
 
     // Randomly drop tokens
-    if (Math.random() * 1000 > 980) {
-        dropTokens();
+    if (Math.random() > 0.95) {
+        var flag = (Math.random() < 0.6) ? true : false;
+        dropTokens(flag);
     }
 
     // Check if token collected
-    tokens.forEach(function (token) {
+    ptokens.forEach(function (token) {
         var pt = token.localToLocal(20, 0, ambulance);
         if (ambulance.hitTest(pt.x, pt.y)) {
-            tokenCollected(token);
+            tokenCollected(token, true);
+        }
+    }, this);
+    ntokens.forEach(function (token) {
+        var pt = token.localToLocal(20, 0, ambulance);
+        if (ambulance.hitTest(pt.x, pt.y)) {
+            tokenCollected(token, false);
         }
     }, this);
 
@@ -332,7 +352,8 @@ function tickHandler(event) {
 }
 
 // Drop Tokens
-dropTokens = function () {
+dropTokens = function (flag) {
+    var tokens = (flag) ? ptokens : ntokens;
     var tokenIndex = Math.floor(Math.random() * tokens.length - 1) + 1;
     var token = tokens[tokenIndex];
 
@@ -353,13 +374,15 @@ dropTokens = function () {
 }
 
 // Token Collection Handler
-tokenCollected = function (token) {
+tokenCollected = function (token, flag) {
     stage.removeChild(token);
     if (token.notCollectd) {
         token.notCollectd = false;
-        score.value = score.value + 10;
+        score.value = (flag) ? score.value + 10 : score.value - 10;
         score.ob.text = "SCORE: " + (score.value);
-        $(document).trigger("showhint");
+        if (flag) {
+            $(document).trigger("showhint");
+        }
     }
 }
 

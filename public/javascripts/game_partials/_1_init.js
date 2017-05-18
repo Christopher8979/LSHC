@@ -78,7 +78,7 @@ $(document).on('initialize-game', function () {
 
         // Initialize building sprite
         var refObj = [
-            // { id: "hospital", width: 300, height: 146 },
+            { id: "hospital", width: 300, height: 146 },
             { id: "clinic", width: 127, height: 96 },
             { id: "store", width: 148, height: 73 }
         ];
@@ -140,13 +140,24 @@ $(document).on('initialize-game', function () {
             images: [loader.getResult("ptoken")],
             frames: { width: 47, height: 47 },
         });
+        var ntokenSpriteSheet = new createjs.SpriteSheet({
+            images: [loader.getResult("ntoken")],
+            frames: { width: 47, height: 47 },
+        });
         createTokens = function () {
-            tokens = [];
+            ptokens = [];
             for (var index = 1; index <= 4; index++) {
                 var pSprite = new createjs.Sprite(ptokenSpriteSheet);
                 // var pBounds = pSprite.getFrameBounds(index);
                 pSprite.gotoAndStop(index);
-                tokens.push(pSprite);
+                ptokens.push(pSprite);
+            }
+            ntokens = [];
+            for (var index = 1; index <= 2; index++) {
+                var nSprite = new createjs.Sprite(ntokenSpriteSheet);
+                // var pBounds = pSprite.getFrameBounds(index);
+                nSprite.gotoAndStop(index);
+                ntokens.push(nSprite);
             }
         }
 
@@ -173,7 +184,6 @@ $(document).on('initialize-game', function () {
             stage.addChild(tree);
         });
 
-        // buildings = createBuildingStrip();
         buildings.forEach(function (building) {
             stage.addChild(building);
         });

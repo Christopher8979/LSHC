@@ -1,7 +1,7 @@
 var stage, w, h, loader;
 var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance, speed = 100,
   hitFlags = {},
-  createTreeStrip, addTrees, treeStrip, ditch, buildings, tokens, sound, flag = true;
+  createTreeStrip, addTrees, treeStrip, ditch, buildings, ptokens, ntokens, sound, flag = true;
 var score = {
   value: 0,
   ob: {}
@@ -54,4 +54,7 @@ var IMAGES_HOLDER = [{
 }, {
   src: "positive-sprite.png",
   id: "ptoken"
+}, {
+  src: "negative-sprites.png",
+  id: "ntoken"
 }];

@@ -1,5 +1,6 @@
 // Drop Tokens
-dropTokens = function () {
+dropTokens = function (flag) {
+    var tokens = (flag) ? ptokens : ntokens;
     var tokenIndex = Math.floor(Math.random() * tokens.length - 1) + 1;
     var token = tokens[tokenIndex];
 
@@ -20,13 +21,15 @@ dropTokens = function () {
 }
 
 // Token Collection Handler
-tokenCollected = function (token) {
+tokenCollected = function (token, flag) {
     stage.removeChild(token);
     if (token.notCollectd) {
         token.notCollectd = false;
-        score.value = score.value + 10;
+        score.value = (flag) ? score.value + 10 : score.value - 10;
         score.ob.text = "SCORE: " + (score.value);
-        $(document).trigger("showhint");
+        if (flag) {
+            $(document).trigger("showhint");
+        }
     }
 }
 

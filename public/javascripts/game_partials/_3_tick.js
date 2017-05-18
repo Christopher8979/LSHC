@@ -40,15 +40,22 @@ function tickHandler(event) {
     hitDitch(ambulance.hitTest(pt.x, pt.y));
 
     // Randomly drop tokens
-    if (Math.random() * 1000 > 980) {
-        dropTokens();
+    if (Math.random() > 0.95) {
+        var flag = (Math.random() < 0.6) ? true : false;
+        dropTokens(flag);
     }
 
     // Check if token collected
-    tokens.forEach(function (token) {
+    ptokens.forEach(function (token) {
         var pt = token.localToLocal(20, 0, ambulance);
         if (ambulance.hitTest(pt.x, pt.y)) {
-            tokenCollected(token);
+            tokenCollected(token, true);
+        }
+    }, this);
+    ntokens.forEach(function (token) {
+        var pt = token.localToLocal(20, 0, ambulance);
+        if (ambulance.hitTest(pt.x, pt.y)) {
+            tokenCollected(token, false);
         }
     }, this);
 
