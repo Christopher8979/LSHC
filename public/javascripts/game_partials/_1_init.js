@@ -16,11 +16,11 @@ $(document).on('initialize-game', function () {
     loader.loadManifest(IMAGES_HOLDER, true, "../images/");
 
     // Sounds
-    // createjs.Sound.alternateExtensions = ["wav"];
-    // createjs.Sound.on("fileload", function () {
-    //     sound = createjs.Sound.play("music", { interrupt: createjs.Sound.INTERRUPT_NONE, loop: -1, volume: 0});
-    // }, this);
-    // createjs.Sound.registerSound("../audio/bg-music.wav", "music");
+    createjs.Sound.alternateExtensions = ["wav"];
+    createjs.Sound.on("fileload", function () {
+        sound = createjs.Sound.play("music", { interrupt: createjs.Sound.INTERRUPT_NONE, loop: -1, volume: 0});
+    }, this);
+    createjs.Sound.registerSound("../audio/bg-music.wav", "music");
 
     // Manifest Loading complete handler
     function handleComplete(e) {
@@ -78,7 +78,7 @@ $(document).on('initialize-game', function () {
 
         // Initialize building sprite
         var refObj = [
-            { id: "hospital", width: 300, height: 146 },
+            // { id: "hospital", width: 300, height: 146 },
             { id: "clinic", width: 127, height: 96 },
             { id: "store", width: 148, height: 73 }
         ];

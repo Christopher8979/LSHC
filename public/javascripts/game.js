@@ -33,9 +33,9 @@ var IMAGES_HOLDER = [{
 }, {
   src: "tree-sprite.png",
   id: "tree"
-}, {
-  src: "hospital-sprite.png",
-  id: "hospital"
+// }, {
+//   src: "hospital-sprite.png",
+//   id: "hospital"
 }, {
   src: "clinic-sprite.png",
   id: "clinic"
@@ -77,11 +77,11 @@ $(document).on('initialize-game', function () {
     loader.loadManifest(IMAGES_HOLDER, true, "../images/");
 
     // Sounds
-    // createjs.Sound.alternateExtensions = ["wav"];
-    // createjs.Sound.on("fileload", function () {
-    //     sound = createjs.Sound.play("music", { interrupt: createjs.Sound.INTERRUPT_NONE, loop: -1, volume: 0});
-    // }, this);
-    // createjs.Sound.registerSound("../audio/bg-music.wav", "music");
+    createjs.Sound.alternateExtensions = ["wav"];
+    createjs.Sound.on("fileload", function () {
+        sound = createjs.Sound.play("music", { interrupt: createjs.Sound.INTERRUPT_NONE, loop: -1, volume: 0});
+    }, this);
+    createjs.Sound.registerSound("../audio/bg-music.wav", "music");
 
     // Manifest Loading complete handler
     function handleComplete(e) {
@@ -139,7 +139,7 @@ $(document).on('initialize-game', function () {
 
         // Initialize building sprite
         var refObj = [
-            { id: "hospital", width: 300, height: 146 },
+            // { id: "hospital", width: 300, height: 146 },
             { id: "clinic", width: 127, height: 96 },
             { id: "store", width: 148, height: 73 }
         ];
@@ -289,7 +289,7 @@ function initTweens(params) {
 function tickHandler(event) {
     if (!paused) {
       // setting initial vloume
-    //   sound.volume = (sound.volume == 0) ? 0.1 : 0;
+      sound.volume = (sound.volume == 0) ? 0.1 : 0;
       $(document).trigger("play-pause");
       paused = true;
     }
@@ -430,7 +430,7 @@ $(window).on('keydown', moveSprite);
 // Sound
 // Mute Button
 $("#mute-btn").on("click", function () {
-    // sound.volume = (sound.volume == 0) ? 0.1 : 0;
+    sound.volume = (sound.volume == 0) ? 0.1 : 0;
 })
 
 // Game events
@@ -441,7 +441,7 @@ $(document).on("hit-ditch", function () {
 
 $(document).on("play-pause", function () {
     createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
-    // sound.volume = (sound.volume == 0) ? 0.1 : 0;
+    sound.volume = (sound.volume == 0) ? 0.1 : 0;
 });
 
 $(document).on("update-star", function () {
