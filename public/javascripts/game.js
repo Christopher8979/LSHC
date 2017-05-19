@@ -33,9 +33,9 @@ var IMAGES_HOLDER = [{
 }, {
   src: "tree-sprite.png",
   id: "tree"
-// }, {
-//   src: "hospital-sprite.png",
-//   id: "hospital"
+}, {
+  src: "hospital-sprite.png",
+  id: "hospital"
 }, {
   src: "clinic-sprite.png",
   id: "clinic"
@@ -139,7 +139,7 @@ $(document).on('initialize-game', function () {
 
         // Initialize building sprite
         var refObj = [
-            // { id: "hospital", width: 300, height: 146 },
+            { id: "hospital", width: 300, height: 146 },
             { id: "clinic", width: 127, height: 96 },
             { id: "store", width: 148, height: 73 }
         ];
