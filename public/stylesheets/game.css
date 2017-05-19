@@ -71,7 +71,7 @@
  .toast::before {
    content: 'Hint:';
    font-weight: bold;
-   min-width: 100px;
+   min-width: 50px;
  }
 
  .question [type="radio"]:not(:checked)+label, .question [type="radio"]:checked+label {

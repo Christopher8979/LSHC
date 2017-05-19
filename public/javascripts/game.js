@@ -328,7 +328,7 @@ function tickHandler(event) {
     hitDitch(ambulance.hitTest(pt.x, pt.y));
 
     // Randomly drop tokens
-    if (Math.random() > 0.95) {
+    if (Math.random() > 0.99) {
         var flag = (Math.random() < 0.6) ? true : false;
         dropTokens(flag);
     }
