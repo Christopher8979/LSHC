@@ -65,12 +65,13 @@
    right: 0;
    bottom: 10px;
    text-align: left;
+   justify-content: flex-start;
  }
 
  .toast::before {
    content: 'Hint:';
    font-weight: bold;
-   width: 100px;
+   min-width: 100px;
  }
 
  .question [type="radio"]:not(:checked)+label, .question [type="radio"]:checked+label {
