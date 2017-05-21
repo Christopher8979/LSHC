@@ -77,11 +77,11 @@ $(document).on('initialize-game', function () {
     loader.loadManifest(IMAGES_HOLDER, true, "../images/");
 
     // Sounds
-    createjs.Sound.alternateExtensions = ["wav"];
+    createjs.Sound.alternateExtensions = ["mp3"];
     createjs.Sound.on("fileload", function () {
         sound = createjs.Sound.play("music", { interrupt: createjs.Sound.INTERRUPT_NONE, loop: -1, volume: 0});
     }, this);
-    createjs.Sound.registerSound("../audio/bg-music.wav", "music");
+    createjs.Sound.registerSound("../audio/bg-music.mp3", "music");
 
     // Manifest Loading complete handler
     function handleComplete(e) {
@@ -413,19 +413,11 @@ function moveSprite(e) {
 
         if (e.keyCode === 39) {
             ambulance.move = (type == "keydown") ? "right" : null;
-            // var bounds = ambulance.getBounds();
-            // createjs.Tween.get(ambulance).to({
-            //     x: ((ambulance.x + bounds.width) < w) ? ambulance.x + 10 : ambulance.x
-            // }, 30);
         }
 
 
         if (e.keyCode === 37) {
             ambulance.move = (type == "keydown") ? "left" : null;
-            // var bounds = ambulance.getBounds();
-            // createjs.Tween.get(ambulance).to({
-            //     x: (ambulance.x > 0) ? ambulance.x - 10 : ambulance.x
-            // }, 30);
         }
 
         if (e.keyCode === 32) {

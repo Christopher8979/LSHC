@@ -52,19 +52,11 @@ function moveSprite(e) {
 
         if (e.keyCode === 39) {
             ambulance.move = (type == "keydown") ? "right" : null;
-            // var bounds = ambulance.getBounds();
-            // createjs.Tween.get(ambulance).to({
-            //     x: ((ambulance.x + bounds.width) < w) ? ambulance.x + 10 : ambulance.x
-            // }, 30);
         }
 
 
         if (e.keyCode === 37) {
             ambulance.move = (type == "keydown") ? "left" : null;
-            // var bounds = ambulance.getBounds();
-            // createjs.Tween.get(ambulance).to({
-            //     x: (ambulance.x > 0) ? ambulance.x - 10 : ambulance.x
-            // }, 30);
         }
 
         if (e.keyCode === 32) {
