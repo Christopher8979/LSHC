@@ -53,7 +53,7 @@
    background-color: #2e7a31;
  }
 
- .toast-container {
+ #toast-container {
    top: initial;
    bottom: 12%;
    right: 7%;
