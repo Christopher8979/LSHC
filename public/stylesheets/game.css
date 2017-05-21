@@ -53,10 +53,19 @@
    background-color: #2e7a31;
  }
 
+ .toast-container {
+   top: initial;
+   bottom: 12%;
+   right: 7%;
+   width: 90%;
+ }
+
  .toast {
    display: block;
+   text-align: center;
    word-break: break-word;
    border: 1px solid black;
+   float: none;
  }
 
  .question [type="radio"]:not(:checked)+label, .question [type="radio"]:checked+label {
