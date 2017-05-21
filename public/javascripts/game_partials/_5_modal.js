@@ -18,6 +18,7 @@ $(document).on('showhint', function() {
     var text = $('.question').eq(nextQuestionIndex).find('.hint').text();
     // dont show hint if its not present
     if (text !== '') {
+      text = '<b class="green-text">Hint: </b>' + text;
       Materialize.toast(text, 40000000);
       hintDislayed = true;
     }

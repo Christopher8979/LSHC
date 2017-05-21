@@ -43,7 +43,7 @@ hitDitch = function (hit) {
 }
 
 function updateTime(t) {
-    time.ob.text = new Date(t).toISOString().substr(11, 8);
+    time.text = new Date(t).toISOString().substr(11, 8);
 }
 
 
@@ -86,7 +86,6 @@ $("#mute-btn").on("click", function () {
 
 // Play Button
 $("#start-btn").on("click", function () {
-    console.log("here");
     $(document).trigger("play-pause");
 })
 

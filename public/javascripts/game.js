@@ -1,15 +1,9 @@
 var stage, w, h, loader;
-var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance, speed = 100,
+var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance, speed = 100, time,
   hitFlags = {},
   createTreeStrip, addTrees, treeStrip, ditch, buildings, ptokens, ntokens, sound, flag = true;
 var score = {
   value: 0,
-  ob: {}
-};
-var time = {
-  sec: 0,
-  min: 0,
-  hour: 0,
   ob: {}
 };
 var star = {
@@ -234,9 +228,9 @@ $(document).on('initialize-game', function () {
         score.ob.y = 10;
         
         // Initialize Time
-        time.ob = new createjs.Text("00:00:00", "30px monospace", "#00000");
-        time.ob.x = w - 150;
-        time.ob.y = 10;
+        time = new createjs.Text("00:00:00", "30px monospace", "#00000");
+        time.x = w - 150;
+        time.y = 10;
 
         // Initialize Stars
         var spriteSheet = new createjs.SpriteSheet({
@@ -249,7 +243,7 @@ $(document).on('initialize-game', function () {
         star.ob.y = 50;
 
         // Adding layers based on their sequence
-        stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch, score.ob, star.ob, time.ob);
+        stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch, score.ob, star.ob, time);
 
         treeStrip = createTreeStrip();
         treeStrip.forEach(function (tree) {
@@ -418,7 +412,7 @@ hitDitch = function (hit) {
 }
 
 function updateTime(t) {
-    time.ob.text = new Date(t).toISOString().substr(11, 8);
+    time.text = new Date(t).toISOString().substr(11, 8);
 }
 
 
@@ -461,7 +455,6 @@ $("#mute-btn").on("click", function () {
 
 // Play Button
 $("#start-btn").on("click", function () {
-    console.log("here");
     $(document).trigger("play-pause");
 })
 
@@ -512,6 +505,7 @@ $(document).on('showhint', function() {
     var text = $('.question').eq(nextQuestionIndex).find('.hint').text();
     // dont show hint if its not present
     if (text !== '') {
+      text = '<b class="green-text">Hint: </b>' + text;
       Materialize.toast(text, 40000000);
       hintDislayed = true;
     }
