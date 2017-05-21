@@ -1,5 +1,5 @@
 var stage, w, h, loader;
-var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance, speed = 100,
+var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance, speed = 100, time,
   hitFlags = {},
   createTreeStrip, addTrees, treeStrip, ditch, buildings, ptokens, ntokens, sound, flag = true;
 var score = {
@@ -33,9 +33,9 @@ var IMAGES_HOLDER = [{
 }, {
   src: "tree-sprite.png",
   id: "tree"
-// }, {
-//   src: "hospital-sprite.png",
-//   id: "hospital"
+}, {
+  src: "hospital-sprite.png",
+  id: "hospital"
 }, {
   src: "clinic-sprite.png",
   id: "clinic"
@@ -139,7 +139,7 @@ $(document).on('initialize-game', function () {
 
         // Initialize building sprite
         var refObj = [
-            // { id: "hospital", width: 300, height: 146 },
+            { id: "hospital", width: 300, height: 146 },
             { id: "clinic", width: 127, height: 96 },
             { id: "store", width: 148, height: 73 }
         ];
@@ -223,9 +223,14 @@ $(document).on('initialize-game', function () {
         }
 
         // Initialize Score
-        score.ob = new createjs.Text("SCORE: " + score.value, "30px monospace", "#00000");
+        score.ob = new createjs.Text("SCORE:" + score.value, "30px monospace", "#00000");
         score.ob.x = 10;
         score.ob.y = 10;
+        
+        // Initialize Time
+        time = new createjs.Text("00:00:00", "30px monospace", "#00000");
+        time.x = w - 150;
+        time.y = 10;
 
         // Initialize Stars
         var spriteSheet = new createjs.SpriteSheet({
@@ -238,7 +243,7 @@ $(document).on('initialize-game', function () {
         star.ob.y = 50;
 
         // Adding layers based on their sequence
-        stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch, score.ob, star.ob);
+        stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch, score.ob, star.ob, time);
 
         treeStrip = createTreeStrip();
         treeStrip.forEach(function (tree) {
@@ -355,6 +360,9 @@ function tickHandler(event) {
         ambulance.x = (ambulance.x > 0) ? ambulance.x - 7 : ambulance.x
     }
 
+    // Update Time
+    updateTime(event.runTime)
+
     // Update stage
     stage.update(event);
 }
@@ -387,7 +395,7 @@ tokenCollected = function (token, flag) {
     if (token.notCollectd) {
         token.notCollectd = false;
         score.value = (flag) ? score.value + 10 : score.value - 10;
-        score.ob.text = "SCORE: " + (score.value);
+        score.ob.text = "SCORE:" + (score.value);
         if (flag) {
             $(document).trigger("showhint");
         }
@@ -401,6 +409,10 @@ hitDitch = function (hit) {
         ambulance.gotoAndPlay("hickup");
         $(document).trigger("hit-ditch");
     } 
+}
+
+function updateTime(t) {
+    time.text = new Date(t).toISOString().substr(11, 8);
 }
 
 
@@ -421,7 +433,7 @@ function moveSprite(e) {
         }
 
         if (e.keyCode === 32) {
-            if(!$('#questions-modal').hasClass('open')) {
+            if(!$('#questions-modal').hasClass('open') && type == "keydown") {
               $(document).trigger("play-pause")
             }
         }
@@ -435,12 +447,14 @@ $(window).on('keyup', moveSprite);
 // Sound
 // Mute Button
 $("#mute-btn").on("click", function () {
-    sound.volume = (sound.volume == 0) ? 0.1 : 0;
+    if (!createjs.Ticker.getPaused()) {
+        $(this).toggleClass("btn-clicked");
+    }
+    $(document).trigger("toggle-mute");
 })
 
 // Play Button
 $("#start-btn").on("click", function () {
-    console.log("here");
     $(document).trigger("play-pause");
 })
 
@@ -453,12 +467,23 @@ $(document).on("hit-ditch", function () {
 $(document).on("play-pause", function () {
     createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
     $("#start-btn").toggle();
-    sound.volume = (sound.volume == 0) ? 0.1 : 0;
+    $(document).trigger("toggle-mute");
 });
 
 $(document).on("update-star", function () {
     star.ob.gotoAndStop(++star.ob.currentFrame % star.ob.numFrames);
 });
+
+$(document).on("toggle-mute", function () {
+    var $mute =  $("#mute-btn");
+    if (sound.volume == 0 && !$mute.hasClass("btn-clicked") && !createjs.Ticker.getPaused()) {
+       $mute.removeClass("active");
+        sound.volume = 0.1;
+    } else {
+        $("#mute-btn").addClass("active");
+        sound.volume = 0;
+    }
+})
 
 var hintDislayed = false;
 var nextQuestionIndex = 0;
@@ -480,6 +505,7 @@ $(document).on('showhint', function() {
     var text = $('.question').eq(nextQuestionIndex).find('.hint').text();
     // dont show hint if its not present
     if (text !== '') {
+      text = '<b class="green-text">Hint: </b>' + text;
       Materialize.toast(text, 40000000);
       hintDislayed = true;
     }

@@ -27,6 +27,10 @@ body:after {
   clear: both;
 }
 
+.page-footer {
+  padding-top: 1px;
+}
+
 #credForm .err-msg {
   display: none;
 }

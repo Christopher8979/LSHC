@@ -78,7 +78,7 @@ $(document).on('initialize-game', function () {
 
         // Initialize building sprite
         var refObj = [
-            // { id: "hospital", width: 300, height: 146 },
+            { id: "hospital", width: 300, height: 146 },
             { id: "clinic", width: 127, height: 96 },
             { id: "store", width: 148, height: 73 }
         ];
@@ -162,9 +162,14 @@ $(document).on('initialize-game', function () {
         }
 
         // Initialize Score
-        score.ob = new createjs.Text("SCORE: " + score.value, "30px monospace", "#00000");
+        score.ob = new createjs.Text("SCORE:" + score.value, "30px monospace", "#00000");
         score.ob.x = 10;
         score.ob.y = 10;
+        
+        // Initialize Time
+        time = new createjs.Text("00:00:00", "30px monospace", "#00000");
+        time.x = w - 150;
+        time.y = 10;
 
         // Initialize Stars
         var spriteSheet = new createjs.SpriteSheet({
@@ -177,7 +182,7 @@ $(document).on('initialize-game', function () {
         star.ob.y = 50;
 
         // Adding layers based on their sequence
-        stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch, score.ob, star.ob);
+        stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch, score.ob, star.ob, time);
 
         treeStrip = createTreeStrip();
         treeStrip.forEach(function (tree) {
