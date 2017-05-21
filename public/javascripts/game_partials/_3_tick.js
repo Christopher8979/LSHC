@@ -59,6 +59,14 @@ function tickHandler(event) {
         }
     }, this);
 
+    // Move ambulance
+    if (ambulance.move == "right") {
+        var bounds = ambulance.getBounds();
+        ambulance.x = ((ambulance.x + bounds.width) < w) ? ambulance.x + 7 : ambulance.x;
+    } else if (ambulance.move == "left") {
+        ambulance.x = (ambulance.x > 0) ? ambulance.x - 7 : ambulance.x
+    }
+
     // Update stage
     stage.update(event);
 }
