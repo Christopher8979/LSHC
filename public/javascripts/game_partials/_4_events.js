@@ -60,7 +60,7 @@ function moveSprite(e) {
         }
 
         if (e.keyCode === 32) {
-            if(!$('#questions-modal').hasClass('open')) {
+            if(!$('#questions-modal').hasClass('open') && type == "keydown") {
               $(document).trigger("play-pause")
             }
         }
@@ -74,7 +74,10 @@ $(window).on('keyup', moveSprite);
 // Sound
 // Mute Button
 $("#mute-btn").on("click", function () {
-    sound.volume = (sound.volume == 0) ? 0.1 : 0;
+    if (!createjs.Ticker.getPaused()) {
+        $(this).toggleClass("btn-clicked");
+    }
+    $(document).trigger("toggle-mute");
 })
 
 // Play Button
@@ -92,9 +95,20 @@ $(document).on("hit-ditch", function () {
 $(document).on("play-pause", function () {
     createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
     $("#start-btn").toggle();
-    sound.volume = (sound.volume == 0) ? 0.1 : 0;
+    $(document).trigger("toggle-mute");
 });
 
 $(document).on("update-star", function () {
     star.ob.gotoAndStop(++star.ob.currentFrame % star.ob.numFrames);
 });
+
+$(document).on("toggle-mute", function () {
+    var $mute =  $("#mute-btn");
+    if (sound.volume == 0 && !$mute.hasClass("btn-clicked") && !createjs.Ticker.getPaused()) {
+       $mute.removeClass("active");
+        sound.volume = 0.1;
+    } else {
+        $("#mute-btn").addClass("active");
+        sound.volume = 0;
+    }
+})

@@ -38,15 +38,19 @@
    position: absolute;
    top: 0;
    right: 0;
-   padding: 10px;
+   padding: 10px 20px;
    border-radius: 24px;
-   background-color: #122e40;
+   background-color: #0d0d0d;
    color: white;
-   border: 2px solid #000000;
+   border: 1px solid #2e7a31;
    text-transform: uppercase;
    font-weight: bold;
    margin: 10px;
    cursor: pointer;
+ }
+
+ #mute-btn.active {
+   background-color: #2e7a31;
  }
 
  .toast {
@@ -116,4 +120,8 @@
     font-weight: bold;
     padding: 20px 40px;
     cursor: pointer;
+}
+
+footer .material-icons {
+  font-size: 1rem;
 }
