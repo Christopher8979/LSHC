@@ -6,6 +6,12 @@ var score = {
   value: 0,
   ob: {}
 };
+var time = {
+  sec: 0,
+  min: 0,
+  hour: 0,
+  ob: {}
+};
 var star = {
   value: 0,
   ob: {}
@@ -223,9 +229,14 @@ $(document).on('initialize-game', function () {
         }
 
         // Initialize Score
-        score.ob = new createjs.Text("SCORE: " + score.value, "30px monospace", "#00000");
+        score.ob = new createjs.Text("SCORE:" + score.value, "30px monospace", "#00000");
         score.ob.x = 10;
         score.ob.y = 10;
+        
+        // Initialize Time
+        time.ob = new createjs.Text("00:00:00", "30px monospace", "#00000");
+        time.ob.x = w - 150;
+        time.ob.y = 10;
 
         // Initialize Stars
         var spriteSheet = new createjs.SpriteSheet({
@@ -238,7 +249,7 @@ $(document).on('initialize-game', function () {
         star.ob.y = 50;
 
         // Adding layers based on their sequence
-        stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch, score.ob, star.ob);
+        stage.addChild(sky, sun, clouds, backBg, frontBg, road, ditch, score.ob, star.ob, time.ob);
 
         treeStrip = createTreeStrip();
         treeStrip.forEach(function (tree) {
@@ -355,6 +366,9 @@ function tickHandler(event) {
         ambulance.x = (ambulance.x > 0) ? ambulance.x - 7 : ambulance.x
     }
 
+    // Update Time
+    updateTime(event.runTime)
+
     // Update stage
     stage.update(event);
 }
@@ -387,7 +401,7 @@ tokenCollected = function (token, flag) {
     if (token.notCollectd) {
         token.notCollectd = false;
         score.value = (flag) ? score.value + 10 : score.value - 10;
-        score.ob.text = "SCORE: " + (score.value);
+        score.ob.text = "SCORE:" + (score.value);
         if (flag) {
             $(document).trigger("showhint");
         }
@@ -401,6 +415,10 @@ hitDitch = function (hit) {
         ambulance.gotoAndPlay("hickup");
         $(document).trigger("hit-ditch");
     } 
+}
+
+function updateTime(t) {
+    time.ob.text = new Date(t).toISOString().substr(11, 8);
 }
 
 

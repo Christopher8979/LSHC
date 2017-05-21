@@ -26,7 +26,7 @@ tokenCollected = function (token, flag) {
     if (token.notCollectd) {
         token.notCollectd = false;
         score.value = (flag) ? score.value + 10 : score.value - 10;
-        score.ob.text = "SCORE: " + (score.value);
+        score.ob.text = "SCORE:" + (score.value);
         if (flag) {
             $(document).trigger("showhint");
         }
@@ -40,6 +40,10 @@ hitDitch = function (hit) {
         ambulance.gotoAndPlay("hickup");
         $(document).trigger("hit-ditch");
     } 
+}
+
+function updateTime(t) {
+    time.ob.text = new Date(t).toISOString().substr(11, 8);
 }
 
 

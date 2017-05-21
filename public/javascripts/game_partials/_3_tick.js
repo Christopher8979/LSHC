@@ -67,6 +67,9 @@ function tickHandler(event) {
         ambulance.x = (ambulance.x > 0) ? ambulance.x - 7 : ambulance.x
     }
 
+    // Update Time
+    updateTime(event.runTime)
+
     // Update stage
     stage.update(event);
 }

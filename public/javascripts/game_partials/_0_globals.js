@@ -6,6 +6,12 @@ var score = {
   value: 0,
   ob: {}
 };
+var time = {
+  sec: 0,
+  min: 0,
+  hour: 0,
+  ob: {}
+};
 var star = {
   value: 0,
   ob: {}
