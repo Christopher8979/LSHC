@@ -44,23 +44,27 @@ hitDitch = function (hit) {
 
 
 function moveSprite(e) {
+    // console.log(e);
+    var type = e.type;
     // 39 - right arrow
     // 37 - left arrow
     if (e.keyCode === 39 || e.keyCode === 37 || e.keyCode === 32) {
 
         if (e.keyCode === 39) {
-            var bounds = ambulance.getBounds();
-            createjs.Tween.get(ambulance).to({
-                x: ((ambulance.x + bounds.width) < w) ? ambulance.x + 10 : ambulance.x
-            }, 30);
+            ambulance.move = (type == "keydown") ? "right" : null;
+            // var bounds = ambulance.getBounds();
+            // createjs.Tween.get(ambulance).to({
+            //     x: ((ambulance.x + bounds.width) < w) ? ambulance.x + 10 : ambulance.x
+            // }, 30);
         }
 
 
         if (e.keyCode === 37) {
-            var bounds = ambulance.getBounds();
-            createjs.Tween.get(ambulance).to({
-                x: (ambulance.x > 0) ? ambulance.x - 10 : ambulance.x
-            }, 30);
+            ambulance.move = (type == "keydown") ? "left" : null;
+            // var bounds = ambulance.getBounds();
+            // createjs.Tween.get(ambulance).to({
+            //     x: (ambulance.x > 0) ? ambulance.x - 10 : ambulance.x
+            // }, 30);
         }
 
         if (e.keyCode === 32) {
@@ -73,6 +77,7 @@ function moveSprite(e) {
 }
 
 $(window).on('keydown', moveSprite);
+$(window).on('keyup', moveSprite);
 
 // Sound
 // Mute Button
