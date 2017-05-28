@@ -53,9 +53,7 @@ body:after {
 
 .extra-text {
   font-size: 25px;
-  text-align: center;
   padding: 30px;
-  color: white;
   background-color: rgba(255, 255, 255, 0.08);
 }
 
@@ -91,6 +89,21 @@ body:after {
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+.rules-container {
+  margin-top: 100px;
+  font-size: 22px;
+}
+
+.rules-container ol {
+  margin-bottom: 20px;
+  list-style-type: disc;
+  padding-left: 30px;
+}
+
+.rules-container li {
+  padding-bottom: 5px;
 }
 
 @media print {
