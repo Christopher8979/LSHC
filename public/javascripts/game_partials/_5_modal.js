@@ -62,6 +62,7 @@ $('#questionClose').on('click', function() {
       nextQuestionIndex++;
     }
   }
+  tokensCaught = 0;
   $('#questions-modal').modal('close');
   $('#questionClose').attr('disabled', true);
   hintDislayed = false;

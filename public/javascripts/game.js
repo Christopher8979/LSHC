@@ -11,6 +11,7 @@ var star = {
   ob: {}
 };
 var paused = false;
+var tokensCaught = 0;
 
 var IMAGES_HOLDER = [{
   src: "Sky.png",
@@ -397,7 +398,20 @@ tokenCollected = function (token, flag) {
         score.value = (flag) ? score.value + 10 : score.value - 10;
         score.ob.text = "SCORE:" + (score.value);
         if (flag) {
-            $(document).trigger("showhint");
+            // increment token till we have 3 positinve things collected
+            if (tokensCaught<3) {
+                tokensCaught++;
+            }
+            // Fire show hint once 3 tokens are collected
+            if (tokensCaught === 3) {
+                // tokensCaught = 0;
+                $(document).trigger("showhint");
+            }
+        } else {
+            // Uncomment below line to decrease number of tokens taken 
+            // When negetive token is taken
+            
+            // tokensCaught--;
         }
     }
 }
@@ -549,6 +563,7 @@ $('#questionClose').on('click', function() {
       nextQuestionIndex++;
     }
   }
+  tokensCaught = 0;
   $('#questions-modal').modal('close');
   $('#questionClose').attr('disabled', true);
   hintDislayed = false;
