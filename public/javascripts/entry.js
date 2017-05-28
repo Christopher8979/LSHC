@@ -14,7 +14,7 @@ $(document).on('initialize-entry', function() {
     if (fieldsFilled === noOfFiels) {
       $(form).removeClass('fill-all');
       localStorage.setItem('player', $('#name').val());
-      location.href = "/play-game";
+      location.href = "/rules";
     } else {
       $(form).addClass('fill-all');
     }
