@@ -488,7 +488,7 @@ $(document).on("toggle-mute", function () {
 var hintDislayed = false;
 var nextQuestionIndex = 0;
 var currectAnswers = 0;
-var maxQuestions = 10;
+var maxQuestions = 5;
 
 $('.modal').modal({
   dismissible: false
@@ -530,6 +530,7 @@ $('#questionClose').on('click', function() {
 
   if ($('.question').eq(nextQuestionIndex).hasClass('valid')) {
     setTimeout(function() {
+      $(document).trigger("update-star");
       $(document).trigger("update-star");
       if (currectAnswers === maxQuestions) {
         $(document).trigger("play-pause");
