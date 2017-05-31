@@ -64,7 +64,7 @@ function tickHandler(event) {
         var bounds = ambulance.getBounds();
         ambulance.x = ((ambulance.x + bounds.width) < w) ? ambulance.x + 7 : ambulance.x;
     } else if (ambulance.move == "left") {
-        ambulance.x = (ambulance.x > 0) ? ambulance.x - 7 : ambulance.x
+        ambulance.x = (ambulance.x > 0) ? ambulance.x - 5 : ambulance.x
     }
 
     // Update Time
