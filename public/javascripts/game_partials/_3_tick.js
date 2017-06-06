@@ -1,7 +1,7 @@
 function tickHandler(event) {
     if (!paused) {
       // setting initial vloume
-      sound.volume = (sound.volume == 0) ? 0.1 : 0;
+      sound.volume = (sound.volume == 0) ? playVol : 0;
       $(document).trigger("play-pause");
       paused = true;
     }

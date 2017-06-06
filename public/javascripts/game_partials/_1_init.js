@@ -16,11 +16,24 @@ $(document).on('initialize-game', function () {
     loader.loadManifest(IMAGES_HOLDER, true, "../images/");
 
     // Sounds
-    createjs.Sound.alternateExtensions = ["mp3"];
-    createjs.Sound.on("fileload", function () {
-        sound = createjs.Sound.play("music", { interrupt: createjs.Sound.INTERRUPT_NONE, loop: -1, volume: 0});
+    var soundFiles = [
+        { path: "../audio/bg-music.mp3", key: "music", type: "mp3", main: true },
+        { path: "../audio/got-item.mp3", key: "plusSound", type: "mp3" },
+        { path: "../audio/lost-item.mp3", key: "minusSound", type: "mp3" }
+    ]
+
+    soundFiles.forEach(function(tune) {
+        createjs.Sound.alternateExtensions = [tune.type];
+
+        // Play the main track on loop
+        if (tune.main) {
+            createjs.Sound.on("fileload", function () {
+                sound = createjs.Sound.play(tune.key, { interrupt: createjs.Sound.INTERRUPT_NONE, loop: -1, volume: 0});
+            }, this);
+        }
+
+        createjs.Sound.registerSound(tune.path, tune.key);
     }, this);
-    createjs.Sound.registerSound("../audio/bg-music.mp3", "music");
 
     // Manifest Loading complete handler
     function handleComplete(e) {
@@ -76,12 +89,6 @@ $(document).on('initialize-game', function () {
         ditch.y = h - (0.75 * roadImg.height);
         ditch.cache(0, 0, ditchImg.width, ditchImg.height);
 
-        // Initialize building sprite
-        // var refObj = [
-        //     { id: "hospital", width: 300, height: 146 },
-        //     { id: "clinic", width: 127, height: 96 },
-        //     { id: "store", width: 148, height: 73 }
-        // ];
         var building = { 
             id: "building", width: 274, height: 126, number: 3 
         };
