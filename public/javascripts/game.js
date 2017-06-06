@@ -34,15 +34,18 @@ var IMAGES_HOLDER = [{
 }, {
   src: "tree-sprite.png",
   id: "tree"
+// }, {
+//   src: "hospital-sprite.png",
+//   id: "hospital"
+// }, {
+//   src: "clinic-sprite.png",
+//   id: "clinic"
+// }, {
+//   src: "store-sprite.png",
+//   id: "store"
 }, {
-  src: "hospital-sprite.png",
-  id: "hospital"
-}, {
-  src: "clinic-sprite.png",
-  id: "clinic"
-}, {
-  src: "store-sprite.png",
-  id: "store"
+  src: "building-sprite.png",
+  id: "building"
 }, {
   src: "ambulance-sprite.png",
   id: "amb"
@@ -139,27 +142,32 @@ $(document).on('initialize-game', function () {
         ditch.cache(0, 0, ditchImg.width, ditchImg.height);
 
         // Initialize building sprite
-        var refObj = [
-            { id: "hospital", width: 300, height: 146 },
-            { id: "clinic", width: 127, height: 96 },
-            { id: "store", width: 148, height: 73 }
-        ];
+        // var refObj = [
+        //     { id: "hospital", width: 300, height: 146 },
+        //     { id: "clinic", width: 127, height: 96 },
+        //     { id: "store", width: 148, height: 73 }
+        // ];
+        var building = { 
+            id: "building", width: 274, height: 126, number: 3 
+        };
         buildings = [];
 
-        refObj.forEach(function(building) {
-            var spriteSheet = new createjs.SpriteSheet({
-                images: [loader.getResult(building.id)],
-                frames: { width: building.width, height: building.height },
-            });
+        var buildingSpriteSheet = new createjs.SpriteSheet({
+            images: [loader.getResult(building.id)],
+            frames: { width: building.width, height: building.height },
+        });
 
-            var sprite = new createjs.Sprite(spriteSheet);
-            var spriteBounds = spriteSheet.getFrameBounds(0);
+        for (var buildIndex = 0; buildIndex <= building.number; buildIndex++) {
+            var sprite = new createjs.Sprite(buildingSpriteSheet);
+            var spriteBounds = buildingSpriteSheet.getFrameBounds(buildIndex);
+            sprite.gotoAndStop(buildIndex);
             sprite.setTransform(Math.random() * w, h - (roadImg.height + spriteBounds.height) + 2);
-            sprite.numFrames = spriteSheet.getNumFrames();
-
+            
             // Add to buildings
             buildings.push(sprite);
-        }, this);
+        }
+
+
 
         // Initialize Tree Sprite
         var treeSprite = new createjs.SpriteSheet({
@@ -314,11 +322,7 @@ function tickHandler(event) {
     // Animate buildings
     buildings.forEach(function (building, itsIndex) {
         buildingBounds = building.getBounds();
-        if ((building.x + buildingBounds.width) <= 0) {
-            building.x = building.x = w + buildingBounds.width + (Math.random() * w);
-            building.gotoAndStop(++building.currentFrame % building.numFrames);
-        }
-        building.x = building.x - fSpeed;
+        building.x = ((building.x + buildingBounds.width) <= 0) ? w + buildingBounds.width + (Math.random() * w) : building.x - fSpeed;
     });
 
     // Animate Ditch

@@ -20,11 +20,7 @@ function tickHandler(event) {
     // Animate buildings
     buildings.forEach(function (building, itsIndex) {
         buildingBounds = building.getBounds();
-        if ((building.x + buildingBounds.width) <= 0) {
-            building.x = building.x = w + buildingBounds.width + (Math.random() * w);
-            building.gotoAndStop(++building.currentFrame % building.numFrames);
-        }
-        building.x = building.x - fSpeed;
+        building.x = ((building.x + buildingBounds.width) <= 0) ? w + buildingBounds.width + (Math.random() * w) : building.x - fSpeed;
     });
 
     // Animate Ditch
