@@ -142,10 +142,10 @@ $(document).on("toggle-mute", function () {
 
 $(document).on("plusSound", function () {
     // Play positive sound
-    createjs.Sound.play("plusSound", {volume:(sound.volume * effectVolRatio)});
+    createjs.Sound.play("plusSound", {volume:(playVol * effectVolRatio)});
 })
 
 $(document).on("minusSound", function () {
     // Play negative sound
-    createjs.Sound.play("minusSound", {volume:(sound.volume * effectVolRatio)});
+    createjs.Sound.play("minusSound", {volume:(playVol * effectVolRatio)});
 })
