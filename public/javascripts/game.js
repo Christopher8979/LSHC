@@ -1,6 +1,6 @@
 var stage, w, h, loader;
 var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance, speed = 100, time,
-  hitFlags = {}, playVol = 0.1,
+  hitFlags = {}, playVol = 0.1, effectVolRatio = 0.25,
   createTreeStrip, addTrees, treeStrip, ditch, buildings, ptokens, ntokens, sound, flag = true;
 var score = {
   value: 0,
@@ -401,7 +401,7 @@ tokenCollected = function (token, flag) {
         score.ob.text = "SCORE:" + (score.value);
 
         // Set default sound to quarter the main volume of the game
-        var soundVol = sound.volume / 4;
+        var soundVol = sound.volume * effectVolRatio;
 
         if (flag) {
             // increment token till we have 3 positinve things collected
@@ -510,6 +510,16 @@ $(document).on("toggle-mute", function () {
         $("#mute-btn").addClass("active");
         sound.volume = 0;
     }
+})
+
+$(document).on("plusSound", function () {
+    // Play positive sound
+    createjs.Sound.play("plusSound", {volume:(sound.volume * effectVolRatio)});
+})
+
+$(document).on("minusSound", function () {
+    // Play negative sound
+    createjs.Sound.play("minusSound", {volume:(sound.volume * effectVolRatio)});
 })
 
 var hintDislayed = false;

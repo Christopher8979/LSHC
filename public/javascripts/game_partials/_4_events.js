@@ -29,7 +29,7 @@ tokenCollected = function (token, flag) {
         score.ob.text = "SCORE:" + (score.value);
 
         // Set default sound to quarter the main volume of the game
-        var soundVol = sound.volume / 4;
+        var soundVol = sound.volume * effectVolRatio;
 
         if (flag) {
             // increment token till we have 3 positinve things collected
@@ -138,4 +138,14 @@ $(document).on("toggle-mute", function () {
         $("#mute-btn").addClass("active");
         sound.volume = 0;
     }
+})
+
+$(document).on("plusSound", function () {
+    // Play positive sound
+    createjs.Sound.play("plusSound", {volume:(sound.volume * effectVolRatio)});
+})
+
+$(document).on("minusSound", function () {
+    // Play negative sound
+    createjs.Sound.play("minusSound", {volume:(sound.volume * effectVolRatio)});
 })
