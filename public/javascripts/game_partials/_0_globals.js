@@ -1,6 +1,6 @@
 var stage, w, h, loader;
 var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance, speed = 100, time,
-  hitFlags = {},
+  hitFlags = {}, playVol = 0.1,
   createTreeStrip, addTrees, treeStrip, ditch, buildings, ptokens, ntokens, sound, flag = true;
 var score = {
   value: 0,
@@ -35,14 +35,8 @@ var IMAGES_HOLDER = [{
   src: "tree-sprite.png",
   id: "tree"
 }, {
-  src: "hospital-sprite.png",
-  id: "hospital"
-}, {
-  src: "clinic-sprite.png",
-  id: "clinic"
-}, {
-  src: "store-sprite.png",
-  id: "store"
+  src: "building-sprite.png",
+  id: "building"
 }, {
   src: "ambulance-sprite.png",
   id: "amb"

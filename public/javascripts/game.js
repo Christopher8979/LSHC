@@ -1,6 +1,6 @@
 var stage, w, h, loader;
 var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance, speed = 100, time,
-  hitFlags = {},
+  hitFlags = {}, playVol = 0.1,
   createTreeStrip, addTrees, treeStrip, ditch, buildings, ptokens, ntokens, sound, flag = true;
 var score = {
   value: 0,
@@ -35,14 +35,8 @@ var IMAGES_HOLDER = [{
   src: "tree-sprite.png",
   id: "tree"
 }, {
-  src: "hospital-sprite.png",
-  id: "hospital"
-}, {
-  src: "clinic-sprite.png",
-  id: "clinic"
-}, {
-  src: "store-sprite.png",
-  id: "store"
+  src: "building-sprite.png",
+  id: "building"
 }, {
   src: "ambulance-sprite.png",
   id: "amb"
@@ -78,11 +72,24 @@ $(document).on('initialize-game', function () {
     loader.loadManifest(IMAGES_HOLDER, true, "../images/");
 
     // Sounds
-    createjs.Sound.alternateExtensions = ["mp3"];
-    createjs.Sound.on("fileload", function () {
-        sound = createjs.Sound.play("music", { interrupt: createjs.Sound.INTERRUPT_NONE, loop: -1, volume: 0});
+    var soundFiles = [
+        { path: "../audio/bg-music.mp3", key: "music", type: "mp3", main: true },
+        { path: "../audio/got-item.mp3", key: "plusSound", type: "mp3" },
+        { path: "../audio/lost-item.mp3", key: "minusSound", type: "mp3" }
+    ]
+
+    soundFiles.forEach(function(tune) {
+        createjs.Sound.alternateExtensions = [tune.type];
+
+        // Play the main track on loop
+        if (tune.main) {
+            createjs.Sound.on("fileload", function () {
+                sound = createjs.Sound.play(tune.key, { interrupt: createjs.Sound.INTERRUPT_NONE, loop: -1, volume: 0});
+            }, this);
+        }
+
+        createjs.Sound.registerSound(tune.path, tune.key);
     }, this);
-    createjs.Sound.registerSound("../audio/bg-music.mp3", "music");
 
     // Manifest Loading complete handler
     function handleComplete(e) {
@@ -138,28 +145,27 @@ $(document).on('initialize-game', function () {
         ditch.y = h - (0.75 * roadImg.height);
         ditch.cache(0, 0, ditchImg.width, ditchImg.height);
 
-        // Initialize building sprite
-        var refObj = [
-            { id: "hospital", width: 300, height: 146 },
-            { id: "clinic", width: 127, height: 96 },
-            { id: "store", width: 148, height: 73 }
-        ];
+        var building = { 
+            id: "building", width: 274, height: 126, number: 3 
+        };
         buildings = [];
 
-        refObj.forEach(function(building) {
-            var spriteSheet = new createjs.SpriteSheet({
-                images: [loader.getResult(building.id)],
-                frames: { width: building.width, height: building.height },
-            });
+        var buildingSpriteSheet = new createjs.SpriteSheet({
+            images: [loader.getResult(building.id)],
+            frames: { width: building.width, height: building.height },
+        });
 
-            var sprite = new createjs.Sprite(spriteSheet);
-            var spriteBounds = spriteSheet.getFrameBounds(0);
+        for (var buildIndex = 0; buildIndex <= building.number; buildIndex++) {
+            var sprite = new createjs.Sprite(buildingSpriteSheet);
+            var spriteBounds = buildingSpriteSheet.getFrameBounds(buildIndex);
+            sprite.gotoAndStop(buildIndex);
             sprite.setTransform(Math.random() * w, h - (roadImg.height + spriteBounds.height) + 2);
-            sprite.numFrames = spriteSheet.getNumFrames();
-
+            
             // Add to buildings
             buildings.push(sprite);
-        }, this);
+        }
+
+
 
         // Initialize Tree Sprite
         var treeSprite = new createjs.SpriteSheet({
@@ -295,7 +301,7 @@ function initTweens(params) {
 function tickHandler(event) {
     if (!paused) {
       // setting initial vloume
-      sound.volume = (sound.volume == 0) ? 0.1 : 0;
+      sound.volume = (sound.volume == 0) ? playVol : 0;
       $(document).trigger("play-pause");
       paused = true;
     }
@@ -314,11 +320,7 @@ function tickHandler(event) {
     // Animate buildings
     buildings.forEach(function (building, itsIndex) {
         buildingBounds = building.getBounds();
-        if ((building.x + buildingBounds.width) <= 0) {
-            building.x = building.x = w + buildingBounds.width + (Math.random() * w);
-            building.gotoAndStop(++building.currentFrame % building.numFrames);
-        }
-        building.x = building.x - fSpeed;
+        building.x = ((building.x + buildingBounds.width) <= 0) ? w + buildingBounds.width + (Math.random() * w) : building.x - fSpeed;
     });
 
     // Animate Ditch
@@ -397,6 +399,10 @@ tokenCollected = function (token, flag) {
         token.notCollectd = false;
         score.value = (flag) ? score.value + 10 : score.value - 10;
         score.ob.text = "SCORE:" + (score.value);
+
+        // Set default sound to quarter the main volume of the game
+        var soundVol = sound.volume / 4;
+
         if (flag) {
             // increment token till we have 3 positinve things collected
             if (tokensCaught<3) {
@@ -407,11 +413,18 @@ tokenCollected = function (token, flag) {
                 // tokensCaught = 0;
                 $(document).trigger("showhint");
             }
+
+            // Play positive sound
+            createjs.Sound.play("plusSound", {volume:soundVol});
+
         } else {
             // Uncomment below line to decrease number of tokens taken 
             // When negetive token is taken
             
             // tokensCaught--;
+
+            // Play negative sound
+            createjs.Sound.play("minusSound", {volume:soundVol});
         }
     }
 }
@@ -492,7 +505,7 @@ $(document).on("toggle-mute", function () {
     var $mute =  $("#mute-btn");
     if (sound.volume == 0 && !$mute.hasClass("btn-clicked") && !createjs.Ticker.getPaused()) {
        $mute.removeClass("active");
-        sound.volume = 0.1;
+        sound.volume = playVol;
     } else {
         $("#mute-btn").addClass("active");
         sound.volume = 0;

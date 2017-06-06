@@ -27,6 +27,10 @@ tokenCollected = function (token, flag) {
         token.notCollectd = false;
         score.value = (flag) ? score.value + 10 : score.value - 10;
         score.ob.text = "SCORE:" + (score.value);
+
+        // Set default sound to quarter the main volume of the game
+        var soundVol = sound.volume / 4;
+
         if (flag) {
             // increment token till we have 3 positinve things collected
             if (tokensCaught<3) {
@@ -37,11 +41,18 @@ tokenCollected = function (token, flag) {
                 // tokensCaught = 0;
                 $(document).trigger("showhint");
             }
+
+            // Play positive sound
+            createjs.Sound.play("plusSound", {volume:soundVol});
+
         } else {
             // Uncomment below line to decrease number of tokens taken 
             // When negetive token is taken
             
             // tokensCaught--;
+
+            // Play negative sound
+            createjs.Sound.play("minusSound", {volume:soundVol});
         }
     }
 }
@@ -122,7 +133,7 @@ $(document).on("toggle-mute", function () {
     var $mute =  $("#mute-btn");
     if (sound.volume == 0 && !$mute.hasClass("btn-clicked") && !createjs.Ticker.getPaused()) {
        $mute.removeClass("active");
-        sound.volume = 0.1;
+        sound.volume = playVol;
     } else {
         $("#mute-btn").addClass("active");
         sound.volume = 0;
