@@ -89,7 +89,7 @@
         }
       ],
       "answer": "b",
-      "hint": ""
+      "hint": "EPOs got that name because they have a network of providers they use exclusively. You must stick to providers on that list, or the EPO won’t pay"
     },
     {
       "id": "Q5",
@@ -127,7 +127,7 @@
         }
       ],
       "answer": "c",
-      "hint": ""
+      "hint": "Will cause an automated claims processing system to \"kick out\" a claim,if criteria is not satisfied."
     },
     {
       "id": "Q7",
@@ -150,7 +150,7 @@
         }
       ],
       "answer": "c",
-      "hint": ""
+      "hint": "Participants to deliver the plan"
     },
     {
       "id": "Q8",
@@ -173,7 +173,7 @@
         }
       ],
       "answer": "b",
-      "hint": ""
+      "hint": "Is a marketing concept that outlines what a business should do to market its product or service to its customers"
     },
     {
       "id": "Q9",
@@ -219,7 +219,7 @@
         }
       ],
       "answer": "a",
-      "hint": ""
+      "hint": "A rating plan that adjusts the premium, subject to a certain minimum and maximum, to reflect the current loss experience of the insured. "
     },
     {
       "id": "Q11",
@@ -265,7 +265,7 @@
         }
       ],
       "answer": "b",
-      "hint": ""
+      "hint": "This process is when a hospital or other health-care provider charges an insured patient more than it does an uninsured patient for the same procedure or service. "
     },
     {
       "id": "Q13",
@@ -288,7 +288,7 @@
         }
       ],
       "answer": "b",
-      "hint": ""
+      "hint": "These are generally exempted from federal, state, and local taxes."
     },
     {
       "id": "Q14",
@@ -395,7 +395,7 @@
         }
       ],
       "answer": "d",
-      "hint": ""
+      "hint": "Fee for a service"
     },
     {
       "id": "Q19",
@@ -419,7 +419,8 @@
       ],
       "answer": "a",
       "hint": "Is a business professional who deals with the measurement and management of risk and uncertainty"
-    }, {
+    },
+    {
       "id": "Q20",
       "title": "What is OIG?",
       "options": [{
@@ -486,7 +487,7 @@
         }
       ],
       "answer": "d",
-      "hint": ""
+      "hint": " Preclinical development, nonclinical studies, is a stage of research that begins in this phase.Also this phase is when the testing on Human has not started."
     },
     {
       "id": "Q23",
@@ -509,7 +510,7 @@
         }
       ],
       "answer": "c",
-      "hint": ""
+      "hint": " The drugs that progress to this phase are definitively tested for effectiveness in the treatment or cure of a specific condition. "
     },
     {
       "id": "Q24",
@@ -624,7 +625,8 @@
       ],
       "answer": "a",
       "hint": ""
-    }, {
+    },
+    {
       "id": "Q30",
       "title": "Provides benefits to subscribers who receive health care services from network providers.",
       "options": [{
@@ -646,6 +648,466 @@
       ],
       "answer": "b",
       "hint": "Usually characterized by a small staff and typically have a limited patient base"
+    },
+    {
+      "id": "Q31",
+      "title": "Which of the approaches can the states use to reduce Medicaid costs?",
+      "options": [{
+          "label": "Increase the use of Managed Care",
+          "value": "a"
+        },
+        {
+          "label": "Reduce Waste",
+          "value": "b"
+        },
+        {
+          "label": "Use Payment reform initiatives",
+          "value": "c"
+        },
+        {
+          "label": "Focus on low-risk population",
+          "value": "d"
+        }
+      ],
+      "answer": "a",
+      "hint": "This system is a system of health care emphasizing preventative medicine and home treatment."
+    },
+    {
+      "id": "Q32",
+      "title": "Who is the primary regulator of the medical technology industry in Japan?",
+      "options": [{
+          "label": "The Federal Institute for Drugs and Medical Devices",
+          "value": "a"
+        },
+        {
+          "label": "The Medicines and Healthcare Products Regulatory Agency",
+          "value": "b"
+        },
+        {
+          "label": "The Ministry of Food and Medical Devices",
+          "value": "c"
+        },
+        {
+          "label": "The Pharmaceutical and Food Safety Bureau",
+          "value": "d"
+        }
+      ],
+      "answer": "d",
+      "hint": "This implements measures for securing the efficacy and safety of drugs/quasi-drugs, cosmetics and medical devices, safety measures for medical institutions, and measures against narcotics and stimulants, while handling blood business."
+    },
+    {
+      "id": "Q33",
+      "title": "Which of the following do medical technology regulators in most mature markets supervise? ",
+      "options": [{
+          "label": "Accounting Practices",
+          "value": "a"
+        },
+        {
+          "label": "Consumer Privacy",
+          "value": "b"
+        },
+        {
+          "label": "Corporate Governance",
+          "value": "c"
+        },
+        {
+          "label": "Manufacturing Facilities",
+          "value": "d"
+        }
+      ],
+      "answer": "d",
+      "hint": "An industrial site, usually consisting of buildings and machinery."
+    },
+    {
+      "id": "Q34",
+      "title": "Which is the term that is commonly used to described the remote delivery of the Health care services to patients? ",
+      "options": [{
+          "label": "Mobile Care",
+          "value": "a"
+        },
+        {
+          "label": "Mobile Health",
+          "value": "b"
+        },
+        {
+          "label": "Telemedicine",
+          "value": "c"
+        },
+        {
+          "label": "Teletherapy",
+          "value": "d"
+        }
+      ],
+      "answer": "c",
+      "hint": "The diagnosis and treatment of patients by means of telecommunications technology in distant places."
+    },
+    {
+      "id": "Q35",
+      "title": "Who is the primary customer of the pharmaceutical companies?",
+      "options": [{
+          "label": "Government Agencies",
+          "value": "a"
+        },
+        {
+          "label": "Healthcare Providers",
+          "value": "b"
+        },
+        {
+          "label": "Health Insurance companies",
+          "value": "c"
+        },
+        {
+          "label": "Patients",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "A person/entity who helps in identifying or preventing or treating illness or disability"
+    },
+    {
+      "id": "Q36",
+      "title": "Who directs and coordinates international health activities, provides leadership on global health research and defines international standards for health care?",
+      "options": [{
+          "label": "Food and Drug Adminishtration",
+          "value": "a"
+        },
+        {
+          "label": "International Institute of Health",
+          "value": "b"
+        },
+        {
+          "label": "World Health Organisation",
+          "value": "c"
+        },
+        {
+          "label": "United Medicine Agency",
+          "value": "d"
+        }
+      ],
+      "answer": "c",
+      "hint": "This entity was established on 7 April 1948, headquartered in Geneva, Switzerland."
+    },
+    {
+      "id": "Q37",
+      "title": "What is the term used to describe drugs that are manufatured from chemical components?",
+      "options": [{
+          "label": "Biologics",
+          "value": "a"
+        },
+        {
+          "label": "Large Molecule Drugs",
+          "value": "b"
+        },
+        {
+          "label": "Vaccines",
+          "value": "c"
+        },
+        {
+          "label": "Synthetic Drugs",
+          "value": "d"
+        }
+      ],
+      "answer": "d",
+      "hint": " A drug with properties and effects similar to a known hallucinogen or narcotic but having a slightly altered chemical structure, "
+    },
+    {
+      "id": "Q38",
+      "title": "What is the term used to describe the emerging field of correcting or replacing defective genes?",
+      "options": [{
+          "label": "Bioconcology",
+          "value": "a"
+        },
+        {
+          "label": "Gene Therapy",
+          "value": "b"
+        },
+        {
+          "label": "Genomics",
+          "value": "c"
+        },
+        {
+          "label": "Nanotechnology",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "This is the therapeutic delivery of nucleic acid polymers into a patient's cells as a drug to treat disease."
+    },
+    {
+      "id": "Q39",
+      "title": "Which of the following is the largest source of expense for most of the pharmacuetical companies?",
+      "options": [{
+          "label": "General and administration",
+          "value": "a"
+        },
+        {
+          "label": "Interest expense",
+          "value": "b"
+        },
+        {
+          "label": "Research and Development",
+          "value": "c"
+        },
+        {
+          "label": "Marketing and Sales",
+          "value": "d"
+        }
+      ],
+      "answer": "d",
+      "hint": "This is a carefully crafted combination which is vital in a business growth."
+    },
+    {
+      "id": "Q40",
+      "title": "Which is the example of tertiary care?",
+      "options": [{
+          "label": "Critical Care",
+          "value": "a"
+        },
+        {
+          "label": "Emergency Care",
+          "value": "b"
+        },
+        {
+          "label": "Coronary Artery Bypass Surgery",
+          "value": "c"
+        },
+        {
+          "label": "Pain Management",
+          "value": "d"
+        }
+      ],
+      "answer": "c",
+      "hint": "It is performed to relieve angina unsatisfactorily controlled by maximum tolerated anti-ischemic medication, prevent or relieve left ventricular dysfunction, and/or reduce the risk of death."
+    },
+    {
+      "id": "Q41",
+      "title": "Which is an example of general services provided by Hospitals?",
+      "options": [{
+          "label": "Community Relations",
+          "value": "a"
+        },
+        {
+          "label": "Pathology",
+          "value": "b"
+        },
+        {
+          "label": "Clinical Information Management",
+          "value": "c"
+        },
+        {
+          "label": "Pharmacy",
+          "value": "d"
+        }
+      ],
+      "answer": "a",
+      "hint": "The relationship that a company, organization, etc. has with the people who live in the area in which it operates."
+    },
+    {
+      "id": "Q42",
+      "title": "Which systems run all software applications that supports medical actvities performed on patient while under the care of medical facility?",
+      "options": [{
+          "label": "Health Information Management System",
+          "value": "a"
+        },
+        {
+          "label": "Hospital Information System",
+          "value": "b"
+        },
+        {
+          "label": "Clinical Information Management System",
+          "value": "c"
+        },
+        {
+          "label": "Electronic Medical Records",
+          "value": "d"
+        }
+      ],
+      "answer": "c",
+      "hint": "These are computer software products that coordinate and integrate all the inherent activities involved in the management and running of a healthcare facility."
+    },
+    {
+      "id": "Q43",
+      "title": "Which reimbursement method pays Health care providers a specific fee for a service regardless of the cost incurred?",
+      "options": [{
+          "label": "Time and Materials Method",
+          "value": "a"
+        },
+        {
+          "label": "Fee-for-service method",
+          "value": "b"
+        },
+        {
+          "label": "Cost-Plus Payment method",
+          "value": "c"
+        },
+        {
+          "label": "Fixed Price Method",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "It gives an incentive for physicians to provide more treatments because payment is dependent on the quantity of care, rather than quality of care."
+    },
+    {
+      "id": "Q44",
+      "title": "What is GMP?",
+      "options": [{
+          "label": "Governing Manufacturing Principles",
+          "value": "a"
+        },
+        {
+          "label": "Good Manufacturing Practices",
+          "value": "b"
+        },
+        {
+          "label": "Guidelines for Manufacturing Processes",
+          "value": "c"
+        },
+        {
+          "label": "Guidelines for Molecular-based products",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": ""
+    },
+    {
+      "id": "Q45",
+      "title": "What is a rebate?",
+      "options": [{
+          "label": "The amount at which a payor reimburses a pharmacy for product dispensed.",
+          "value": "a"
+        },
+        {
+          "label": "The additional fee the pharmacies pay over WAC when purchasing products from wholesalers",
+          "value": "b"
+        },
+        {
+          "label": "An Amount paid by the manufacturer to the wholesaler/distributor to reimburse for the difference between the WAC and the Contract Price by the wholesaler, paid upon the receipt of notification from the wholesaler.",
+          "value": "c"
+        },
+        {
+          "label": "An amount offered by the manufacturer to a payor or PBM as an incentive to place its product on preferred formulary status, paid based on the utilization of the product or market share. ",
+          "value": "d"
+        }
+      ],
+      "answer": "d",
+      "hint": "Return of a portion of a purchase price by a seller to a buyer, usually on purchase of a specified quantity, or value, of goods within a specified period."
+    },
+    {
+      "id": "Q46",
+      "title": "What is API?",
+      "options": [{
+          "label": "Applicable Pharmaceutical Inquiry",
+          "value": "a"
+        },
+        {
+          "label": "Association of Physicians and Internists",
+          "value": "b"
+        },
+        {
+          "label": "Active Pharmaceutical Ingredient",
+          "value": "c"
+        },
+        {
+          "label": "Active Product Ingredient",
+          "value": "d"
+        }
+      ],
+      "answer": "c",
+      "hint": "It is also known as Pharmacon"
+    },
+    {
+      "id": "Q47",
+      "title": "What is a Chargeback?",
+      "options": [{
+          "label": "An Amount paid by the manufacturer to the wholesaler/distributor to reimburse for the difference between the WAC and the Contract Price by the wholesaler, paid upon the receipt of notification from the wholesaler.",
+          "value": "a"
+        },
+        {
+          "label": "The amount at which a payor reimburses a pharmacy for product dispensed.",
+          "value": "b"
+        },
+        {
+          "label": "The additional fee the pharmacies pay over WAC when purchasing products from wholesalers.",
+          "value": "c"
+        },
+        {
+          "label": "An amount offered by the manufacturer to a payor or PBM as an incentive to place its product on preferred formulary status, paid based on the utilization of the product or market share. ",
+          "value": "d"
+        }
+      ],
+      "answer": "a",
+      "hint": ""
+    },
+    {
+      "id": "Q48",
+      "title": "Which term describes requirements for patients to pay some of the costs associated with their healthcare?",
+      "options": [{
+          "label": "Co-Insuring",
+          "value": "a"
+        },
+        {
+          "label": "Co-Paying",
+          "value": "b"
+        },
+        {
+          "label": "Cost-Sharing",
+          "value": "c"
+        },
+        {
+          "label": "Premium - Sharing",
+          "value": "d"
+        }
+      ],
+      "answer": "c",
+      "hint": "This term generally includes deductibles, coinsurance, and copayments, or similar charges, but it doesn't include premiums, balance billing amounts for non-network providers, or the cost of non-covered services."
+    },
+    {
+      "id": "Q49",
+      "title": "What is the name of the National Health Insurance Plan in the US that is offered to citizens over 65 years of age and the disabled?",
+      "options": [{
+          "label": "Medicaid",
+          "value": "a"
+        },
+        {
+          "label": "Medicare",
+          "value": "b"
+        },
+        {
+          "label": "SCHIP",
+          "value": "c"
+        },
+        {
+          "label": "TRICARE",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "On July 30, 1965 President Lyndon B. Johnson made this law by signing H.R. 6675 in Independence, Missouri."
+    },
+    {
+      "id": "Q50",
+      "title": "In which country are employers with five or more employees required to provide Health Insurance to their employees?",
+      "options": [{
+          "label": "Canada",
+          "value": "a"
+        },
+        {
+          "label": "Japan",
+          "value": "b"
+        },
+        {
+          "label": "US",
+          "value": "c"
+        },
+        {
+          "label": "UK",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "In this country,payment for personal medical services is offered by a universal health care insurance system that provides relative equality of access, with fees set by a government committee."
     }
   ]
 }

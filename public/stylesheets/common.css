@@ -61,6 +61,7 @@ body:after {
   margin-top: 40vh;
   background-color: rgba(255, 255, 255, 0.2);
   padding: 50px 100px;
+  padding-bottom: 20px;
   position: relative;
   width: 60%;
 }
@@ -85,10 +86,8 @@ body:after {
   font-size: 1.3rem;
 }
 
-.holder .print-icon {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+.action-buttons {
+  margin-top: 30px;
 }
 
 .rules-container {
@@ -106,8 +105,19 @@ body:after {
   padding-bottom: 5px;
 }
 
-@media print {
-  .holder .print-icon {
-    display: none;
-  }
+.ackwldge {
+  margin-bottom: 20px;
+}
+
+.ackwldge label {
+  color: #fff;
+}
+
+.ackwldge label:before {
+  border-color: #fcfcfc;
+}
+
+.ackwldge [type="checkbox"]:checked+label:before {
+  border-right: 2px solid #ccff90;
+  border-bottom: 2px solid #ccff90;
 }
