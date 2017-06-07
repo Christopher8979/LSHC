@@ -27,4 +27,8 @@ $(document).on('initialize-exit', function() {
     localStorage.removeItem('player');
     localStorage.removeItem('completedIn');
   }
+
+  // $('#quit').on('click', function() {
+  //   window.close();
+  // });
 });
