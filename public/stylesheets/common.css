@@ -104,3 +104,20 @@ body:after {
 .rules-container li {
   padding-bottom: 5px;
 }
+
+.ackwldge {
+  margin-bottom: 20px;
+}
+
+.ackwldge label {
+  color: #fff;
+}
+
+.ackwldge label:before {
+  border-color: #fcfcfc;
+}
+
+.ackwldge [type="checkbox"]:checked+label:before {
+  border-right: 2px solid #ccff90;
+  border-bottom: 2px solid #ccff90;
+}
