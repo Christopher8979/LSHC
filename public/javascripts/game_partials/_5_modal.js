@@ -48,8 +48,7 @@ $('#questionClose').on('click', function() {
       if (currectAnswers === maxQuestions) {
         $(document).trigger("play-pause");
         $(document).trigger("show-loader");
-        localStorage.setItem('completedIn', createjs.Ticker.getTime(false));
-        location.href = "/game-over";
+        $(document).trigger("game-over", ['with-in-time']);
       }
     }, 600);
     $('.question').eq(nextQuestionIndex).remove();
@@ -105,4 +104,10 @@ $('#questionSubmit').on('click', function() {
       console.info(err);
     }
   });
+});
+
+$(document).on('game-over', function (event, how) {
+    localStorage.setItem('completedIn', createjs.Ticker.getTime(true));
+    localStorage.setItem('how', how);
+    location.href = "/game-over";
 });
