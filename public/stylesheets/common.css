@@ -61,6 +61,7 @@ body:after {
   margin-top: 40vh;
   background-color: rgba(255, 255, 255, 0.2);
   padding: 50px 100px;
+  padding-bottom: 20px;
   position: relative;
   width: 60%;
 }
@@ -85,10 +86,8 @@ body:after {
   font-size: 1.3rem;
 }
 
-.holder .print-icon {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+.action-buttons {
+  margin-top: 30px;
 }
 
 .rules-container {
@@ -104,10 +103,4 @@ body:after {
 
 .rules-container li {
   padding-bottom: 5px;
-}
-
-@media print {
-  .holder .print-icon {
-    display: none;
-  }
 }
