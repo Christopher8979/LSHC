@@ -95,8 +95,10 @@ $('#questionSubmit').on('click', function() {
       if (resp.correctAns) {
         $(question).addClass('valid');
         currectAnswers++;
+        $(document).trigger('plusSound');
       } else {
         $(question).addClass('invalid');
+        $(document).trigger('minusSound');
       }
       $('#questionClose').removeAttr('disabled');
     },
@@ -106,8 +108,8 @@ $('#questionSubmit').on('click', function() {
   });
 });
 
-$(document).on('game-over', function (event, how) {
-    localStorage.setItem('completedIn', createjs.Ticker.getTime(true));
-    localStorage.setItem('how', how);
-    location.href = "/game-over";
+$(document).on('game-over', function(event, how) {
+  localStorage.setItem('completedIn', createjs.Ticker.getTime(true));
+  localStorage.setItem('how', how);
+  location.href = "/game-over";
 });
