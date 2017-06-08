@@ -12,13 +12,6 @@ $(document).on('initialize-exit', function() {
 
     $('.name').text(name);
 
-    if (how !== 'with-in-time') {
-      seconds = 0;
-    } else if (how !== 'time-out') {
-      $('#restart').remove();
-      $('#quit').addClass('offset-s3');
-    }
-
     if (how === 'with-in-time') {
       $('#restart').remove();
       $('#quit').addClass('offset-s3');
