@@ -19,12 +19,19 @@ $(document).on('initialize-exit', function() {
       $('#quit').addClass('offset-s3');
     }
 
+    if (how === 'with-in-time') {
+      $('#restart').remove();
+      $('#quit').addClass('offset-s3');
+      localStorage.removeItem('player');
+    } else if (how === 'time-out') {
+      seconds = 0;
+    }
+
     $('.min').text(minutes);
     $('.sec').text((seconds).toFixed(2));
 
 
     localStorage.removeItem('how');
-    localStorage.removeItem('player');
     localStorage.removeItem('completedIn');
   }
 
