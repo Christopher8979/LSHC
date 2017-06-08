@@ -12,11 +12,12 @@ $(document).on('initialize-exit', function() {
 
     $('.name').text(name);
 
-    if (how !== 'with-in-time') {
-      seconds = 0;
-    } else if (how !== 'time-out') {
+    if (how === 'with-in-time') {
       $('#restart').remove();
       $('#quit').addClass('offset-s3');
+      localStorage.removeItem('player');
+    } else if (how === 'time-out') {
+      seconds = 0;
     }
 
     $('.min').text(minutes);
@@ -24,7 +25,6 @@ $(document).on('initialize-exit', function() {
 
 
     localStorage.removeItem('how');
-    localStorage.removeItem('player');
     localStorage.removeItem('completedIn');
   }
 
