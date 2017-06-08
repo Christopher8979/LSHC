@@ -6,7 +6,7 @@ $(document).on('initialize-entry', function() {
     var fieldsFilled = 0;
 
     $(form).find('input').each(function(index, elem) {
-      if ($(elem).val() && $(elem).val() !== '') {
+      if (!$(elem).hasClass('invalid') && $(elem).val() && $(elem).val() !== '') {
         fieldsFilled++;
       }
     });
