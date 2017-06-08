@@ -91,7 +91,7 @@ body:after {
 }
 
 .rules-container {
-  margin-top: 100px;
+  margin-top: 50px;
   font-size: 22px;
 }
 
@@ -118,6 +118,6 @@ body:after {
 }
 
 .ackwldge [type="checkbox"]:checked+label:before {
-  border-right: 2px solid #ccff90;
-  border-bottom: 2px solid #ccff90;
+  border-right: 3px solid #ccff90;
+  border-bottom: 3px solid #ccff90;
 }
