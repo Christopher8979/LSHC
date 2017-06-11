@@ -38,10 +38,15 @@
    font-weight: bold;
    margin: 10px;
    cursor: pointer;
+   display: block;
  }
 
  #mute-btn.active {
    background-color: #2e7a31;
+ }
+
+ .loading #mute-btn {
+   display: none;
  }
 
  #toast-container {
