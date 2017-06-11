@@ -40,6 +40,7 @@ $(document).on('initialize-game', function () {
 
         // Removing loading symbol
         $('.preloader').removeClass('loading');
+        $('.preloader .preloader-wrapper').removeClass('active');
 
         // Adding sky as background
         sky = new createjs.Shape();
@@ -89,8 +90,8 @@ $(document).on('initialize-game', function () {
         ditch.y = h - (0.75 * roadImg.height);
         ditch.cache(0, 0, ditchImg.width, ditchImg.height);
 
-        var building = { 
-            id: "building", width: 274, height: 126, number: 3 
+        var building = {
+            id: "building", width: 274, height: 126, number: 3
         };
         buildings = [];
 
@@ -104,7 +105,7 @@ $(document).on('initialize-game', function () {
             var spriteBounds = buildingSpriteSheet.getFrameBounds(buildIndex);
             sprite.gotoAndStop(buildIndex);
             sprite.setTransform(Math.random() * w, h - (roadImg.height + spriteBounds.height) + 2);
-            
+
             // Add to buildings
             buildings.push(sprite);
         }
@@ -177,7 +178,7 @@ $(document).on('initialize-game', function () {
         score.ob = new createjs.Text("SCORE:" + score.value, "30px monospace", "#00000");
         score.ob.x = 10;
         score.ob.y = 10;
-        
+
         // Initialize Time
         time = new createjs.Text("00:00:00", "30px monospace", "#00000");
         time.x = w - 150;
