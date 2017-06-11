@@ -20,8 +20,24 @@ $(document).on('initialize-entry', function() {
     }
   });
 
+  $('#credForm input[type="email"]').bind('blur', function(e) {
+    var value = $(this).val();
+    var isInvalid = true;
+
+    if (value.split('@').length === 2) {
+      if (value.split('@')[1].split('.').length >= 2 && value.split('@')[1].split('.')[0].length > 0 && value.split('@')[1].split('.')[1].length > 0) {
+        isInvalid = false;
+      }
+    }
+
+    if (isInvalid) {
+      $(this).addClass('invalid');
+    } else {
+      $(this).addClass('valid');
+    }
+  });
+
   $('#credForm input[type="text"]').bind('keydown', function(e) {
-    console.log(e.keyCode);
     var elem = $(this);
     var KEYS_TO_OMIT = [32, 37, 39, 8, 9];
 
