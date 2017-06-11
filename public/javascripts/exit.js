@@ -15,8 +15,10 @@ $(document).on('initialize-exit', function() {
     if (how === 'with-in-time') {
       $('#restart').remove();
       $('#quit').addClass('offset-s3');
+      $('.kicked').remove();
       localStorage.removeItem('player');
     } else if (how === 'time-out') {
+      $('.answered').remove();
       seconds = 0;
     }
 
