@@ -29,8 +29,4 @@ $(document).on('initialize-exit', function() {
     localStorage.removeItem('how');
     localStorage.removeItem('completedIn');
   }
-
-  // $('#quit').on('click', function() {
-  //   window.close();
-  // });
 });
