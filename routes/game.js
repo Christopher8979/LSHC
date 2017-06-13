@@ -5,8 +5,8 @@ var GameService = require('../services/gameService.js');
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('entry', {
-    title: 'It\'s LHSC Game Time',
-    description: 'Play and Test your LSHC knowledge the Fun way.'
+    title: 'It\'s LSHC Game Time',
+    description: 'Play and test your LSHC knowledge the fun way!'
   });
 });
 

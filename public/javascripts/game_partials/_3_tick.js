@@ -7,6 +7,7 @@ function tickHandler(event) {
     }
     var deltaS = event.delta;
     var maxSpeed = 1000;
+    var MAX_MINUTES = 2;
     var fSpeed = deltaS / 5; // foreground speed
 
     if (event.paused) {return;}
@@ -64,8 +65,12 @@ function tickHandler(event) {
     }
 
     // Update Time
-    updateTime(event.runTime)
+    updateTime(event.runTime);
 
+    if ( (createjs.Ticker.getTime(true)/60000) >= MAX_MINUTES) {
+        $(document).trigger("play-pause");
+        $(document).trigger("game-over", ['time-out']);
+    }
     // Update stage
     stage.update(event);
 }

@@ -40,6 +40,7 @@ $('#questionClose').on('click', function() {
   $('.toast').fadeOut(600, function() {
     $('.toast').remove();
   });
+  $(document).trigger('hint-indicator-change', ['RESET']);
 
   if ($('.question').eq(nextQuestionIndex).hasClass('valid')) {
     setTimeout(function() {
@@ -48,8 +49,7 @@ $('#questionClose').on('click', function() {
       if (currectAnswers === maxQuestions) {
         $(document).trigger("play-pause");
         $(document).trigger("show-loader");
-        localStorage.setItem('completedIn', createjs.Ticker.getTime(false));
-        location.href = "/game-over";
+        $(document).trigger("game-over", ['with-in-time']);
       }
     }, 600);
     $('.question').eq(nextQuestionIndex).remove();
@@ -96,8 +96,10 @@ $('#questionSubmit').on('click', function() {
       if (resp.correctAns) {
         $(question).addClass('valid');
         currectAnswers++;
+        $(document).trigger('plusSound');
       } else {
         $(question).addClass('invalid');
+        $(document).trigger('minusSound');
       }
       $('#questionClose').removeAttr('disabled');
     },
@@ -105,4 +107,22 @@ $('#questionSubmit').on('click', function() {
       console.info(err);
     }
   });
+});
+
+$(document).on('hint-indicator-change', function(event, count) {
+  var msgs = $('.hit-progress .messages');
+  var progressBars = $('.hit-progress .progress-show .determinate');
+  if (count === 'RESET') {
+    $(msgs).removeAttr('style');
+    $(progressBars).removeAttr('style');
+  } else {
+    $(msgs).css('margin-top', '-' + (20 * (count + 1)) + 'px');
+    $(progressBars).eq(count).css('width', '99.99%');
+  }
+});
+
+$(document).on('game-over', function(event, how) {
+  localStorage.setItem('completedIn', createjs.Ticker.getTime(true));
+  localStorage.setItem('how', how);
+  location.href = "/game-over";
 });
