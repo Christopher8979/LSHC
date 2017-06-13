@@ -49,6 +49,7 @@ tokenCollected = function(token, flag) {
       createjs.Sound.play("plusSound", {
         volume: soundVol
       });
+      ambulance.gotoAndPlay("plus");
 
     } else {
       // Uncomment below line to decrease number of tokens taken
@@ -60,6 +61,7 @@ tokenCollected = function(token, flag) {
       createjs.Sound.play("minusSound", {
         volume: soundVol
       });
+      ambulance.gotoAndPlay("minus");
     }
   }
 }
