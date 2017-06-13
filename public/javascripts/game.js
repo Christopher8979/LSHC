@@ -1,6 +1,6 @@
 var stage, w, h, loader;
 var sky, sun, clouds, road, buildings, backBg, frontBg, ambulance, speed = 100, time,
-  hitFlags = {}, playVol = 0.1, effectVolRatio = 0.25,
+  hitFlags = {}, playVol = 0.5, effectVolRatio = 0.25,
   createTreeStrip, addTrees, treeStrip, ditch, buildings, ptokens, ntokens, sound, flag = true;
 var score = {
   value: 0,
@@ -364,7 +364,7 @@ function tickHandler(event) {
         var bounds = ambulance.getBounds();
         ambulance.x = ((ambulance.x + bounds.width) < w) ? ambulance.x + 7 : ambulance.x;
     } else if (ambulance.move == "left") {
-        ambulance.x = (ambulance.x > 0) ? ambulance.x - 5 : ambulance.x
+        ambulance.x = (ambulance.x > 0) ? ambulance.x - 7 : ambulance.x
     }
 
     // Update Time

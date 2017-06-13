@@ -19,8 +19,8 @@
  }
 
  .hit-progress {
-   width: 30%;
-   margin: 0 35%;
+   width: 50%;
+   margin: 15px 22%;
    height: 20px;
    overflow: hidden;
  }
@@ -34,9 +34,16 @@
  }
 
  .progress-show .progress {
-   margin: 0.5rem 0;
-   background: #fff;
-   border-radius: 1px;
+   margin: 0;
+   background: #424242;
+   border-radius: 8px;
+   height: 16px;
+   box-shadow: inset 1px 0px 7px 0px black;
+ }
+
+ .progress-show .progress .determinate {
+   background: #ffe504 !important;
+   box-shadow: inset 0px -2px 11px #97890a;
  }
 
  .hit-progress .messages {
