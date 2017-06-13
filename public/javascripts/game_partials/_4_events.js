@@ -42,8 +42,9 @@ tokenCollected = function (token, flag) {
                 $(document).trigger("showhint");
             }
 
-            // Play positive sound
+            // Play positive sound and animate
             createjs.Sound.play("plusSound", {volume:soundVol});
+            ambulance.gotoAndPlay("plus");
 
         } else {
             // Uncomment below line to decrease number of tokens taken 
@@ -51,8 +52,9 @@ tokenCollected = function (token, flag) {
             
             // tokensCaught--;
 
-            // Play negative sound
+            // Play negative sound and animate
             createjs.Sound.play("minusSound", {volume:soundVol});
+            ambulance.gotoAndPlay("minus");
         }
     }
 }

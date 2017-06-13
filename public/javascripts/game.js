@@ -191,17 +191,19 @@ $(document).on('initialize-game', function () {
         var spriteSheet = new createjs.SpriteSheet({
             framerate: 3,
             "images": [loader.getResult("amb")],
-            "frames": { "regX": 0, "height": 104, "count": 7, "regY": 0, "width": 150 },
+            "frames": { "regX": 0, "height": 150, "count": 15, "regY": 0, "width": 150 },
             "animations": {
                 "run": [0, 4, "run", 1.5],
-                "hickup": [5, 6, "run"]
+                "hickup": [5, 6, "run"],
+                "plus": [7, 10, "run", 6],
+                "minus": [11, 14, "run", 6]
             }
         });
 
         ambulance = new createjs.Sprite(spriteSheet, "run");
         ambulance.x = w * 0.1;
-        ambulance.y = h - (roadImg.height * 2);
-        ambulance.setBounds(0, 0, 150, 104);
+        ambulance.y = h - (roadImg.height * 3);
+        ambulance.setBounds(0, 0, 150, 150);
 
         // Initialize tokens
         var ptokenSpriteSheet = new createjs.SpriteSheet({
@@ -414,8 +416,9 @@ tokenCollected = function (token, flag) {
                 $(document).trigger("showhint");
             }
 
-            // Play positive sound
+            // Play positive sound and animate
             createjs.Sound.play("plusSound", {volume:soundVol});
+            ambulance.gotoAndPlay("plus");
 
         } else {
             // Uncomment below line to decrease number of tokens taken 
@@ -423,8 +426,9 @@ tokenCollected = function (token, flag) {
             
             // tokensCaught--;
 
-            // Play negative sound
+            // Play negative sound and animate
             createjs.Sound.play("minusSound", {volume:soundVol});
+            ambulance.gotoAndPlay("minus");
         }
     }
 }
