@@ -12,6 +12,41 @@
    /*position: relative;*/
  }
 
+ .hit-progress-holder {
+   position: absolute;
+   top: 10px;
+   width: 100%;
+ }
+
+ .hit-progress {
+   width: 30%;
+   margin: 0 35%;
+   height: 20px;
+   overflow: hidden;
+ }
+
+ .hit-progress .row {
+   margin-bottom: 0;
+ }
+
+ .progress-show .col {
+   padding: 0 0.25rem;
+ }
+
+ .progress-show .progress {
+   margin: 0.5rem 0;
+   background: #fff;
+   border-radius: 1px;
+ }
+
+ .hit-progress .messages {
+   transition: margin 0.3s linear;
+ }
+
+ .hit-progress .messages p {
+   height: 20px;
+ }
+
  .loading {
    position: relative;
  }

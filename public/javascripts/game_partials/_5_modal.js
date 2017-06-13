@@ -40,6 +40,7 @@ $('#questionClose').on('click', function() {
   $('.toast').fadeOut(600, function() {
     $('.toast').remove();
   });
+  $(document).trigger('hint-indicator-change', ['RESET']);
 
   if ($('.question').eq(nextQuestionIndex).hasClass('valid')) {
     setTimeout(function() {
@@ -106,6 +107,18 @@ $('#questionSubmit').on('click', function() {
       console.info(err);
     }
   });
+});
+
+$(document).on('hint-indicator-change', function(event, count) {
+  var msgs = $('.hit-progress .messages');
+  var progressBars = $('.hit-progress .progress-show .determinate');
+  if (count === 'RESET') {
+    $(msgs).removeAttr('style');
+    $(progressBars).removeAttr('style');
+  } else {
+    $(msgs).css('margin-top', '-' + (20 * (count + 1)) + 'px');
+    $(progressBars).eq(count).css('width', '99.99%');
+  }
 });
 
 $(document).on('game-over', function(event, how) {
