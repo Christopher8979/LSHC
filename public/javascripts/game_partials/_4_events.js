@@ -37,6 +37,7 @@ tokenCollected = function(token, flag) {
       // increment token till we have 3 positinve things collected
       if (tokensCaught < 3) {
         tokensCaught++;
+        $(document).trigger('hint-indicator-change', [tokensCaught - 1]);
       }
       // Fire show hint once 3 tokens are collected
       if (tokensCaught === 3) {

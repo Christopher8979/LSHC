@@ -40,7 +40,6 @@
  }
 
  .hit-progress .messages {
-   height: 20px;
    transition: margin 0.3s linear;
  }
 
