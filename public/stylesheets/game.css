@@ -36,7 +36,7 @@
  .progress-show .progress {
    margin: 0;
    background: #424242;
-   border-radius: 8px;
+   border-radius: 4px;
    height: 16px;
    box-shadow: inset 1px 0px 7px 0px black;
  }
@@ -44,10 +44,12 @@
  .progress-show .progress .determinate {
    background: #ffe504 !important;
    box-shadow: inset 0px -2px 11px #97890a;
+   border-radius: 4px;
  }
 
  .hit-progress .messages {
    transition: margin 0.3s linear;
+   font-weight: 700;
  }
 
  .hit-progress .messages p {
@@ -87,7 +89,7 @@
    background-color: #2e7a31;
  }
 
- .loading #mute-btn {
+ .loading #mute-btn, .loading .hit-progress-holder {
    display: none;
  }
 
