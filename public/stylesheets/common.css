@@ -39,6 +39,11 @@ body:after {
   display: block;
 }
 
+.icon-inline {
+  position: relative;
+  top: 5px;
+}
+
 .title {
   text-transform: uppercase;
   font-size: 38px;
