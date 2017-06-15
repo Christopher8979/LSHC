@@ -24,13 +24,13 @@ $(document).on('initialize-entry', function() {
     var value = $(this).val();
     var isInvalid = true;
 
-    if (value.split('@').length === 2) {
+    if (value && value.split('@').length === 2) {
       if (value.split('@')[1].split('.').length >= 2 && value.split('@')[1].split('.')[0].length > 0 && value.split('@')[1].split('.')[1].length > 0) {
         isInvalid = false;
       }
     }
 
-    if (isInvalid) {
+    if (isInvalid && value !== '') {
       $(this).addClass('invalid');
     } else {
       $(this).addClass('valid');
