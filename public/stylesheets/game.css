@@ -1,15 +1,5 @@
- body {
-   display: flex;
-   min-height: 100vh;
-   flex-direction: column;
-   overflow: hidden;
- }
-
- main {
-   flex: 1 0 auto;
-   align-items: center;
-   display: flex;
-   /*position: relative;*/
+ body, main {
+   min-height: 99vh;
  }
 
  .hit-progress-holder {
@@ -61,6 +51,10 @@
  }
 
  #game-holder {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
    margin: 0 auto;
    width: 70%;
    display: block;
@@ -94,7 +88,7 @@
  }
 
  #toast-container {
-   top: initial;
+   top: auto;
    bottom: 7%;
    right: 7%;
    width: 90%;
@@ -174,6 +168,7 @@
    font-weight: bold;
    padding: 20px 40px;
    cursor: pointer;
+   z-index: 2;
  }
 
  #start-btn {
