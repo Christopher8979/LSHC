@@ -21,19 +21,22 @@ $(document).on('initialize-entry', function() {
   });
 
   $('#credForm input[type="email"]').bind('blur', function(e) {
-    var value = $(this).val();
+    var value = $(this).val().trim();
     var isInvalid = true;
-
-    if (value && value.split('@').length === 2) {
-      if (value.split('@')[1].split('.').length >= 2 && value.split('@')[1].split('.')[0].length > 0 && value.split('@')[1].split('.')[1].length > 0) {
-        isInvalid = false;
+    if (value) {
+      if (value && value.split('@').length === 2) {
+        if (value.split('@')[1].split('.').length >= 2 && value.split('@')[1].split('.')[0].length > 0 && value.split('@')[1].split('.')[1].length > 0) {
+          isInvalid = false;
+        }
       }
-    }
 
-    if (isInvalid && value !== '') {
-      $(this).addClass('invalid');
+      if (isInvalid && value !== '') {
+        $(this).addClass('invalid');
+      } else {
+        $(this).addClass('valid');
+      }
     } else {
-      $(this).addClass('valid');
+      $(this).removeClass('invalid');
     }
   });
 
@@ -48,5 +51,12 @@ $(document).on('initialize-entry', function() {
         return false;
       }
     }
+  }).bind('blur', function(e) {
+
+    if (!$(this).val().trim()) {
+      $(this).val('');
+      $(this).removeClass('invalid');
+    }
+
   });
 });
