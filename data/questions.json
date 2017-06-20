@@ -104,7 +104,7 @@
         }
       ],
       "answer": "a",
-      "hint": ""
+      "hint": "More than 70 percent of errors resulting in adverse events were considered to be secondary to negligence in the Health care system."
     },
     {
       "id": "Q6",
@@ -196,7 +196,7 @@
         }
       ],
       "answer": "a",
-      "hint": ""
+      "hint": "This could also be categorized as IPA Helath plan. "
     },
     {
       "id": "Q10",
@@ -223,7 +223,7 @@
     },
     {
       "id": "Q11",
-      "title": "Health plans use the following to determine the number of Qproviders to add to a network",
+      "title": "Health plans use the following to determine the number of providers to add to a network",
       "options": [{
           "label": "Staffing ratios",
           "value": "a"
@@ -242,7 +242,7 @@
         }
       ],
       "answer": "d",
-      "hint": ""
+      "hint": "The factors include the location, number of exisitng employees and accessibility of the location of the network to the provider."
     },
     {
       "id": "Q12",
@@ -303,7 +303,7 @@
         }
       ],
       "answer": "a",
-      "hint": ""
+      "hint": "Effective plan design is the key to providing high-quality, cost-effective health care where they can customize their health plan depending on the eligibility."
     },
     {
       "id": "Q15",
@@ -326,7 +326,7 @@
         }
       ],
       "answer": "d",
-      "hint": ""
+      "hint": "Reporting on Cash-basis is mandatory for statutory reporting purposes for some types of Insurance companies. "
     },
     {
       "id": "Q16",
@@ -349,7 +349,7 @@
         }
       ],
       "answer": "d",
-      "hint": ""
+      "hint": "Premium rates and Health Plan Margin are directly proportional."
     },
     {
       "id": "Q17",
@@ -464,7 +464,7 @@
         }
       ],
       "answer": "a",
-      "hint": ""
+      "hint": "A company may apply for a patent from the USPTO anywhere along the development lifeline of a drug and can encompass a wide range of claims."
     },
     {
       "id": "Q22",
@@ -560,33 +560,49 @@
     },
     {
       "id": "Q26",
-      "title": "Long term care facilities that specialize in the care of patients diagnosed with dementia. → Dementia care facilities",
+      "title": "What are long term care facilities that specialize in the care of patients diagnosed with dementia?Choose the best option.",
       "options": [{
-          "label": "True",
+          "label": "Dementia care facilities",
           "value": "a"
         },
         {
-          "label": "False",
+          "label": "Federal medical centers (FMC)",
           "value": "b"
+        },
+        {
+          "label": "Anxiety and Depression Association of America-ADAA",
+          "value": "c"
+        },
+        {
+          "label": "All of the above",
+          "value": "d"
         }
       ],
       "answer": "a",
-      "hint": ""
+      "hint": "These facilities offer care for people suffering from a broad category of brain diseases that cause a long term and often gradual decrease in the ability to think and remember that is great enough to affect a person's daily functioning."
     },
     {
       "id": "Q27",
-      "title": "Specializes in treating individuals with mental health diagnoses. → Federal medical centers (FMC)",
+      "title": "This organization does not specialize in treating individuals with mental health diagnoses.",
       "options": [{
-          "label": "True",
+          "label": "NIMH",
           "value": "a"
         },
         {
-          "label": "False",
+          "label": "Federal medical centers (FMC)",
           "value": "b"
+        },
+        {
+          "label": "Anxiety and Depression Association of America-ADAA",
+          "value": "c"
+        },
+        {
+          "label": "All of the above",
+          "value": "d"
         }
       ],
       "answer": "b",
-      "hint": ""
+      "hint": "It is designated as an administrative facility, which means it holds inmates of all security classifications."
     },
     {
       "id": "Q28",
@@ -613,18 +629,26 @@
     },
     {
       "id": "Q29",
-      "title": "Same as ambulatory care. → Outpatient care",
+      "title": "What is same as ambulatory care?",
       "options": [{
-          "label": "True",
+          "label": "Managed Care",
           "value": "a"
         },
         {
-          "label": "False",
+          "label": "Outpatient care",
           "value": "b"
+        },
+        {
+          "label": "Health Care Organization",
+          "value": "c"
+        },
+        {
+          "label": "Emergency Care",
+          "value": "d"
         }
       ],
-      "answer": "a",
-      "hint": ""
+      "answer": "b",
+      "hint": "This describes medical care or treatment that does not require an overnight stay in a hospital or medical facility."
     },
     {
       "id": "Q30",
@@ -969,7 +993,7 @@
         }
       ],
       "answer": "b",
-      "hint": ""
+      "hint": "It is a system for ensuring that products are consistently produced and controlled according to quality standards."
     },
     {
       "id": "Q45",
@@ -1038,7 +1062,7 @@
         }
       ],
       "answer": "a",
-      "hint": ""
+      "hint": "This is mentioned as a primary point in the Wholesale Purchase Agreement"
     },
     {
       "id": "Q48",
