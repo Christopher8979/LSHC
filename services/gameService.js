@@ -48,22 +48,35 @@ var GameService = {
         return callBack(err, null);
       }
 
-      console.log(data.records);
       randomizeQuestions(data.records, function(questions) {
         callBack(questions);
       });
     });
   },
   checkAnswer: function(qNo, answered, callBack) {
-    var questionObj = _.find(QUESTIONS, function(ques) {
-      return ques.id === qNo;
+
+    console.log('qNo, answered');
+    console.log(qNo, answered);
+    // var questionObj = _.find(QUESTIONS, function(ques) {
+    //   return ques.id === qNo;
+    // });
+
+    var query = "Select a__c, b__c, c__c, d__c, correct_answer__c from Question__c where id = \'" + qNo + "\'";
+
+    FS.Query(query, function(err, data) {
+      if (err) {
+        return callBack(err, null);
+      }
+      console.log(data);
+
+      if (data.records[0][data.records[0].Correct_Answer__c + '__c'] === answered) {
+        callBack(null, true);
+      } else {
+        callBack(null, false);
+      }
     });
 
-    if (questionObj.answer === answered) {
-      callBack(null, true);
-    } else {
-      callBack(null, false);
-    }
+
   },
   // gets current winner from SFDC.
   getWinner: function(callBack) {
