@@ -48,8 +48,8 @@ var GameService = {
         return callBack(err, null);
       }
 
-      console.log(data);
-      randomizeQuestions(QUESTIONS, function(questions) {
+      console.log(data.records);
+      randomizeQuestions(data.records, function(questions) {
         callBack(questions);
       });
     });
