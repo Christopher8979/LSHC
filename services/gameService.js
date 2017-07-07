@@ -43,6 +43,18 @@ var GameService = {
     } else {
       callBack(null, false);
     }
+  },
+  // gets current winner from SFDC.
+  getWinner: function(callBack) {
+    var query = "";
+
+    return callBack(null, {});
+  },
+  // get last attempts of a user
+  lastAttempts: function(offset, callBack) {
+    var query = "";
+
+    return callBack(null, {});
   }
 }
 
