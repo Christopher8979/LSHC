@@ -14,7 +14,6 @@ $(document).on('initialize-entry', function() {
     if (fieldsFilled === noOfFiels) {
       $(form).removeClass('fill-all');
       localStorage.setItem('player', $('#name').val());
-      // location.href = "/rules";
       var data = {};
       $('#credForm input').each(function(index, val) {
         data[$(val).data('params')] = $(val).val();
@@ -25,7 +24,7 @@ $(document).on('initialize-entry', function() {
         data: data,
         method: 'POST',
         success: function(data) {
-          console.log(data);
+          location.href = "/rules/" + data.id;
         },
         error: function(err) {
           console.log(err);
