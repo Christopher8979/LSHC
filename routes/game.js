@@ -15,6 +15,30 @@ router.get('/', function(req, res) {
   });
 });
 
+
+router.post('/checkUser', function(req, res) {
+  if (!req.body) {
+    return res.status(400).jsonp({
+      'status': 'Player details not sent in ajax call'
+    });
+  }
+
+  GameService.createPlayer(req.body, function(err, data) {
+
+    if (err) {
+      return res.status(400).jsonp({
+        status: 'error while creating user record.',
+        error: err
+      });
+    }
+
+    res.status(200).jsonp({
+      id: req.body ? req.body.Email__c : ''
+    });
+  });
+
+});
+
 router.get('/rules/:id', function(req, res) {
   if (req.params && req.params.id) {
     return res.render('500', 'No params in rules page');

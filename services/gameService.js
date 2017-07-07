@@ -1,5 +1,6 @@
 var QUESTIONS = require('../data/questions.json').questions;
 var _ = require('lodash');
+var FS = require('./ForceService.js');
 
 
 var randomizeQuestions = function(callBack) {
@@ -28,6 +29,16 @@ var randomizeQuestions = function(callBack) {
 
 var GameService = {
 
+  // upserts player
+  createPlayer: function(data, callBack) {
+    FS.upsert('Players__c', data, 'Email__c', function(err, data) {
+      if (err) {
+        return callBack(err, null);
+      }
+
+      callBack(null, data);
+    });
+  },
   getQuestions: function(callBack) {
     randomizeQuestions(function(questions) {
       callBack(questions);

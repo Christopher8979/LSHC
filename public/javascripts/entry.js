@@ -14,7 +14,23 @@ $(document).on('initialize-entry', function() {
     if (fieldsFilled === noOfFiels) {
       $(form).removeClass('fill-all');
       localStorage.setItem('player', $('#name').val());
-      location.href = "/rules";
+      // location.href = "/rules";
+      var data = {};
+      $('#credForm input').each(function(index, val) {
+        data[$(val).data('params')] = $(val).val();
+      });
+
+      $.ajax({
+        url: '/checkUser',
+        data: data,
+        method: 'POST',
+        success: function(data) {
+          console.log(data);
+        },
+        error: function(err) {
+          console.log(err);
+        }
+      });
     } else {
       $(form).addClass('fill-all');
     }
