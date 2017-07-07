@@ -40,13 +40,13 @@ router.post('/checkUser', function(req, res) {
 });
 
 router.get('/rules/:id', function(req, res) {
-  if (req.params && req.params.id) {
+  if (!(req.params && req.params.id)) {
     return res.render('500', 'No params in rules page');
   }
 
   var NO_OF_ATTEMPTS = 2;
-  GameService.lastAttempts(NO_OF_ATTEMPTS, function(err, data) {
-    var lastAttempts = {};
+  GameService.lastAttempts(req.params.id, NO_OF_ATTEMPTS, function(err, data) {
+    var lastAttempts = data.records;
     res.render('rules', lastAttempts);
   });
 });
@@ -85,7 +85,7 @@ router.get('/game-over/:id', function(req, res) {
   }
 
   var NO_OF_ATTEMPTS = 1;
-  GameService.lastAttempts(NO_OF_ATTEMPTS, function(err, data) {
+  GameService.lastAttempts(req.params.id, NO_OF_ATTEMPTS, function(err, data) {
     var lastAttempts = {};
 
     GameService.getWinner(function(err, data) {
