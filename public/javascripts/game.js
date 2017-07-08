@@ -647,6 +647,7 @@ $('#questionSubmit').on('click', function() {
     data: {
       answeredAs: value
     },
+    cache: false,
     success: function(resp) {
       attemptedQuestions++;
       if (resp.correctAns) {
@@ -665,7 +666,7 @@ $('#questionSubmit').on('click', function() {
   });
 });
 
-$(document).on('token-caught', function (event, isPositiveToken) {
+$(document).on('token-caught', function(event, isPositiveToken) {
   if (isPositiveToken) {
     posTokenCount++;
   } else {
@@ -703,12 +704,12 @@ $(document).on('game-over', function(event, how) {
     url: '/saveAttempt',
     data: attemptData,
     method: 'POST',
+    cache: false,
     success: function(resp) {
-      console.log(resp);
+      location.href = "/game-over/" + location.pathname.split('/').pop();
     },
     error: function(err) {
       console.log(err);
     }
   });
-  // location.href = "/game-over";
 });

@@ -120,6 +120,7 @@ router.post('/saveAttempt', function(req, res) {
       'status': 'Attempt details not sent in ajax call'
     });
   }
+
   GameService.saveAttempt(req.body, function(err, resp) {
     if (err) {
       console.info('Error wihile saving this attempt');
@@ -128,11 +129,11 @@ router.post('/saveAttempt', function(req, res) {
         'status': 'something went wrong',
         'err': err
       });
-
-      res.status(200).jsonp({
-        'status': 'saved attempt successfully'
-      });
     }
+
+    res.status(200).jsonp({
+      'status': 'saved attempt successfully'
+    });
   });
 });
 

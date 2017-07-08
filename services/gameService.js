@@ -97,12 +97,15 @@ var GameService = {
 
   },
   saveAttempt: function(data, callBack) {
+
     FS.create('Player_Attempt__c', data, function(err, resp) {
       if (err) {
+        console.info('Error wile saving attempt data in SFDC');
+        console.info(err);
         callBack(err, null);
-      } else {
-        callBack(null, resp);
       }
+
+      callBack(null, resp);
     });
   },
   // gets current winner from SFDC.
