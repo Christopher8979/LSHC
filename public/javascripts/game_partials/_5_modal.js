@@ -2,6 +2,7 @@ var hintDislayed = false;
 var nextQuestionIndex = 0;
 var currectAnswers = 0;
 var maxQuestions = 5;
+var attemptedQuestions = 0;
 
 $('.modal').modal({
   dismissible: false
@@ -93,6 +94,7 @@ $('#questionSubmit').on('click', function() {
       answeredAs: value
     },
     success: function(resp) {
+      attemptedQuestions++;
       if (resp.correctAns) {
         $(question).addClass('valid');
         currectAnswers++;
@@ -124,5 +126,27 @@ $(document).on('hint-indicator-change', function(event, count) {
 $(document).on('game-over', function(event, how) {
   localStorage.setItem('completedIn', createjs.Ticker.getTime(true));
   localStorage.setItem('how', how);
-  location.href = "/game-over";
+
+  var attemptData = {
+    Player__c: 'a007F000002vyGG',
+    Correct_Answers__c: currectAnswers,
+    Total_Questions_Attempted__c: attemptedQuestions,
+    Negative_Tokens_Caught__c: 10,
+    Positive_Tokens_Caught__c:20,
+    Time_Taken__c: createjs.Ticker.getTime(true),
+    Token_Points__c: 100
+  };
+
+  $.ajax({
+    url: '/saveAttempt',
+    data: attemptData,
+    method: 'POST',
+    success: function(resp) {
+      console.log(resp);
+    },
+    error: function(err) {
+      console.log(err);
+    }
+  });
+  // location.href = "/game-over";
 });

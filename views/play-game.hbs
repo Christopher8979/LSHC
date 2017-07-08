@@ -52,10 +52,26 @@
 <div id="questions-modal" class="modal">
   <div class="modal-content">
     {{#each questions}}
-      <div class="question" id= {{this.id}}>
-        <h5>{{this.title}}</h5>
+      <div class="question" id= {{this.Id}}>
+        <h5>{{this.Question_1__c}}</h5>
 
         <div class="options">
+          <p>
+            <input name="{{this.Id}}" type="radio" value="{{this.a__c}}" id="{{this.Id}}-0" />
+            <label for="{{this.Id}}-0">{{this.a__c}}</label>
+          </p>
+          <p>
+            <input name="{{this.Id}}" type="radio" value="{{this.b__c}}" id="{{this.Id}}-1" />
+            <label for="{{this.Id}}-1">{{this.b__c}}</label>
+          </p>
+          <p>
+            <input name="{{this.Id}}" type="radio" value="{{this.c__c}}" id="{{this.Id}}-2" />
+            <label for="{{this.Id}}-2">{{this.c__c}}</label>
+          </p>
+          <p>
+            <input name="{{this.Id}}" type="radio" value="{{this.d__c}}" id="{{this.Id}}-3" />
+            <label for="{{this.Id}}-3">{{this.d__c}}</label>
+          </p>
           {{#each this.options}}
             <p>
               <input name="{{../id}}" type="radio" value="{{this.value}}" id="{{../id}}-{{@index}}" />

@@ -9,15 +9,15 @@
         <div class="card-content">
           <form class="col s12" id="credForm">
             <div class="input-field col s12">
-              <input autocomplete="off" id="name" type="text" class="validate" required>
+              <input autocomplete="off" id="name" type="text" data-params="Name" class="validate" required>
               <label for="name" data-error="Name should contain only alphabets">Name</label>
             </div>
             <div class="input-field col s12">
-              <input autocomplete="off" id="email" type="email" class="validate" required>
+              <input autocomplete="off" id="email" type="email" class="validate" data-params="Email__c" required>
               <label for="email" data-error="Email has to be of the format xxx@xxx.xxx">Email</label>
             </div>
             <div class="input-field col s12">
-              <input autocomplete="off" id="serviceLine" type="text" class="validate" required>
+              <input autocomplete="off" id="serviceLine" type="text" class="validate" data-params="Service_Line__c" required>
               <label for="serviceLine" data-error="Service Line should contain only alphabets">Service Line</label>
             </div>
             <button type="button" id="enterGame" class="btn waves-effect waves-light right col s6 light-green darken-1">Start Game</button>
