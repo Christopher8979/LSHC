@@ -104,6 +104,10 @@
    animation: flash 2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
  }
 
+ .question p.correct-answer {
+   background: green;
+ }
+
  .question [type="radio"]:not(:checked)+label, .question [type="radio"]:checked+label {
    color: black;
    display: inline-block;

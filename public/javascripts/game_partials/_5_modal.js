@@ -89,6 +89,7 @@ $('#questionSubmit').on('click', function() {
   $('#questionSubmit').attr('disabled', true);
   $(question).find('input').attr('disabled', true);
 
+  var referenceHolder = ['a', 'b', 'c', 'd'];
   $.ajax({
     method: 'POST',
     url: '/check-answer/' + id,
@@ -98,13 +99,14 @@ $('#questionSubmit').on('click', function() {
     cache: false,
     success: function(resp) {
       attemptedQuestions++;
-      if (resp.correctAns) {
+      if (resp.answeredCorrect) {
         $(question).addClass('valid');
         currectAnswers++;
         $(document).trigger('plusSound');
       } else {
         $(question).addClass('invalid');
         $(document).trigger('minusSound');
+        $(question).find('p').eq(referenceHolder.indexOf(resp.correctOption)).addClass('correct-answer');
       }
       $('#questionClose').removeAttr('disabled');
     },
