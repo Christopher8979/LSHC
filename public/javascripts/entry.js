@@ -24,6 +24,7 @@ $(document).on('initialize-entry', function() {
         data: data,
         method: 'POST',
         success: function(data) {
+          localStorage.setItem('user-id', data.id);
           location.href = "/rules/" + data.id;
         },
         error: function(err) {

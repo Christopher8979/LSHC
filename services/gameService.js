@@ -119,7 +119,7 @@ var GameService = {
         return callBack(err, null);
       }
 
-      return callBack(null, data);
+      return callBack(null, data.records);
     });
   }
 }

@@ -46,7 +46,16 @@ router.get('/rules/:id', function(req, res) {
 
   var NO_OF_ATTEMPTS = 2;
   GameService.lastAttempts(req.params.id, NO_OF_ATTEMPTS, function(err, data) {
-    res.render('rules', data);
+    if (err) {
+      console.info('Error while getting attempts');
+      return res.render('/');
+    }
+    console.info('Attempts data: \n');
+    console.info(data);
+    res.render('rules', {
+      attempsts: data,
+      playerID: req.params.id
+    });
   });
 });
 
