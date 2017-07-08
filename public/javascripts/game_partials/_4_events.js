@@ -49,7 +49,10 @@ tokenCollected = function(token, flag) {
       createjs.Sound.play("plusSound", {
         volume: soundVol
       });
+
       ambulance.gotoAndPlay("plus");
+
+      $(document).trigger('token-caught', [true]);
 
     } else {
       // Uncomment below line to decrease number of tokens taken
@@ -62,6 +65,8 @@ tokenCollected = function(token, flag) {
         volume: soundVol
       });
       ambulance.gotoAndPlay("minus");
+
+      $(document).trigger('token-caught', [false]);
     }
   }
 }
@@ -81,7 +86,7 @@ function updateTime(t) {
 
 
 function moveSprite(e) {
-  if (location.pathname === '/play-game') {
+  if (location.pathname.search('/play-game') !== -1) {
     // console.log(e);
     var type = e.type;
     // 39 - right arrow

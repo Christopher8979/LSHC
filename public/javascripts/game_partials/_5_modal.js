@@ -3,6 +3,8 @@ var nextQuestionIndex = 0;
 var currectAnswers = 0;
 var maxQuestions = 5;
 var attemptedQuestions = 0;
+var posTokenCount = 0;
+var negTokenCount = 0;
 
 $('.modal').modal({
   dismissible: false
@@ -111,6 +113,14 @@ $('#questionSubmit').on('click', function() {
   });
 });
 
+$(document).on('token-caught', function (event, isPositiveToken) {
+  if (isPositiveToken) {
+    posTokenCount++;
+  } else {
+    negTokenCount++;
+  }
+});
+
 $(document).on('hint-indicator-change', function(event, count) {
   var msgs = $('.hit-progress .messages');
   var progressBars = $('.hit-progress .progress-show .determinate');
@@ -128,13 +138,13 @@ $(document).on('game-over', function(event, how) {
   localStorage.setItem('how', how);
 
   var attemptData = {
-    Player__c: 'a007F000002vyGG',
+    Player__c: location.pathname.split('/').pop(),
     Correct_Answers__c: currectAnswers,
     Total_Questions_Attempted__c: attemptedQuestions,
-    Negative_Tokens_Caught__c: 10,
-    Positive_Tokens_Caught__c:20,
+    Negative_Tokens_Caught__c: posTokenCount,
+    Positive_Tokens_Caught__c: negTokenCount,
     Time_Taken__c: createjs.Ticker.getTime(true),
-    Token_Points__c: 100
+    Token_Points__c: (posTokenCount - negTokenCount) * 10
   };
 
   $.ajax({
