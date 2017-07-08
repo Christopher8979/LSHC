@@ -59,7 +59,11 @@ router.get('/rules/:id', function(req, res) {
   });
 });
 
-router.get('/play-game', function(req, res) {
+router.get('/play-game/:id', function(req, res) {
+  if (!(req.params && req.params.id)) {
+    return res.render('500', 'No params in rules page');
+  }
+
   GameService.getQuestions(function(questions) {
     res.render('play-game', {
       title: 'Playing game now',

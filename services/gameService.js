@@ -62,6 +62,7 @@ var GameService = {
 
     FS.Query(query, function(err, data) {
       if (err) {
+        console.info('error while getting questions from SFDC');
         return callBack(err, null);
       }
 
