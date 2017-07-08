@@ -23,7 +23,9 @@ $(document).on('initialize-entry', function() {
         url: '/checkUser',
         data: data,
         method: 'POST',
+        cache: false,
         success: function(data) {
+          localStorage.setItem('user-id', data.id);
           location.href = "/rules/" + data.id;
         },
         error: function(err) {

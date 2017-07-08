@@ -3,6 +3,8 @@ var nextQuestionIndex = 0;
 var currectAnswers = 0;
 var maxQuestions = 5;
 var attemptedQuestions = 0;
+var posTokenCount = 0;
+var negTokenCount = 0;
 
 $('.modal').modal({
   dismissible: false
@@ -87,21 +89,24 @@ $('#questionSubmit').on('click', function() {
   $('#questionSubmit').attr('disabled', true);
   $(question).find('input').attr('disabled', true);
 
+  var referenceHolder = ['a', 'b', 'c', 'd'];
   $.ajax({
     method: 'POST',
     url: '/check-answer/' + id,
     data: {
       answeredAs: value
     },
+    cache: false,
     success: function(resp) {
       attemptedQuestions++;
-      if (resp.correctAns) {
+      if (resp.answeredCorrect) {
         $(question).addClass('valid');
         currectAnswers++;
         $(document).trigger('plusSound');
       } else {
         $(question).addClass('invalid');
         $(document).trigger('minusSound');
+        $(question).find('p').eq(referenceHolder.indexOf(resp.correctOption)).addClass('correct-answer');
       }
       $('#questionClose').removeAttr('disabled');
     },
@@ -109,6 +114,14 @@ $('#questionSubmit').on('click', function() {
       console.info(err);
     }
   });
+});
+
+$(document).on('token-caught', function(event, isPositiveToken) {
+  if (isPositiveToken) {
+    posTokenCount++;
+  } else {
+    negTokenCount++;
+  }
 });
 
 $(document).on('hint-indicator-change', function(event, count) {
@@ -128,25 +141,25 @@ $(document).on('game-over', function(event, how) {
   localStorage.setItem('how', how);
 
   var attemptData = {
-    Player__c: 'a007F000002vyGG',
+    Player__c: location.pathname.split('/').pop(),
     Correct_Answers__c: currectAnswers,
     Total_Questions_Attempted__c: attemptedQuestions,
-    Negative_Tokens_Caught__c: 10,
-    Positive_Tokens_Caught__c:20,
+    Negative_Tokens_Caught__c: posTokenCount,
+    Positive_Tokens_Caught__c: negTokenCount,
     Time_Taken__c: createjs.Ticker.getTime(true),
-    Token_Points__c: 100
+    Token_Points__c: (posTokenCount - negTokenCount) * 10
   };
 
   $.ajax({
     url: '/saveAttempt',
     data: attemptData,
     method: 'POST',
+    cache: false,
     success: function(resp) {
-      console.log(resp);
+      location.href = "/game-over/" + location.pathname.split('/').pop();
     },
     error: function(err) {
       console.log(err);
     }
   });
-  // location.href = "/game-over";
 });

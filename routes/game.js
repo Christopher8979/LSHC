@@ -33,7 +33,7 @@ router.post('/checkUser', function(req, res) {
     }
 
     res.status(200).jsonp({
-      id: req.body ? req.body.Email__c : ''
+      id: data
     });
   });
 
@@ -46,11 +46,24 @@ router.get('/rules/:id', function(req, res) {
 
   var NO_OF_ATTEMPTS = 2;
   GameService.lastAttempts(req.params.id, NO_OF_ATTEMPTS, function(err, data) {
-    res.render('rules', data);
+    if (err) {
+      console.info('Error while getting attempts');
+      return res.render('/');
+    }
+    console.info('Attempts data: \n');
+    console.info(data);
+    res.render('rules', {
+      attempsts: data,
+      playerID: req.params.id
+    });
   });
 });
 
-router.get('/play-game', function(req, res) {
+router.get('/play-game/:id', function(req, res) {
+  if (!(req.params && req.params.id)) {
+    return res.render('500', 'No params in rules page');
+  }
+
   GameService.getQuestions(function(questions) {
     res.render('play-game', {
       title: 'Playing game now',
@@ -73,9 +86,7 @@ router.post('/check-answer/:id', function(req, res) {
       });
     }
 
-    res.status(200).jsonp({
-      'correctAns': response
-    });
+    res.status(200).jsonp(response);
   });
 });
 
@@ -107,6 +118,7 @@ router.post('/saveAttempt', function(req, res) {
       'status': 'Attempt details not sent in ajax call'
     });
   }
+
   GameService.saveAttempt(req.body, function(err, resp) {
     if (err) {
       console.info('Error wihile saving this attempt');
@@ -115,11 +127,11 @@ router.post('/saveAttempt', function(req, res) {
         'status': 'something went wrong',
         'err': err
       });
-
-      res.status(200).jsonp({
-        'status': 'saved attempt successfully'
-      });
     }
+
+    res.status(200).jsonp({
+      'status': 'saved attempt successfully'
+    });
   });
 });
 

@@ -31,12 +31,29 @@ var GameService = {
 
   // upserts player
   createPlayer: function(data, callBack) {
-    FS.upsert('Players__c', data, 'Email__c', function(err, data) {
+
+    var query = "Select id from Players__c where Email__c = \'" + data.Email__c + "\'";
+    FS.Query(query, function(err, findResp) {
+
       if (err) {
         return callBack(err, null);
       }
 
-      callBack(null, data);
+      if (findResp.totalSize) {
+
+        console.info('\nUser found so returning userID\n');
+        callBack(null, findResp.records[0].Id);
+      } else {
+
+        console.info('\nUser not found so creating a player in SFDC.\n');
+        FS.create('Players__c', data, function(err, createResp) {
+          if (err) {
+            callBack(err, null);
+          } else {
+            callBack(null, createResp.id);
+          }
+        });
+      }
     });
   },
   getQuestions: function(callBack) {
@@ -45,6 +62,7 @@ var GameService = {
 
     FS.Query(query, function(err, data) {
       if (err) {
+        console.info('error while getting questions from SFDC');
         return callBack(err, null);
       }
 
@@ -55,36 +73,38 @@ var GameService = {
   },
   checkAnswer: function(qNo, answered, callBack) {
 
-    console.log('qNo, answered');
-    console.log(qNo, answered);
-    // var questionObj = _.find(QUESTIONS, function(ques) {
-    //   return ques.id === qNo;
-    // });
-
     var query = "Select a__c, b__c, c__c, d__c, correct_answer__c from Question__c where id = \'" + qNo + "\'";
 
     FS.Query(query, function(err, data) {
       if (err) {
         return callBack(err, null);
       }
-      console.log(data);
 
       if (data.records[0][data.records[0].Correct_Answer__c + '__c'] === answered) {
-        callBack(null, true);
+        callBack(null, {
+          answeredCorrect: true,
+          correctOption: data.records[0].Correct_Answer__c
+        });
       } else {
-        callBack(null, false);
+        callBack(null, {
+          answeredCorrect: false,
+          correctOption: data.records[0].Correct_Answer__c
+        });
       }
     });
 
 
   },
   saveAttempt: function(data, callBack) {
+
     FS.create('Player_Attempt__c', data, function(err, resp) {
       if (err) {
+        console.info('Error wile saving attempt data in SFDC');
+        console.info(err);
         callBack(err, null);
-      } else {
-        callBack(null, resp);
       }
+
+      callBack(null, resp);
     });
   },
   // gets current winner from SFDC.
@@ -102,7 +122,7 @@ var GameService = {
         return callBack(err, null);
       }
 
-      return callBack(null, data);
+      return callBack(null, data.records);
     });
   }
 }
