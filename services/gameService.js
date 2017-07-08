@@ -31,12 +31,29 @@ var GameService = {
 
   // upserts player
   createPlayer: function(data, callBack) {
-    FS.upsert('Players__c', data, 'Email__c', function(err, data) {
+
+    var query = "Select id from Players__c where Email__c = \'" + data.Email__c + "\'";
+    FS.Query(query, function(err, findResp) {
+
       if (err) {
         return callBack(err, null);
       }
 
-      callBack(null, data);
+      if (findResp.totalSize) {
+
+        console.info('\nUser found so returning userID\n');
+        callBack(null, findResp.records[0].Id);
+      } else {
+
+        console.info('\nUser not found so creating a player in SFDC.\n');
+        FS.create('Players__c', data, function(err, createResp) {
+          if (err) {
+            callBack(err, null);
+          } else {
+            callBack(null, createResp.id);
+          }
+        });
+      }
     });
   },
   getQuestions: function(callBack) {

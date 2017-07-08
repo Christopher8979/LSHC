@@ -33,7 +33,7 @@ router.post('/checkUser', function(req, res) {
     }
 
     res.status(200).jsonp({
-      id: req.body ? req.body.Email__c : ''
+      id: data
     });
   });
 
