@@ -78,6 +78,15 @@ var GameService = {
 
 
   },
+  saveAttempt: function(data, callBack) {
+    FS.create('Player_Attempt__c', data, function(err, resp) {
+      if (err) {
+        callBack(err, null);
+      } else {
+        callBack(null, resp);
+      }
+    });
+  },
   // gets current winner from SFDC.
   getWinner: function(callBack) {
     var query = "";

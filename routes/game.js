@@ -65,6 +65,8 @@ router.post('/check-answer/:id', function(req, res) {
 
   GameService.checkAnswer(questionNo, answeredAs, function(err, response) {
     if (err) {
+      console.info('Error wihile checking answers');
+      console.log(err);
       return res.status(400).jsonp({
         'status': 'something went wrong',
         'err': err
@@ -79,7 +81,7 @@ router.post('/check-answer/:id', function(req, res) {
 
 router.get('/game-over/:id', function(req, res) {
 
-  if (req.params && req.params.id) {
+  if (!(req.params && req.params.id)) {
     return res.render('500', 'No params in rules page');
   }
 
@@ -96,6 +98,28 @@ router.get('/game-over/:id', function(req, res) {
       });
     });
 
+  });
+});
+
+router.post('/saveAttempt', function(req, res) {
+  if (!req.body) {
+    return res.status(400).jsonp({
+      'status': 'Attempt details not sent in ajax call'
+    });
+  }
+  GameService.saveAttempt(req.body, function(err, resp) {
+    if (err) {
+      console.info('Error wihile saving this attempt');
+      console.log(err);
+      return res.status(400).jsonp({
+        'status': 'something went wrong',
+        'err': err
+      });
+
+      res.status(200).jsonp({
+        'status': 'saved attempt successfully'
+      });
+    }
   });
 });
 
