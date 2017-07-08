@@ -86,9 +86,7 @@ router.post('/check-answer/:id', function(req, res) {
       });
     }
 
-    res.status(200).jsonp({
-      'correctAns': response
-    });
+    res.status(200).jsonp(response);
   });
 });
 

@@ -73,24 +73,23 @@ var GameService = {
   },
   checkAnswer: function(qNo, answered, callBack) {
 
-    console.log('qNo, answered');
-    console.log(qNo, answered);
-    // var questionObj = _.find(QUESTIONS, function(ques) {
-    //   return ques.id === qNo;
-    // });
-
     var query = "Select a__c, b__c, c__c, d__c, correct_answer__c from Question__c where id = \'" + qNo + "\'";
 
     FS.Query(query, function(err, data) {
       if (err) {
         return callBack(err, null);
       }
-      console.log(data);
 
       if (data.records[0][data.records[0].Correct_Answer__c + '__c'] === answered) {
-        callBack(null, true);
+        callBack(null, {
+          answeredCorrect: true,
+          correctOption: data.records[0].Correct_Answer__c
+        });
       } else {
-        callBack(null, false);
+        callBack(null, {
+          answeredCorrect: false,
+          correctOption: data.records[0].Correct_Answer__c
+        });
       }
     });
 
