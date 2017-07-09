@@ -140,19 +140,29 @@ body:after {
   margin-top: 30px;
 }
 
+/*Rules Container Styles*/
 .rules-container {
   margin-top: 50px;
-  font-size: 22px;
+  font-size: 16px;
 }
 
-.rules-container ol {
+.rules-container ul {
   margin-bottom: 20px;
-  list-style-type: disc;
   padding-left: 30px;
 }
 
 .rules-container li {
   padding-bottom: 5px;
+}
+
+.rules-container li:before {
+    content: " ";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #8BC34A;
+    margin-right: 10px;
+    border-radius: 5px;
 }
 
 .ackwldge {
@@ -170,4 +180,35 @@ body:after {
 .ackwldge [type="checkbox"]:checked+label:before {
   border-right: 3px solid #ccff90;
   border-bottom: 3px solid #ccff90;
+}
+
+
+/*Last attempts style*/
+.last-attempts > .row {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.last-attempts .attempt.col {
+    border-left: 1px solid #FFEB3B;
+    padding-left: 20px;
+    color: #6e7070;
+}
+
+.last-attempts .score {
+  color: #494744;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.last-attempts .attempt span {
+    color: #373534;
+    font-weight: bold;
+}
+
+.last-attempts .label {
+    font-size: 2rem;
+    padding: 10px 70px;
+    text-align: center;
+    color: #9E9E9E;
 }
