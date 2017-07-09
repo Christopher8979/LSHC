@@ -104,8 +104,9 @@
    animation: flash 2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
  }
 
- .question p.correct-answer {
-   background: green;
+ .question p.correct-answer [type="radio"]+label {
+   color: green;
+   font-weight: bold;
  }
 
  .question [type="radio"]:not(:checked)+label, .question [type="radio"]:checked+label {
@@ -116,18 +117,18 @@
  }
 
  .question [type="radio"]:checked+label:after, .question [type="radio"].with-gap:checked+label:after {
-   background: #5a5a5a;
-   border-color: #5a5a5a;
- }
+    background: #FFEB3B;
+    border-color: #eab20c;
+}
 
  .question.invalid [type="radio"]:checked+label {
-   background: #d32f2f;
-   color: #fff;
+   color: #F44336;
+   font-weight: bold;
  }
 
  .question.valid [type="radio"]:checked+label {
-   background: #26a69a;
-   color: #fff;
+   color: green;
+   font-weight: bold;
  }
 
  .modal .modal-footer .btn {
