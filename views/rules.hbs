@@ -1,7 +1,9 @@
 <div class="container">
-  <div class="extra-text white-text rules-container">
+
+  {{!--Rules--}}
+  <div class="extra-text white-text rules-container row">
     <h4 class="center">Rules</h4>
-    <ol class="browser-default">
+    <ul>
       <li>Use <i class="material-icons amber-text icon-inline">arrow_back</i> and <i class="material-icons amber-text icon-inline">arrow_forward</i> arrows to move ambulance</li>
       <li>Every time ambulance hits a ditch, a question related to Life science pops up</li>
       <li>Every question has a hint and you will have to earn them</li>
@@ -11,7 +13,7 @@
       <li>Answer <b class="green-text">5</b> questions correctly to end the game</li>
       <li>Number of correct answers will be indicated by glowing stars</li>
       <li>The time duration for this game is <b class="red-text">2</b> minutes</li>
-    </ol>
+    </ul>
 
     <div class="row center">
       <p class="ackwldge">
@@ -19,6 +21,33 @@
         <label for="rulesRead">I have read the above mentioned rules</label>
       </p>
       <a href="/play-game/{{playerID}}" class="btn waves-effect waves-light light-green darken-1" disabled id="play">Play</a>
+    </div>
+  </div>
+
+  {{!--Last 2 Attempts--}}
+  <div class="row">
+    <div class="card-panel last-attempts  grey darken-4">
+      <div class="row">
+
+        {{!--Label--}}
+        <div class="col s4 label">Last 2 Attempts</div>
+
+        {{!--Attempt 1--}}
+        <div class="col s4 attempt">
+          <div class="score">100</div>
+          <div class="t-points">Token Points: <span>1000</span></div>
+          <div class="time">Time: <span>10:00</span></div>
+        </div>
+        
+        {{!--Attempt 2--}}
+        <div class="col s4 attempt">
+          <div class="score">120</div>
+          <div class="t-points">Token Points: <span>1200</span></div>
+          <div class="time">Time: <span>12:00</span></div>
+        </div>
+
+        
+      </div>
     </div>
   </div>
 </div>

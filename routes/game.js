@@ -99,9 +99,11 @@ router.get('/game-over/:id', function(req, res) {
   var NO_OF_ATTEMPTS = 1;
   GameService.lastAttempts(req.params.id, NO_OF_ATTEMPTS, function(err, data) {
     var lastAttempts = {};
+    console.log(data);
 
     GameService.getWinner(function(err, winnerDetails) {
       var topScorrer = {};
+      console.log(winnerDetails);
 
       res.render('game-over', {
         lastAttempts: lastAttempts,

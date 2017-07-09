@@ -29,6 +29,47 @@ body:after {
   clear: both;
 }
 
+#brand {
+    top: 12px;
+    position: fixed;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Open Sans', sans-serif;
+    left: 20px;
+}
+
+#brand:after {
+  content: ".";
+  color: #86BC25;
+}
+
+
+/*Top Scorer Styles*/
+.top-scorer-tab .card-panel > .row {
+  margin-bottom: 0;
+}
+
+.top-scorer-tab img {
+  width: 80%;
+}
+
+.top-scorer-tab .label {
+    font-weight: bold;
+    color: #9E9E9E;
+}
+
+.top-scorer-tab .top-scorer {
+  color: white;
+  font-size: 40px;
+}
+
+.top-scorer-tab .top-score {
+    font-size: 30px;
+    color: #8BC34A;
+}
+
+
 .page-footer {
   padding-top: 1px;
 }
@@ -99,19 +140,29 @@ body:after {
   margin-top: 30px;
 }
 
+/*Rules Container Styles*/
 .rules-container {
   margin-top: 50px;
-  font-size: 22px;
+  font-size: 16px;
 }
 
-.rules-container ol {
+.rules-container ul {
   margin-bottom: 20px;
-  list-style-type: disc;
   padding-left: 30px;
 }
 
 .rules-container li {
   padding-bottom: 5px;
+}
+
+.rules-container li:before {
+    content: " ";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #8BC34A;
+    margin-right: 10px;
+    border-radius: 5px;
 }
 
 .ackwldge {
@@ -129,4 +180,108 @@ body:after {
 .ackwldge [type="checkbox"]:checked+label:before {
   border-right: 3px solid #ccff90;
   border-bottom: 3px solid #ccff90;
+}
+
+
+/*Last attempts style*/
+.last-attempts > .row {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.last-attempts .attempt.col {
+    border-left: 1px solid #FFEB3B;
+    padding-left: 20px;
+    color: #c9c9c9;
+}
+
+.last-attempts .score {
+  color: #FFC107;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.last-attempts .attempt span {
+    color: #f6f5f4;
+    font-weight: bold;
+}
+
+.last-attempts .label {
+    font-size: 2rem;
+    padding: 10px 70px;
+    text-align: center;
+    color: white;
+}
+
+/*Scorecard styles*/
+.scorecard .card-panel {
+  padding: 0;
+  margin-top: 70px;
+}
+
+.scorecard .card-panel > .row {
+  margin: 0;
+}
+
+.scorecard .score-side {
+  text-align: center;
+  background-color: #242424;
+  padding: 50px;
+  border-radius: 2px 0 0 2px;
+  color: #858484;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.score-side .trophy-image {
+  height: 90px;
+  background-image: url("../images/cup.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 50px;
+}
+
+.score-side .player-name .name {
+    color: white;
+    font-size: 2rem;
+    text-transform: capitalize;
+    margin-bottom: 30px;
+}
+
+.score-side .score-field .score {
+    color: #8BC34A;
+    font-size: 5rem;
+    margin-bottom: 50px;
+}
+
+.score-side .top-score {
+    color: white;
+    font-size: 0.8rem;
+}
+
+.stats-side .label {
+    margin-bottom: 30px;
+    text-align: center;
+    margin-top: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.stats-side td {
+    padding: 14px 30px;
+    color: #525252;
+}
+
+.stats-side td.value {
+  font-weight: bold;
+}
+
+.stats-side table.striped>tbody>tr:nth-child(odd) {
+  background-color: #f7f7f7;
+}
+
+.stats-side .action-buttons {
+  text-align: center;
 }
