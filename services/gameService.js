@@ -30,6 +30,19 @@ var randomizeQuestions = function(questions, callBack) {
 var GameService = {
 
   // upserts player
+  getPlayerDetails: function(id, callBack) {
+    var query = "Select id, email__c, name, service_line__c from Players__c where id = \'" + id + "\'";
+
+
+    FS.Query(query, function(err, data) {
+      if (err) {
+        console.info('error while getting questions from SFDC');
+        return callBack(err, null);
+      }
+
+      return callBack(null, data.records);
+    });
+  },
   createPlayer: function(data, callBack) {
 
     var query = "Select id from Players__c where Email__c = \'" + data.Email__c + "\'";
@@ -109,19 +122,19 @@ var GameService = {
   },
   // gets current winner from SFDC.
   getWinner: function(callBack) {
-    var query = "Select Id, Player__r.Name,Final_Score__c From Player_Attempt__c Order BY Final_Score__c, Question_Answer_Ratio__c, Time_Ratio__c, Token_Points__c DESC";
+    var query = "Select Id, Player__r.Name,Final_Score__c From Player_Attempt__c Order BY Final_Score__c, Question_Answer_Ratio__c, Time_Ratio__c, Token_Points__c DESC limit 1";
 
     FS.Query(query, function(err, data) {
       if (err) {
         return callBack(err, null);
       }
 
-      return callBack(null, data.records);
+      return callBack(null, data.records[0]);
     });
   },
   // get last attempts of a user
-  lastAttempts: function(userMail, offset, callBack) {
-    var query = "SELECT Correct_Answers__c, Final_Score__c, Id, Name, Negative_Tokens_Caught__c, Player__c, Positive_Tokens_Caught__c, Time_Taken__c, Token_Points__c, Total_Questions_Attempted__c, Total_Tokens_Caught__c FROM Player_Attempt__c where player__c in (Select id from Players__c where Email__c = \'" + userMail + "\' ) ORDER BY CreatedDate DESC limit " + offset;
+  lastAttempts: function(id, offset, callBack) {
+    var query = "SELECT Correct_Answers__c, Final_Score__c, Id, Name, Negative_Tokens_Caught__c, Player__c, Positive_Tokens_Caught__c, Time_Taken__c, Token_Points__c, Total_Questions_Attempted__c, Total_Tokens_Caught__c FROM Player_Attempt__c where player__c in (Select id from Players__c where id = \'" + id + "\' ) ORDER BY CreatedDate DESC limit " + offset;
 
     FS.Query(query, function(err, data) {
       if (err) {

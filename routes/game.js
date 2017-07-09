@@ -4,8 +4,11 @@ var GameService = require('../services/gameService.js');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  GameService.getWinner(function(err, data) {
-    var topScorrer = {};
+  GameService.getWinner(function(err, winnerInfo) {
+    var topScorrer = {
+      name: winnerInfo.Player__r.Name,
+      score: winnerInfo.Final_Score__c
+    };
 
     res.render('entry', {
       title: 'It\'s LSHC Game Time',
@@ -52,8 +55,15 @@ router.get('/rules/:id', function(req, res) {
     }
     console.info('Attempts data: \n');
     console.info(data);
+
+    for (var i = 0; i < NO_OF_ATTEMPTS; i++) {
+      if (!data[i]) {
+        data[i] = {};
+      }
+    }
+
     res.render('rules', {
-      attempsts: data,
+      attempts: data,
       playerID: req.params.id
     });
   });
@@ -97,17 +107,21 @@ router.get('/game-over/:id', function(req, res) {
   }
 
   var NO_OF_ATTEMPTS = 1;
-  GameService.lastAttempts(req.params.id, NO_OF_ATTEMPTS, function(err, data) {
-    var lastAttempts = {};
-    console.log(data);
+  GameService.lastAttempts(req.params.id, NO_OF_ATTEMPTS, function(err, attemptData) {
 
-    GameService.getWinner(function(err, winnerDetails) {
-      var topScorrer = {};
-      console.log(winnerDetails);
+    GameService.getPlayerDetails(attemptData[0].Player__c, function(err, playerInfo) {
 
-      res.render('game-over', {
-        lastAttempts: lastAttempts,
-        topScorrer: topScorrer
+      GameService.getWinner(function(err, winnerInfo) {
+        var topScorrer = {
+          name: winnerInfo.Player__r.Name,
+          score: winnerInfo.Final_Score__c
+        };
+
+        res.render('game-over', {
+          lastAttempts: attemptData[0],
+          topScorrer: topScorrer,
+          player: playerInfo[0]
+        });
       });
     });
 
