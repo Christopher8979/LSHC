@@ -29,6 +29,21 @@ body:after {
   clear: both;
 }
 
+#brand {
+    top: 12px;
+    position: fixed;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Open Sans', sans-serif;
+    left: 20px;
+}
+
+#brand:after {
+  content: ".";
+  color: #86BC25;
+}
+
 .page-footer {
   padding-top: 1px;
 }
