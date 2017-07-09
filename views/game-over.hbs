@@ -1,9 +1,75 @@
+<div class="container scorecard">
+  <div class="card-panel">
+    <div class="row">
+
+      {{!--Score--}}
+      <div class="col s5 score-side">
+        <div class="trophy-image"></div>
+        <div class="player-name">
+          Name
+          <div class="name">Ashwin</div>
+        </div>
+        <div class="score-field">
+          Score
+          <div class="score">120</div>
+        </div>
+        <div class="top-score">Current Top Score: <span class="yellow-text accent-4">130</span></div>
+      </div>
+
+      {{!--Stats--}}
+      <div class="col s7 stats-side no-padding">
+        <h5 class="label">Statistics</h5>
+        <table class="striped">
+          <tr>
+            <td>Service Line</td>
+            <td class="value">DD</td>
+          </tr>
+          <tr>
+            <td>Total attempted</td>
+            <td class="value">10</td>
+          </tr>
+          <tr>
+            <td>Total correct</td>
+            <td class="value">8</td>
+          </tr>
+          <tr>
+            <td>Total tokens caught +ve</td>
+            <td class="value">40</td>
+          </tr>
+          <tr>
+            <td>Total tokens caught - ve</td>
+            <td class="value">4</td>
+          </tr>
+          <tr>
+            <td>Total points</td>
+            <td class="value">100</td>
+          </tr>
+          <tr>
+            <td>Total time take</td>
+            <td class="value">1:40 mins</td>
+          </tr>
+        </table>
+
+        {{!--Action buttons--}}
+        <div class="action-buttons">
+          <a href="/" class="btn waves-effect waves-light yellow darken-2">Retry</a>
+          <a href="/" class="btn waves-effect waves-light red">Quit</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+{{!--
 <div class="container go-wrapper white-text">
   <div class="holder center">
     <h5 class="answered">Certificate of Achievement</h5>
     <h5 class="kicked">Time up</h5>
-    <p class="answered">Congratulations <span class="name">Your Name</span>, you have successfully completed the LSHC Game in <span class="min">0</span> min <span class="sec">0</span>sec.</p>
-    <p class="kicked">Hey <span class="name">Your Name</span>, maximum time of <span class="min">2</span> min for this game is over. You can retry or exit the game.</p>
+    <p class="answered">Congratulations <span class="name">Your Name</span>, you have successfully completed the LSHC Game in <span class="min">0</span>      min <span class="sec">0</span>sec.</p>
+    <p class="kicked">Hey <span class="name">Your Name</span>, maximum time of <span class="min">2</span> min for this game is over. You can
+      retry or exit the game.</p>
     <div class="action-buttons">
       <div class="row">
         <div class="col s6 offset-s3 center">
@@ -13,4 +79,4 @@
       </div>
     </div>
   </div>
-</div>
+</div>--}}

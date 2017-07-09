@@ -192,17 +192,17 @@ body:after {
 .last-attempts .attempt.col {
     border-left: 1px solid #FFEB3B;
     padding-left: 20px;
-    color: #6e7070;
+    color: #c9c9c9;
 }
 
 .last-attempts .score {
-  color: #494744;
+  color: #FFC107;
   font-size: 3rem;
   font-weight: bold;
 }
 
 .last-attempts .attempt span {
-    color: #373534;
+    color: #f6f5f4;
     font-weight: bold;
 }
 
@@ -210,5 +210,78 @@ body:after {
     font-size: 2rem;
     padding: 10px 70px;
     text-align: center;
-    color: #9E9E9E;
+    color: white;
+}
+
+/*Scorecard styles*/
+.scorecard .card-panel {
+  padding: 0;
+  margin-top: 70px;
+}
+
+.scorecard .card-panel > .row {
+  margin: 0;
+}
+
+.scorecard .score-side {
+  text-align: center;
+  background-color: #242424;
+  padding: 50px;
+  border-radius: 2px 0 0 2px;
+  color: #858484;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.score-side .trophy-image {
+  height: 90px;
+  background-image: url("../images/cup.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 50px;
+}
+
+.score-side .player-name .name {
+    color: white;
+    font-size: 2rem;
+    text-transform: capitalize;
+    margin-bottom: 30px;
+}
+
+.score-side .score-field .score {
+    color: #8BC34A;
+    font-size: 5rem;
+    margin-bottom: 50px;
+}
+
+.score-side .top-score {
+    color: white;
+    font-size: 0.8rem;
+}
+
+.stats-side .label {
+    margin-bottom: 30px;
+    text-align: center;
+    margin-top: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.stats-side td {
+    padding: 14px 30px;
+    color: #525252;
+}
+
+.stats-side td.value {
+  font-weight: bold;
+}
+
+.stats-side table.striped>tbody>tr:nth-child(odd) {
+  background-color: #f7f7f7;
+}
+
+.stats-side .action-buttons {
+  text-align: center;
 }
