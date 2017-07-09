@@ -58,7 +58,7 @@ var GameService = {
   },
   getQuestions: function(callBack) {
 
-    var query = "Select id, Question_1__c, a__c, b__c, c__c, d__c, correct_answer__c from Question__c";
+    var query = "Select id, Question_1__c, a__c, b__c, c__c, d__c, hint__c, correct_answer__c from Question__c";
 
     FS.Query(query, function(err, data) {
       if (err) {
