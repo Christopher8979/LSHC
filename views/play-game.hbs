@@ -56,30 +56,32 @@
         <h5>{{this.Question_1__c}}</h5>
 
         <div class="options">
-          <p>
-            <input name="{{this.Id}}" type="radio" value="{{this.a__c}}" id="{{this.Id}}-0" />
-            <label for="{{this.Id}}-0">{{this.a__c}}</label>
-          </p>
-          <p>
-            <input name="{{this.Id}}" type="radio" value="{{this.b__c}}" id="{{this.Id}}-1" />
-            <label for="{{this.Id}}-1">{{this.b__c}}</label>
-          </p>
-          <p>
-            <input name="{{this.Id}}" type="radio" value="{{this.c__c}}" id="{{this.Id}}-2" />
-            <label for="{{this.Id}}-2">{{this.c__c}}</label>
-          </p>
-          <p>
-            <input name="{{this.Id}}" type="radio" value="{{this.d__c}}" id="{{this.Id}}-3" />
-            <label for="{{this.Id}}-3">{{this.d__c}}</label>
-          </p>
-          {{#each this.options}}
+          {{#if this.a__c}}
             <p>
-              <input name="{{../id}}" type="radio" value="{{this.value}}" id="{{../id}}-{{@index}}" />
-              <label for="{{../id}}-{{@index}}">{{this.label}}</label>
+              <input name="{{this.Id}}" type="radio" value="{{this.a__c}}" id="{{this.Id}}-0" />
+              <label for="{{this.Id}}-0">{{this.a__c}}</label>
             </p>
-          {{/each}}
+          {{/if}}
+          {{#if this.b__c}}
+            <p>
+              <input name="{{this.Id}}" type="radio" value="{{this.b__c}}" id="{{this.Id}}-1" />
+              <label for="{{this.Id}}-1">{{this.b__c}}</label>
+            </p>
+          {{/if}}
+          {{#if this.c__c}}
+            <p>
+              <input name="{{this.Id}}" type="radio" value="{{this.c__c}}" id="{{this.Id}}-2" />
+              <label for="{{this.Id}}-2">{{this.c__c}}</label>
+            </p>
+          {{/if}}
+          {{#if this.d__c}}
+            <p>
+              <input name="{{this.Id}}" type="radio" value="{{this.d__c}}" id="{{this.Id}}-3" />
+              <label for="{{this.Id}}-3">{{this.d__c}}</label>
+            </p>
+          {{/if}}
         </div>
-        <span class="hint hide">{{this.hint}}</span>
+        <span class="hint hide">{{this.hint__c}}</span>
       </div>
     {{/each}}
   </div>
