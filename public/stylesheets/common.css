@@ -44,6 +44,32 @@ body:after {
   color: #86BC25;
 }
 
+
+/*Top Scorer Styles*/
+.top-scorer-tab .card-panel > .row {
+  margin-bottom: 0;
+}
+
+.top-scorer-tab img {
+  width: 80%;
+}
+
+.top-scorer-tab .label {
+    font-weight: bold;
+    color: #9E9E9E;
+}
+
+.top-scorer-tab .top-scorer {
+  color: white;
+  font-size: 40px;
+}
+
+.top-scorer-tab .top-score {
+    font-size: 30px;
+    color: #8BC34A;
+}
+
+
 .page-footer {
   padding-top: 1px;
 }
