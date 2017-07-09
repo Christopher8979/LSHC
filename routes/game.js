@@ -55,8 +55,15 @@ router.get('/rules/:id', function(req, res) {
     }
     console.info('Attempts data: \n');
     console.info(data);
+
+    for (var i = 0; i < NO_OF_ATTEMPTS; i++) {
+      if (!data[i]) {
+        data[i] = {};
+      }
+    }
+
     res.render('rules', {
-      attempsts: data,
+      attempts: data,
       playerID: req.params.id
     });
   });

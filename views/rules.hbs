@@ -30,27 +30,26 @@
       <div class="row">
 
         {{!--Label--}}
-        <div class="col s4 label">Last 2 Attempts</div>
+        <div class="col s4 label">Your Last 2 Attempts</div>
 
-        {{!--Attempt 1--}}
-        <div class="col s4 attempt">
-          <div class="score">100</div>
-          <div class="t-points">Token Points: <span>1000</span></div>
-          <div class="time">Time: <span>10:00</span></div>
-        </div>
-        
-        {{!--Attempt 2--}}
-        <div class="col s4 attempt">
-          {{!--Use below HTML for no attempt--}}
-          <div class="score white-text">-</div>
-          
-          {{!--Use below html for attempt--}}
-          {{!--<div class="score">120</div>
-          <div class="t-points">Token Points: <span>1200</span></div>
-          <div class="time">Time: <span>12:00</span></div>--}}
-        </div>
+        {{#each attempts}}
 
-        
+          {{#if this.Final_Score__c}}
+            <div class="col s4 attempt">
+              <div class="score">{{this.Final_Score__c}}</div>
+              <div class="t-points">
+                Questions Answered Correct: <span>{{this.Correct_Answers__c}}</span> Questions Attempeted: <span>{{this.Total_Questions_Attempted__c}}</span>
+              </div>
+              <div class="t-points">Token Points: <span>{{this.Token_Points__c}}</span></div>
+              <div class="time">Time: <span>{{this.Time_Taken__c}} sec</span></div>
+            </div>
+          {{else}}
+            <div class="col s4 attempt">
+              <div class="score white-text">-</div>
+            </div>
+          {{/if}}
+        {{/each}}
+
       </div>
     </div>
   </div>

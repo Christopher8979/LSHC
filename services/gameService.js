@@ -120,8 +120,8 @@ var GameService = {
     });
   },
   // get last attempts of a user
-  lastAttempts: function(userMail, offset, callBack) {
-    var query = "SELECT Correct_Answers__c, Final_Score__c, Id, Name, Negative_Tokens_Caught__c, Player__c, Positive_Tokens_Caught__c, Time_Taken__c, Token_Points__c, Total_Questions_Attempted__c, Total_Tokens_Caught__c FROM Player_Attempt__c where player__c in (Select id from Players__c where Email__c = \'" + userMail + "\' ) ORDER BY CreatedDate DESC limit " + offset;
+  lastAttempts: function(id, offset, callBack) {
+    var query = "SELECT Correct_Answers__c, Final_Score__c, Id, Name, Negative_Tokens_Caught__c, Player__c, Positive_Tokens_Caught__c, Time_Taken__c, Token_Points__c, Total_Questions_Attempted__c, Total_Tokens_Caught__c FROM Player_Attempt__c where player__c in (Select id from Players__c where id = \'" + id + "\' ) ORDER BY CreatedDate DESC limit " + offset;
 
     FS.Query(query, function(err, data) {
       if (err) {
