@@ -25,11 +25,13 @@ $(document).on('initialize-entry', function() {
         method: 'POST',
         cache: false,
         success: function(data) {
-          localStorage.setItem('user-id', data.id);
           location.href = "/rules/" + data.id;
         },
         error: function(err) {
-          console.log(err);
+          Materialize.toast('<span>Unable to log in. Please try again later</span>', 5000, '', function() {
+            location.href = '/';
+            console.log(err);
+          });
         }
       });
     } else {

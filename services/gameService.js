@@ -109,9 +109,15 @@ var GameService = {
   },
   // gets current winner from SFDC.
   getWinner: function(callBack) {
-    var query = "";
+    var query = "Select Id, Player__r.Name,Final_Score__c, From Player_Attempt__c Order BY Final_Score__c, Question_Answer_Ratio__c, Time_Ratio__c, Token_Points__c DESC";
 
-    return callBack(null, {});
+    FS.Query(query, function(err, data) {
+      if (err) {
+        return callBack(err, null);
+      }
+
+      return callBack(null, data.records);
+    });
   },
   // get last attempts of a user
   lastAttempts: function(userMail, offset, callBack) {

@@ -100,7 +100,7 @@ router.get('/game-over/:id', function(req, res) {
   GameService.lastAttempts(req.params.id, NO_OF_ATTEMPTS, function(err, data) {
     var lastAttempts = {};
 
-    GameService.getWinner(function(err, data) {
+    GameService.getWinner(function(err, winnerDetails) {
       var topScorrer = {};
 
       res.render('game-over', {
