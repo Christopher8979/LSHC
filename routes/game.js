@@ -4,8 +4,11 @@ var GameService = require('../services/gameService.js');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  GameService.getWinner(function(err, data) {
-    var topScorrer = {};
+  GameService.getWinner(function(err, winnerInfo) {
+    var topScorrer = {
+      name: winnerInfo.Player__r.Name,
+      score: winnerInfo.Final_Score__c
+    };
 
     res.render('entry', {
       title: 'It\'s LSHC Game Time',
