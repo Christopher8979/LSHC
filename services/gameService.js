@@ -30,6 +30,19 @@ var randomizeQuestions = function(questions, callBack) {
 var GameService = {
 
   // upserts player
+  getPlayerDetails: function(id, callBack) {
+    var query = "Select id, email__c, name, service_line__c from Players__c where id = \'" + id + "\'";
+
+
+    FS.Query(query, function(err, data) {
+      if (err) {
+        console.info('error while getting questions from SFDC');
+        return callBack(err, null);
+      }
+
+      return callBack(null, data.records);
+    });
+  },
   createPlayer: function(data, callBack) {
 
     var query = "Select id from Players__c where Email__c = \'" + data.Email__c + "\'";

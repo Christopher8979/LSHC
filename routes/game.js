@@ -107,17 +107,21 @@ router.get('/game-over/:id', function(req, res) {
   }
 
   var NO_OF_ATTEMPTS = 1;
-  GameService.lastAttempts(req.params.id, NO_OF_ATTEMPTS, function(err, data) {
-    var lastAttempts = {};
-    console.log(data);
+  GameService.lastAttempts(req.params.id, NO_OF_ATTEMPTS, function(err, attemptData) {
 
-    GameService.getWinner(function(err, winnerDetails) {
-      var topScorrer = {};
-      console.log(winnerDetails);
+    GameService.getPlayerDetails(attemptData[0].Player__c, function(err, playerInfo) {
 
-      res.render('game-over', {
-        lastAttempts: lastAttempts,
-        topScorrer: topScorrer
+      GameService.getWinner(function(err, winnerInfo) {
+        var topScorrer = {
+          name: winnerInfo.Player__r.Name,
+          score: winnerInfo.Final_Score__c
+        };
+
+        res.render('game-over', {
+          lastAttempts: attemptData[0],
+          topScorrer: topScorrer,
+          player: playerInfo[0]
+        });
       });
     });
 
