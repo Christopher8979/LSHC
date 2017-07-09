@@ -146,7 +146,7 @@ $(document).on('game-over', function(event, how) {
     Total_Questions_Attempted__c: attemptedQuestions,
     Negative_Tokens_Caught__c: posTokenCount,
     Positive_Tokens_Caught__c: negTokenCount,
-    Time_Taken__c: createjs.Ticker.getTime(true),
+    Time_Taken__c: parseInt((createjs.Ticker.getTime(true) / 1000) toFixed(0), 10),
     Token_Points__c: (posTokenCount - negTokenCount) * 10
   };
 
