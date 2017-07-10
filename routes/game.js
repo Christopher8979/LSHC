@@ -10,11 +10,33 @@ router.get('/', function(req, res) {
       score: winnerInfo.Final_Score__c
     };
 
-    res.render('entry', {
-      title: 'Health Quest',
-      description: 'Health Trek, Rescue on the way',
-      topScorrer: topScorrer
+    GameService.getMetadata(function(err, metadata) {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      var fields = metadata.fields;
+      var serviceLineOptions = [];
+      fields.forEach(function(value) {
+        if (value.name === 'Service_Line__c') {
+          value.picklistValues.forEach(function(options) {
+            serviceLineOptions.push({
+              label: options.label,
+              value: options.value
+            });
+          });
+        }
+      });
+
+      console.log(JSON.stringify(serviceLineOptions));
+      res.render('entry', {
+        title: 'Health Quest',
+        description: 'Health Trek, Rescue on the way',
+        topScorrer: topScorrer,
+        serviceLineOptions: serviceLineOptions
+      });
     });
+
   });
 });
 
