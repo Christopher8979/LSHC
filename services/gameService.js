@@ -29,6 +29,16 @@ var randomizeQuestions = function(questions, callBack) {
 
 var GameService = {
 
+  getMetadata: function(callBack) {
+    FS.Describe("Players__c", function(err, metadata) {
+      if (err) {
+        console.log(err);
+        return callBack(err, null);
+      }
+
+      callBack(null, metadata);
+    });
+  },
   // upserts player
   getPlayerDetails: function(id, callBack) {
     var query = "Select id, email__c, name, service_line__c from Players__c where id = \'" + id + "\'";
