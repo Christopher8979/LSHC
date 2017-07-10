@@ -1,23 +1,27 @@
 $(document).on('initialize-entry', function() {
 
+  $('select').material_select();
+
   $('#enterGame').on('click', function(e) {
-    var form = $('#credForm');
-    var noOfFiels = $(form).find('input').length;
-    var fieldsFilled = 0;
+    
+    var $form = $('#credForm');
+    var validForm = validateEntryForm($form);
 
-    $(form).find('input').each(function(index, elem) {
-      if (!$(elem).hasClass('invalid') && $(elem).val() && $(elem).val() !== '') {
-        fieldsFilled++;
-      }
-    });
+    if (validForm) {
 
-    if (fieldsFilled === noOfFiels) {
-      $(form).removeClass('fill-all');
+      // clear errors and setup the game
+      $form.removeClass('fill-all');
       localStorage.setItem('player', $('#name').val());
+
+      // Populate data to be verified in salesforce
       var data = {};
-      $('#credForm input').each(function(index, val) {
-        data[$(val).data('params')] = $(val).val();
+
+      // For inputs
+      $('#credForm input.validate, #credForm select').each(function(index, ele) {
+        data[$(ele).data('params')] = $(ele).val();
       });
+
+      console.log(data);
 
       $.ajax({
         url: '/checkUser',
@@ -35,10 +39,11 @@ $(document).on('initialize-entry', function() {
         }
       });
     } else {
-      $(form).addClass('fill-all');
+      $form.addClass('fill-all');
     }
   });
 
+  // Realtime validation email field
   $('#credForm input[type="email"]').bind('blur', function(e) {
     var value = $(this).val().trim();
     var isInvalid = true;
@@ -79,3 +84,32 @@ $(document).on('initialize-entry', function() {
 
   });
 });
+
+
+function validateEntryForm($form) {
+  
+  // var noOfFiels = $(form).find('.input-field').length;
+  
+  // Initialize Valid to false
+  var valid = true;
+
+  // Check if inputs are empty or invalid
+  $form.find("input").each(function () {
+    var $input = $(this);
+
+    if ($input.hasClass('invalid') || $input.val() == '') {
+      valid = false;
+    }
+  })
+
+  // Check if drop boxes are null
+  $form.find("select").each(function () {
+    var $select = $(this);
+
+    if ($select.val() == null) {
+      valid = false;
+    }
+  })
+
+  return valid
+}

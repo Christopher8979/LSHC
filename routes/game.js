@@ -28,7 +28,6 @@ router.get('/', function(req, res) {
         }
       });
 
-      console.log(JSON.stringify(serviceLineOptions));
       res.render('entry', {
         title: 'Health Quest',
         description: 'Health Trek, Rescue on the way',
