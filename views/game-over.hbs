@@ -4,7 +4,7 @@
 
       {{!--Score--}}
       <div class="col s5 score-side">
-        <div class="trophy-image"></div>
+        <div class="trophy-image not-complete"></div>
         <div class="player-name">
           Name
           <div class="name">{{player.Name}}</div>
@@ -13,12 +13,25 @@
           Score
           <div class="score">{{lastAttempts.Final_Score__c}}</div>
         </div>
-        <div class="top-score">Current Top Scorer <span class="yellow-text accent-4">{{topScorrer.name}} </span> with score of <span class="yellow-text accent-4">{{topScorrer.score}} </span></div>
+        
+        {{!--Top scorer--}}
+        <div class="top-scorer card-panel grey darken-3">
+          <div class="row valign-wrapper">
+            <div class="col s3 crown-image">
+              <img src="../images/crown.png" alt="">
+            </div>
+            <div class="col s9">
+              <div class="label">Top Scorer</div>
+              <div class="name">{{topScorrer.name}}</div>
+              <div class="score">{{topScorrer.score}}</div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {{!--Stats--}}
       <div class="col s7 stats-side no-padding">
-        <h5 class="label">Statistics</h5>
+        <h5 class="label">Scorecard</h5>
         <table class="striped">
           <tr>
             <td>Service Line</td>
@@ -30,7 +43,7 @@
           </tr>
           <tr>
             <td>Total correct</td>
-            <td class="value">{{lastAttempts.Correct_Answers__c}}</td>
+            <td class="value" id="correct-answers-value">{{lastAttempts.Correct_Answers__c}}</td>
           </tr>
           <tr>
             <td>Total tokens caught +ve</td>

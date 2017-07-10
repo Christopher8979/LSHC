@@ -184,6 +184,10 @@ body:after {
 
 
 /*Last attempts style*/
+.last-attempts {
+  margin-top: 60px;
+}
+
 .last-attempts > .row {
   text-align: center;
   margin-bottom: 0;
@@ -240,6 +244,36 @@ body:after {
   background-repeat: no-repeat;
   background-position: center;
   margin-bottom: 50px;
+}
+
+.score-side .trophy-image.not-complete {
+  background-image: url("../images/wreath.png");
+}
+
+.score-side .top-scorer {
+    font-size: 10px;
+    padding: 10px;
+    margin-top: 30px;
+    text-align: left;
+}
+
+.score-side .top-scorer img {
+  width: 100%;
+}
+
+.score-side .top-scorer .details {
+    text-align: left;
+    font-size: 10px;
+}
+
+.score-side .top-scorer .name {
+    color: white;
+    font-size: 15px;
+}
+
+.score-side .top-scorer .score {
+    color: #8BC34A;
+    font-size: 15px;
 }
 
 .score-side .player-name .name {
