@@ -32,25 +32,40 @@
     {{!--Form--}}
     <div class="col s6">
       <div class="card">
-        <div class="card-content">
+        <div class="card-content clearfix">
           <form class="col s12" id="credForm">
+
+            {{!--Name--}}
             <div class="input-field col s12">
               <input autocomplete="off" id="name" type="text" data-params="Name" class="validate" required>
               <label for="name" data-error="Name should contain only alphabets">Name</label>
             </div>
+
+            {{!--Email--}}
             <div class="input-field col s12">
               <input autocomplete="off" id="email" type="email" class="validate" data-params="Email__c" required>
               <label for="email" data-error="Email has to be of the format xxx@xxx.xxx">Email</label>
             </div>
+
+            {{!--Service Line--}}
             <div class="input-field col s12">
-              <input autocomplete="off" id="serviceLine" type="text" class="validate" data-params="Service_Line__c" required>
+              <select id="serviceLine" class="validate" data-params="Service_Line__c" required>
+                <option value="" disabled selected>Choose your Servic Line</option>
+                {{#each serviceLineOptions}}
+                <option value="{{value}}">{{label}}</option>
+                {{/each}}
+              </select>
               <label for="serviceLine" data-error="Service Line should contain only alphabets">Service Line</label>
             </div>
+
+            {{!--Submit--}}
             <button type="button" id="enterGame" class="btn waves-effect waves-light right col s6 light-green darken-1">Start Game</button>
             <p class="red-text lighten-2 err-msg left col s6">Please fill all the fields to continue</p>
+
+            {{!--Required fields label--}}
+            <div class="req-label">* All fields are mandatory</div>
+
           </form>
-          <br>
-          <h6>* All fields are mandatory</h6>
         </div>
       </div>
 
