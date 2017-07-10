@@ -11,8 +11,8 @@ router.get('/', function(req, res) {
     };
 
     res.render('entry', {
-      title: 'It\'s LSHC Game Time',
-      description: 'Play and test your LSHC knowledge the fun way!',
+      title: 'Health Trek',
+      description: 'Health Trek, Rescue on the way',
       topScorrer: topScorrer
     });
   });

@@ -1,29 +1,5 @@
 <div class="container">
 
-  {{!--Rules--}}
-  <div class="extra-text white-text rules-container row">
-    <h4 class="center">Rules</h4>
-    <ul>
-      <li>Use <i class="material-icons amber-text icon-inline">arrow_back</i> and <i class="material-icons amber-text icon-inline">arrow_forward</i> arrows to move ambulance</li>
-      <li>Every time ambulance hits a ditch, a question related to LSHC pops up</li>
-      <li>Every question has a hint and you will have to earn them</li>
-      <li>Catch any <b class="yellow-text">3</b> positive tokens(Capsule, Stethoscope, Injection, Band-aid) to see hint for upcoming question</li>
-      <li>Every positive token will <b class="green-text">add 10</b> points to your token points</li>
-      <li>Every negative token will <b class="red-text">reduce 10</b> points of your token points</li>
-      <li>Answer <b class="green-text">5</b> questions correctly to end the game</li>
-      <li>Number of correct answers will be indicated by glowing stars</li>
-      <li>The time duration for this game is <b class="red-text">2</b> minutes</li>
-    </ul>
-
-    <div class="row center">
-      <p class="ackwldge">
-        <input type="checkbox" id="rulesRead" />
-        <label for="rulesRead">I have read the above mentioned rules</label>
-      </p>
-      <a href="/play-game/{{playerID}}" class="btn waves-effect waves-light light-green darken-1" disabled id="play">Play</a>
-    </div>
-  </div>
-
   {{!--Last 2 Attempts--}}
   <div class="row">
     <div class="card-panel last-attempts  grey darken-4">
@@ -53,4 +29,29 @@
       </div>
     </div>
   </div>
+
+  {{!--Rules--}}
+  <div class="extra-text white-text rules-container row">
+    <h4 class="center">Rules</h4>
+    <ul>
+      <li>Use <i class="material-icons amber-text icon-inline">arrow_back</i> and <i class="material-icons amber-text icon-inline">arrow_forward</i> arrows to move ambulance</li>
+      <li>Every time ambulance hits a ditch, a question related to LSHC pops up</li>
+      <li>Every question has a hint and you will have to earn them</li>
+      <li>Catch any <b class="yellow-text">3</b> positive tokens(Capsule, Stethoscope, Injection, Band-aid) to see hint for upcoming question</li>
+      <li>Every positive token will <b class="green-text">add 10</b> points to your token points</li>
+      <li>Every negative token will <b class="red-text">reduce 10</b> points of your token points</li>
+      <li>Answer <b class="green-text">5</b> questions correctly to end the game</li>
+      <li>Number of correct answers will be indicated by glowing stars</li>
+      <li>The time duration for this game is <b class="red-text">2</b> minutes</li>
+    </ul>
+
+    <div class="row center">
+      <p class="ackwldge">
+        <input type="checkbox" id="rulesRead" />
+        <label for="rulesRead">I have read the above mentioned rules</label>
+      </p>
+      <a href="/play-game/{{playerID}}" class="btn waves-effect waves-light light-green darken-1" disabled id="play">Play</a>
+    </div>
+  </div>
+
 </div>

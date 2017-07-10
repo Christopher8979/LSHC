@@ -184,6 +184,10 @@ body:after {
 
 
 /*Last attempts style*/
+.last-attempts {
+  margin-top: 60px;
+}
+
 .last-attempts > .row {
   text-align: center;
   margin-bottom: 0;
