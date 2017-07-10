@@ -5,11 +5,11 @@
     <h4 class="center">Rules</h4>
     <ul>
       <li>Use <i class="material-icons amber-text icon-inline">arrow_back</i> and <i class="material-icons amber-text icon-inline">arrow_forward</i> arrows to move ambulance</li>
-      <li>Every time ambulance hits a ditch, a question related to Life science pops up</li>
+      <li>Every time ambulance hits a ditch, a question related to LSHC pops up</li>
       <li>Every question has a hint and you will have to earn them</li>
       <li>Catch any <b class="yellow-text">3</b> positive tokens(Capsule, Stethoscope, Injection, Band-aid) to see hint for upcoming question</li>
-      <li>Every positive token will <b class="green-text">add 10</b> points to your score</li>
-      <li>Every negative token will <b class="red-text">reduce 10</b> points of your score</li>
+      <li>Every positive token will <b class="green-text">add 10</b> points to your token points</li>
+      <li>Every negative token will <b class="red-text">reduce 10</b> points of your token points</li>
       <li>Answer <b class="green-text">5</b> questions correctly to end the game</li>
       <li>Number of correct answers will be indicated by glowing stars</li>
       <li>The time duration for this game is <b class="red-text">2</b> minutes</li>
@@ -30,27 +30,26 @@
       <div class="row">
 
         {{!--Label--}}
-        <div class="col s4 label">Last 2 Attempts</div>
+        <div class="col s4 label">Your Last 2 Attempts</div>
 
-        {{!--Attempt 1--}}
-        <div class="col s4 attempt">
-          <div class="score">100</div>
-          <div class="t-points">Token Points: <span>1000</span></div>
-          <div class="time">Time: <span>10:00</span></div>
-        </div>
-        
-        {{!--Attempt 2--}}
-        <div class="col s4 attempt">
-          {{!--Use below HTML for no attempt--}}
-          <div class="score white-text">-</div>
-          
-          {{!--Use below html for attempt--}}
-          {{!--<div class="score">120</div>
-          <div class="t-points">Token Points: <span>1200</span></div>
-          <div class="time">Time: <span>12:00</span></div>--}}
-        </div>
+        {{#each attempts}}
 
-        
+          {{#if this.Final_Score__c}}
+            <div class="col s4 attempt">
+              <div class="score">{{this.Final_Score__c}}</div>
+              <div class="t-points">
+                Questions Answered Correct: <span>{{this.Correct_Answers__c}}</span> Questions Attempeted: <span>{{this.Total_Questions_Attempted__c}}</span>
+              </div>
+              <div class="t-points">Token Points: <span>{{this.Token_Points__c}}</span></div>
+              <div class="time">Time: <span>{{this.Time_Taken__c}} sec</span></div>
+            </div>
+          {{else}}
+            <div class="col s4 attempt">
+              <div class="score white-text">-</div>
+            </div>
+          {{/if}}
+        {{/each}}
+
       </div>
     </div>
   </div>
