@@ -11,7 +11,7 @@ router.get('/', function(req, res) {
     };
 
     res.render('entry', {
-      title: 'Health Trek',
+      title: 'Health Quest',
       description: 'Health Trek, Rescue on the way',
       topScorrer: topScorrer
     });

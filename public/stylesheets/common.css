@@ -44,6 +44,10 @@ body:after {
   color: #86BC25;
 }
 
+.banner-image {
+    width: 100%;
+    margin-top: 50px;
+}
 
 /*Top Scorer Styles*/
 .top-scorer-tab .card-panel > .row {
