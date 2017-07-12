@@ -42,7 +42,8 @@ router.get('/', function(req, res) {
       });
 
       res.render('entry', {
-        description: 'Health Trek, Rescue on the way',
+        description: 'Health Trek',
+        caption: 'Rescue on the way',
         topScorrer: topScorrer,
         serviceLineOptions: serviceLineOptions
       });

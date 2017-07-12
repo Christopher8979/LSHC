@@ -30,13 +30,13 @@ body:after {
 }
 
 #brand {
-    top: 12px;
-    position: fixed;
-    color: white;
-    font-weight: bold;
-    font-size: 25px;
-    font-family: 'Open Sans', sans-serif;
-    left: 20px;
+  top: 12px;
+  position: fixed;
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+  font-family: 'Open Sans', sans-serif;
+  left: 20px;
 }
 
 #brand:after {
@@ -45,12 +45,14 @@ body:after {
 }
 
 .banner-image {
-    width: 100%;
-    margin-top: 50px;
+  width: 100%;
+  margin-top: 50px;
 }
 
+
 /*Top Scorer Styles*/
-.top-scorer-tab .card-panel > .row {
+
+.top-scorer-tab .card-panel>.row {
   margin-bottom: 0;
 }
 
@@ -59,8 +61,8 @@ body:after {
 }
 
 .top-scorer-tab .label {
-    font-weight: bold;
-    color: #9E9E9E;
+  font-weight: bold;
+  color: #9E9E9E;
 }
 
 .top-scorer-tab .top-scorer {
@@ -69,16 +71,17 @@ body:after {
 }
 
 .top-scorer-tab .top-score {
-    font-size: 30px;
-    color: #8BC34A;
+  font-size: 30px;
+  color: #8BC34A;
 }
-
 
 .page-footer {
   padding-top: 1px;
 }
 
+
 /*Credentials Form*/
+
 #credForm .err-msg {
   display: none;
 }
@@ -117,6 +120,15 @@ body:after {
   font-size: 25px;
   padding: 30px;
   background-color: rgba(255, 255, 255, 0.08);
+  color: #8BC34A;
+}
+
+.description {
+  font-size: 40px;
+}
+
+.caption {
+  font-size: 20px
 }
 
 .go-wrapper {
@@ -154,7 +166,9 @@ body:after {
   margin-top: 30px;
 }
 
+
 /*Rules Container Styles*/
+
 .rules-container {
   margin-top: 50px;
   font-size: 16px;
@@ -170,13 +184,13 @@ body:after {
 }
 
 .rules-container li:before {
-    content: " ";
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background: #8BC34A;
-    margin-right: 10px;
-    border-radius: 5px;
+  content: " ";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #8BC34A;
+  margin-right: 10px;
+  border-radius: 5px;
 }
 
 .ackwldge {
@@ -198,19 +212,20 @@ body:after {
 
 
 /*Last attempts style*/
+
 .last-attempts {
   margin-top: 60px;
 }
 
-.last-attempts > .row {
+.last-attempts>.row {
   text-align: center;
   margin-bottom: 0;
 }
 
 .last-attempts .attempt.col {
-    border-left: 1px solid #FFEB3B;
-    padding-left: 20px;
-    color: #c9c9c9;
+  border-left: 1px solid #FFEB3B;
+  padding-left: 20px;
+  color: #c9c9c9;
 }
 
 .last-attempts .score {
@@ -220,24 +235,26 @@ body:after {
 }
 
 .last-attempts .attempt span {
-    color: #f6f5f4;
-    font-weight: bold;
+  color: #f6f5f4;
+  font-weight: bold;
 }
 
 .last-attempts .label {
-    font-size: 2rem;
-    padding: 10px 70px;
-    text-align: center;
-    color: white;
+  font-size: 2rem;
+  padding: 10px 70px;
+  text-align: center;
+  color: white;
 }
 
+
 /*Scorecard styles*/
+
 .scorecard .card-panel {
   padding: 0;
   margin-top: 70px;
 }
 
-.scorecard .card-panel > .row {
+.scorecard .card-panel>.row {
   margin: 0;
 }
 
@@ -265,10 +282,10 @@ body:after {
 }
 
 .score-side .top-scorer {
-    font-size: 10px;
-    padding: 10px;
-    margin-top: 30px;
-    text-align: left;
+  font-size: 10px;
+  padding: 10px;
+  margin-top: 30px;
+  text-align: left;
 }
 
 .score-side .top-scorer img {
@@ -276,50 +293,50 @@ body:after {
 }
 
 .score-side .top-scorer .details {
-    text-align: left;
-    font-size: 10px;
+  text-align: left;
+  font-size: 10px;
 }
 
 .score-side .top-scorer .name {
-    color: white;
-    font-size: 15px;
+  color: white;
+  font-size: 15px;
 }
 
 .score-side .top-scorer .score {
-    color: #8BC34A;
-    font-size: 15px;
+  color: #8BC34A;
+  font-size: 15px;
 }
 
 .score-side .player-name .name {
-    color: white;
-    font-size: 2rem;
-    text-transform: capitalize;
-    margin-bottom: 30px;
+  color: white;
+  font-size: 2rem;
+  text-transform: capitalize;
+  margin-bottom: 30px;
 }
 
 .score-side .score-field .score {
-    color: #8BC34A;
-    font-size: 5rem;
-    margin-bottom: 50px;
+  color: #8BC34A;
+  font-size: 5rem;
+  margin-bottom: 50px;
 }
 
 .score-side .top-score {
-    color: white;
-    font-size: 0.8rem;
+  color: white;
+  font-size: 0.8rem;
 }
 
 .stats-side .label {
-    margin-bottom: 30px;
-    text-align: center;
-    margin-top: 30px;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 1.2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  margin-top: 30px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .stats-side td {
-    padding: 14px 30px;
-    color: #525252;
+  padding: 14px 30px;
+  color: #525252;
 }
 
 .stats-side td.value {
