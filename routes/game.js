@@ -5,16 +5,29 @@ var GameService = require('../services/gameService.js');
 /* GET home page. */
 router.get('/', function(req, res) {
   GameService.getWinner(function(err, winnerInfo) {
+    if (err) {
+      console.log(err);
+      return res.render('500', 'Something went wrong in the backend');
+    }
+
     var topScorrer = {
-      name: winnerInfo.Player__r.Name,
-      score: winnerInfo.Final_Score__c
+      name: "-",
+      score: "-"
     };
+
+    if (winnerInfo) {
+      topScorrer = {
+        name: winnerInfo.Player__r.Name,
+        score: winnerInfo.Final_Score__c
+      };
+    }
 
     GameService.getMetadata(function(err, metadata) {
       if (err) {
         console.log(err);
-        return;
+        return res.render('500', 'Something went wrong in the backend');
       }
+
       var fields = metadata.fields;
       var serviceLineOptions = [];
       fields.forEach(function(value) {
@@ -29,7 +42,6 @@ router.get('/', function(req, res) {
       });
 
       res.render('entry', {
-        title: 'Health Quest',
         description: 'Health Trek, Rescue on the way',
         topScorrer: topScorrer,
         serviceLineOptions: serviceLineOptions
@@ -50,7 +62,7 @@ router.post('/checkUser', function(req, res) {
   GameService.createPlayer(req.body, function(err, data) {
 
     if (err) {
-      return res.status(400).jsonp({
+      return res.status(500).jsonp({
         status: 'error while creating user record.',
         error: err
       });
@@ -65,7 +77,7 @@ router.post('/checkUser', function(req, res) {
 
 router.get('/rules/:id', function(req, res) {
   if (!(req.params && req.params.id)) {
-    return res.render('500', 'No params in rules page');
+    return res.render('400', 'No params in rules page');
   }
 
   var NO_OF_ATTEMPTS = 2;
@@ -92,7 +104,7 @@ router.get('/rules/:id', function(req, res) {
 
 router.get('/play-game/:id', function(req, res) {
   if (!(req.params && req.params.id)) {
-    return res.render('500', 'No params in rules page');
+    return res.render('400', 'No params in rules page');
   }
 
   GameService.getQuestions(function(questions) {
@@ -124,7 +136,7 @@ router.post('/check-answer/:id', function(req, res) {
 router.get('/game-over/:id', function(req, res) {
 
   if (!(req.params && req.params.id)) {
-    return res.render('500', 'No params in rules page');
+    return res.render('400', 'No params in rules page');
   }
 
   var NO_OF_ATTEMPTS = 1;
@@ -160,7 +172,7 @@ router.post('/saveAttempt', function(req, res) {
     if (err) {
       console.info('Error wihile saving this attempt');
       console.log(err);
-      return res.status(400).jsonp({
+      return res.status(500).jsonp({
         'status': 'something went wrong',
         'err': err
       });

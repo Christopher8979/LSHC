@@ -144,8 +144,8 @@ $(document).on('game-over', function(event, how) {
     Player__c: location.pathname.split('/').pop(),
     Correct_Answers__c: currectAnswers,
     Total_Questions_Attempted__c: attemptedQuestions,
-    Negative_Tokens_Caught__c: posTokenCount,
-    Positive_Tokens_Caught__c: negTokenCount,
+    Negative_Tokens_Caught__c: negTokenCount,
+    Positive_Tokens_Caught__c: posTokenCount,
     Time_Taken__c: parseInt((createjs.Ticker.getTime(true) / 1000).toFixed(0), 10),
     Token_Points__c: (posTokenCount - negTokenCount) * 10
   };
