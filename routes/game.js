@@ -18,6 +18,7 @@ router.get('/', function(req, res) {
     if (winnerInfo) {
       topScorrer = {
         name: winnerInfo.Player__r.Name,
+        email: winnerInfo.Player__r.Email__c,
         score: winnerInfo.Final_Score__c
       };
     }
@@ -148,6 +149,7 @@ router.get('/game-over/:id', function(req, res) {
       GameService.getWinner(function(err, winnerInfo) {
         var topScorrer = {
           name: winnerInfo.Player__r.Name,
+          email: winnerInfo.Player__r.Email__c,
           score: winnerInfo.Final_Score__c
         };
 

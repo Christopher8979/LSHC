@@ -127,6 +127,11 @@ body:after {
   font-size: 40px;
 }
 
+.top-scorer-tab .email {
+  font-size: 15px;
+  color: #9E9E9E;
+}
+
 .caption {
   font-size: 20px
 }
@@ -349,4 +354,8 @@ body:after {
 
 .stats-side .action-buttons {
   text-align: center;
+}
+
+span.small-font {
+  font-size: 12px;
 }

@@ -23,6 +23,7 @@
             <div class="col s9">
               <div class="label">Top Scorer</div>
               <div class="top-scorer">{{topScorrer.name}}</div>
+              <div class="top-scorer email">{{topScorrer.email}}</div>
               <div class="top-score">{{topScorrer.score}}</div>
             </div>
           </div>
@@ -39,7 +40,7 @@
             {{!--Name--}}
             <div class="input-field col s12">
               <input autocomplete="off" id="name" type="text" data-params="Name" class="validate" required>
-              <label for="name" data-error="Name should contain only alphabets">Name</label>
+              <label for="name" data-error="Name should contain only alphabets">Full Name</label>
             </div>
 
             {{!--Email--}}
