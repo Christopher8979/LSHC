@@ -67,7 +67,12 @@ body:after {
 
 .top-scorer-tab .top-scorer {
   color: white;
-  font-size: 40px;
+  font-size: 23px;
+}
+
+.top-scorer-tab .email {
+  font-size: 13px;
+  color: #9E9E9E;
 }
 
 .top-scorer-tab .top-score {
@@ -125,11 +130,6 @@ body:after {
 
 .description {
   font-size: 40px;
-}
-
-.top-scorer-tab .email {
-  font-size: 15px;
-  color: #9E9E9E;
 }
 
 .caption {
