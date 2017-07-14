@@ -177,7 +177,7 @@ $(document).on('initialize-game', function () {
         }
 
         // Initialize Score
-        score.ob = new createjs.Text("SCORE:" + score.value, "30px monospace", "#00000");
+        score.ob = new createjs.Text("POINTS:" + score.value, "30px monospace", "#00000");
         score.ob.x = 10;
         score.ob.y = 10;
 
