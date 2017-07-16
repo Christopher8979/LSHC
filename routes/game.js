@@ -143,10 +143,20 @@ router.get('/game-over/:id', function(req, res) {
 
   var NO_OF_ATTEMPTS = 1;
   GameService.lastAttempts(req.params.id, NO_OF_ATTEMPTS, function(err, attemptData) {
-
+    if (err) {
+      console.info('Error while getting last attempt');
+      return res.render('/');
+    }
     GameService.getPlayerDetails(attemptData[0].Player__c, function(err, playerInfo) {
-
+      if (err) {
+        console.info('Error while getting player details');
+        return res.render('/');
+      }
       GameService.getWinner(function(err, winnerInfo) {
+        if (err) {
+          console.info('Error while getting winner');
+          return res.render('/');
+        }
         var topScorrer = {
           name: winnerInfo.Player__r.Name,
           email: winnerInfo.Player__r.Email__c,
