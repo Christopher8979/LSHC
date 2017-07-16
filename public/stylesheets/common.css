@@ -359,3 +359,62 @@ body:after {
 span.small-font {
   font-size: 12px;
 }
+
+.contributors-container {
+  margin-top: 50px;
+  color: #fff;
+  width: 90%;
+}
+
+.light-line {
+  border-bottom: 1px ridge #3f403f;
+}
+
+.list-category {
+  padding: 15px 0;
+}
+
+.contributor .card-content, .contributor .col {
+  padding: 0;
+}
+
+.contributor .profileImage {
+  display: block;
+  border-radius: 2px 2px 0 0;
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.contributor .details {
+  padding-left: 10px;
+}
+
+.contributor .send-mail {
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  color: #60bb68;
+  font-size: 5px;
+}
+
+.contributor .details .name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.contributor .details .designation {
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+  color: #a9a9a9;
+}
+
+.contributor .details .role {
+  font-size: 1.2rem;
+  font-weight: 100;
+  color: #d8d7d7;
+}
