@@ -4,32 +4,36 @@
       <h4 class="center white-text light-line">Contributors</h4>
     </div>
     <div class="col s12">
-      <div class="list-category light-line clearfix">
-        <div class="col s12">
-          <div class="col s4">
-            <div class="card grey darken-4 contributor">
-              <div class="card-content clearfix">
-                <div class="col s12">
-                  <div class="col s4">
-                    <img class="profileImage" src="./images/contributors/christopher.jpg" alt="christopher">
-                  </div>
-                  <div class="col s8 details">
-                    <h6 class="name">Christopher Gosala</h6>
-                    <p class="designation">Business Technology Analyst</p>
-                    <div class="role">
-                      Heroku Developer
+      {{#each this.list}}
+        <div class="list-category light-line clearfix">
+          <div class="col s12">
+            {{#each this}}
+              <div class="col s4">
+                <div class="card grey darken-4 contributor">
+                  <div class="card-content clearfix">
+                    <div class="col s12">
+                      <div class="col s4">
+                        <img class="profileImage" src="{{this.image}}" alt="{{this.name}}">
+                      </div>
+                      <div class="col s8 details">
+                        <h6 class="name">{{this.name}}</h6>
+                        <p class="designation">{{this.designation}}</p>
+                        <p class="role">{{this.role}}</p>
+                        <!-- <div class="desc">
+                          Worked as Heroku developer
+                        </div> -->
+                        {{#if this.showEmail}}
+                          <a class="send-mail" href="mailto:{{this.mail}}"><i class="material-icons">mail</i></a>
+                        {{/if}}
+                      </div>
                     </div>
-                    <div class="desc">
-                      Worked as Heroku developer
-                    </div>
-                    <a class="send-mail" href="mailto:cgosala@deloitte.com"><i class="material-icons">mail</i></a>
                   </div>
                 </div>
               </div>
-            </div>
+            {{/each}}
           </div>
         </div>
-      </div>
+      {{/each}}
     </div>
   </div>
 </div>
