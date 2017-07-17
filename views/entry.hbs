@@ -1,2 +1,76 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class="container">
+
+  {{!--Title--}}
+  <img src="./images/LSHC_banner.png" alt="" class="banner-image">
+  <div class="row valign-wrapper">
+
+    {{!--Description and Top Scorer--}}
+    <div class="col s6">
+
+      {{!--Description--}}
+      <div class="row extra-text">
+        <p class="center description">{{description}}</p>
+        <p class="center caption">{{caption}}</p>
+      </div>
+
+      {{!--Top Scorer--}}
+      <div class="top-scorer-tab row">
+        <div class="card-panel grey darken-4">
+          <div class="row valign-wrapper">
+            <div class="col s3">
+              <img src="./images/crown.png" alt="">
+            </div>
+            <div class="col s9">
+              <div class="label">Top Scorer</div>
+              <div class="top-scorer">{{topScorrer.name}}</div>
+              <div class="top-scorer email">{{topScorrer.email}}</div>
+              <div class="top-score">{{topScorrer.score}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{!--Form--}}
+    <div class="col s6">
+      <div class="card">
+        <div class="card-content clearfix">
+          <form class="col s12" id="credForm">
+
+            {{!--Name--}}
+            <div class="input-field col s12">
+              <input autocomplete="off" id="name" type="text" data-params="Name" class="validate" required>
+              <label for="name" data-error="Name should contain only alphabets">Full Name</label>
+            </div>
+
+            {{!--Email--}}
+            <div class="input-field col s12">
+              <input autocomplete="off" id="email" type="email" class="validate" data-params="Email__c" required>
+              <label for="email" data-error="Email has to be of the format xxx@xxx.xxx">Email</label>
+            </div>
+
+            {{!--Service Line--}}
+            <div class="input-field col s12">
+              <select id="serviceLine" class="validate" data-params="Service_Line__c" required>
+                <option value="" disabled selected>Choose your Service Line</option>
+                {{#each serviceLineOptions}}
+                <option value="{{value}}">{{label}}</option>
+                {{/each}}
+              </select>
+              <label for="serviceLine" data-error="Service Line should contain only alphabets">Service Line</label>
+            </div>
+
+            {{!--Submit--}}
+            <button type="button" id="enterGame" class="btn waves-effect waves-light right col s6 light-green darken-1">Start Game</button>
+            <p class="red-text lighten-2 err-msg left col s6">Please fill all the fields to continue</p>
+
+            {{!--Required fields label--}}
+            <div class="req-label">* All fields are mandatory</div>
+
+          </form>
+        </div>
+      </div>
+      <a href="/contributors" class="right grey-text lighten-6 valign-wrapper">CONTRIBUTORS&nbsp;<i class="tiny material-icons">group</i></a>
+    </div>
+  </div>
+</div>

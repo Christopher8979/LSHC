@@ -1,2 +1,97 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class="container scorecard clearfix">
+  <div class="card-panel">
+    <div class="row">
+
+      {{!--Score--}}
+      <div class="col s5 score-side">
+        <div class="trophy-image not-complete"></div>
+        <div class="player-name">
+          Name
+          <div class="name">{{player.Name}}</div>
+        </div>
+        <div class="score-field">
+          Score
+          <div class="score">{{lastAttempts.Final_Score__c}}</div>
+        </div>
+
+        {{!--Top scorer--}}
+        <div class="top-scorer card-panel grey darken-3">
+          <div class="row valign-wrapper">
+            <div class="col s3 crown-image">
+              <img src="../images/crown.png" alt="">
+            </div>
+            <div class="col s9">
+              <div class="label">Top Scorer</div>
+              <div class="name">{{topScorrer.name}}</div>
+              <div class="email">{{topScorrer.email}}</div>
+              <div class="score">{{topScorrer.score}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{!--Stats--}}
+      <div class="col s7 stats-side no-padding">
+        <h5 class="label">Scorecard</h5>
+        <table class="striped">
+          <tr>
+            <td>Service Line</td>
+            <td class="value">{{player.Service_Line__c}}</td>
+          </tr>
+          <tr>
+            <td>Total attempted</td>
+            <td class="value">{{lastAttempts.Total_Questions_Attempted__c}}</td>
+          </tr>
+          <tr>
+            <td>Total correct</td>
+            <td class="value" id="correct-answers-value">{{lastAttempts.Correct_Answers__c}}</td>
+          </tr>
+          <tr>
+            <td>Total tokens caught +ve</td>
+            <td class="value">{{lastAttempts.Positive_Tokens_Caught__c}}</td>
+          </tr>
+          <tr>
+            <td>Total tokens caught - ve</td>
+            <td class="value">{{lastAttempts.Negative_Tokens_Caught__c}}</td>
+          </tr>
+          <tr>
+            <td>Total points</td>
+            <td class="value">{{lastAttempts.Token_Points__c}}</td>
+          </tr>
+          <tr>
+            <td>Total time take</td>
+            <td class="value">{{lastAttempts.Time_Taken__c}} sec</td>
+          </tr>
+        </table>
+
+        {{!--Action buttons--}}
+        <div class="action-buttons">
+          <a href="/rules/{{lastAttempts.Player__c}}" class="btn waves-effect waves-light yellow darken-2">Retry</a>
+          <a href="/" class="btn waves-effect waves-light red">Quit</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <a href="/contributors" class="right grey-text lighten-6 valign-wrapper">CONTRIBUTORS&nbsp;<i class="tiny material-icons">group</i></a>
+</div>
+
+
+{{!--
+<div class="container go-wrapper white-text">
+  <div class="holder center">
+    <h5 class="answered">Certificate of Achievement</h5>
+    <h5 class="kicked">{{lastAttempts.Time}} up</h5>
+    <p class="answered">Congratulations <span class="name">Your Name</span>, you have successfully completed the LSHC Game in <span class="min">0</span>      min <span class="sec">0</span>sec.</p>
+    <p class="kicked">Hey <span class="name">Your Name</span>, maximum time of <span class="min">2</span> min for this game is over. You can
+      retry or exit the game.</p>
+    <div class="action-buttons">
+      <div class="row">
+        <div class="col s6 offset-s3 center">
+          <a href="/rules/{{lastAttempts.Player__c}}" class="btn waves-effect waves-light light-green darken-1 col s6 btn" id="restart"> <i class="material-icons left">replay</i> restart</a>
+          <a href="/" class="btn waves-effect waves-light red darken-1 col s5 offset-s1 btn" id="quit"><i class="material-icons left">exit_to_app</i> quit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>--}}

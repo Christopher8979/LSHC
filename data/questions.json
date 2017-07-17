@@ -1,0 +1,1137 @@
+{
+  "questions": [{
+      "id": "Q1",
+      "title": "A fixed share of percentage that a Member is obliged to pay for covered medical services is",
+      "options": [{
+          "label": "Coinsurance",
+          "value": "a"
+        },
+        {
+          "label": "Medicare",
+          "value": "b"
+        },
+        {
+          "label": "Self-Pay",
+          "value": "c"
+        },
+        {
+          "label": "Surcharge",
+          "value": "d"
+        }
+      ],
+      "answer": "a",
+      "hint": "This rate may differ if services are received from an approved provider (i.e., a provider with whom the insurer has a contract or an agreement specifying payment levels and other contract requirements) or if received by providers not on the approved list."
+    },
+    {
+      "id": "Q2",
+      "title": "Health savings accounts were created by which of the following laws",
+      "options": [{
+          "label": "COBRA",
+          "value": "a"
+        },
+        {
+          "label": "HIPAA  ",
+          "value": "b"
+        },
+        {
+          "label": "Medicare Modernization Act",
+          "value": "c"
+        },
+        {
+          "label": "None of the Above",
+          "value": "d"
+        }
+      ],
+      "answer": "c",
+      "hint": "Signed into law by President George W. Bush on December 8, 2003"
+    },
+    {
+      "id": "Q3",
+      "title": "Consumer-directed health plans are not a new concept. They actually got their start in the late 1970s with the advent of",
+      "options": [{
+          "label": "Health savings accounts (HSAs)",
+          "value": "a"
+        },
+        {
+          "label": "Health reimbursement arrangements (HRAs)",
+          "value": "b"
+        },
+        {
+          "label": "Medical savings accounts (MSAs)",
+          "value": "c"
+        },
+        {
+          "label": "Flexible spending arrangements (FSAs)",
+          "value": "d"
+        }
+      ],
+      "answer": "d",
+      "hint": "This allows an employee to set aside a portion of earnings to pay for qualified expenses as established in the cafeteria plan, most commonly for medical expenses but often for dependent care or other expenses."
+    },
+    {
+      "id": "Q4",
+      "title": "An exclusive provider organization (EPO) operates much like a PPO. However, one difference between an EPO and a PPO is that an EPO",
+      "options": [{
+          "label": "Is regulated under federal HMO legislation",
+          "value": "a"
+        },
+        {
+          "label": "Generally provides no benefits for out-of-network care",
+          "value": "b"
+        },
+        {
+          "label": "Has no provider network of physicians",
+          "value": "c"
+        },
+        {
+          "label": "Is not subject to state insurance laws",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "EPOs got that name because they have a network of providers they use exclusively. You must stick to providers on that list, or the EPO won’t pay"
+    },
+    {
+      "id": "Q5",
+      "title": "In most cases, medical errors are caused by breakdowns in the healthcare system rather than by provider mistakes.",
+      "options": [{
+          "label": "True",
+          "value": "a"
+        },
+        {
+          "label": "False",
+          "value": "b"
+        }
+      ],
+      "answer": "a",
+      "hint": "More than 70 percent of errors resulting in adverse events were considered to be secondary to negligence in the Health care system."
+    },
+    {
+      "id": "Q6",
+      "title": "Appropriateness of treatment provided is determined by developing criteria that if unmet will prompt further investigation of a claim which are also called",
+      "options": [{
+          "label": "Codes",
+          "value": "a"
+        },
+        {
+          "label": "Lists",
+          "value": "b"
+        },
+        {
+          "label": "Edits",
+          "value": "c"
+        },
+        {
+          "label": "Checks",
+          "value": "d"
+        }
+      ],
+      "answer": "c",
+      "hint": "Will cause an automated claims processing system to \"kick out\" a claim,if criteria is not satisfied."
+    },
+    {
+      "id": "Q7",
+      "title": "By definition, a health plan's network refers to the",
+      "options": [{
+          "label": "Organizations and individuals involved in the consumption of healthcare provided by the plan",
+          "value": "a"
+        },
+        {
+          "label": "Relative accessibility of the plan's providers to the plan's participants",
+          "value": "b"
+        },
+        {
+          "label": "Group of physicians, hospitals, and other medical care providers with whom the plan has contracted to deliver medical services to its members",
+          "value": "c"
+        },
+        {
+          "label": "Integration of the plan's participants with the plan's providers",
+          "value": "d"
+        }
+      ],
+      "answer": "c",
+      "hint": "Participants to deliver the plan"
+    },
+    {
+      "id": "Q8",
+      "title": "By definition, the marketing process of defining a certain place or market niche for a product relative to competitors and their products and then using the marketing mix to attract certain market segments is known as",
+      "options": [{
+          "label": "Branding",
+          "value": "a"
+        },
+        {
+          "label": "Positioning",
+          "value": "b"
+        },
+        {
+          "label": "Database marketing",
+          "value": "c"
+        },
+        {
+          "label": "Personal selling",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "Is a marketing concept that outlines what a business should do to market its product or service to its customers"
+    },
+    {
+      "id": "Q9",
+      "title": "If most of the physicians, or many of the physicians in a particular specialty, are affiliated with a single entity, then a health plan building a network in the service area _____________",
+      "options": [{
+          "label": "Has many contracting options available.",
+          "value": "a"
+        },
+        {
+          "label": "Should not contract with that entity",
+          "value": "b"
+        },
+        {
+          "label": "Most likely needs to contract with that entity",
+          "value": "c"
+        },
+        {
+          "label": "Should attempt to disband the existing affiliations",
+          "value": "c"
+        }
+      ],
+      "answer": "a",
+      "hint": "This could also be categorized as IPA Helath plan. "
+    },
+    {
+      "id": "Q10",
+      "title": "Amendments to the HMO act 1973 do not permit federally qualified HMO’s to use",
+      "options": [{
+          "label": "Retrospective experience rating",
+          "value": "a"
+        },
+        {
+          "label": "Adjusted community rating",
+          "value": "b"
+        },
+        {
+          "label": "Community rating by class",
+          "value": "c"
+        },
+        {
+          "label": "Community rating",
+          "value": "d"
+        }
+      ],
+      "answer": "a",
+      "hint": "A rating plan that adjusts the premium, subject to a certain minimum and maximum, to reflect the current loss experience of the insured. "
+    },
+    {
+      "id": "Q11",
+      "title": "Health plans use the following to determine the number of providers to add to a network",
+      "options": [{
+          "label": "Staffing ratios",
+          "value": "a"
+        },
+        {
+          "label": "Drive time",
+          "value": "b"
+        },
+        {
+          "label": "Geographic availability",
+          "value": "c"
+        },
+        {
+          "label": "All of the above",
+          "value": "d"
+        }
+      ],
+      "answer": "d",
+      "hint": "The factors include the location, number of exisitng employees and accessibility of the location of the network to the provider."
+    },
+    {
+      "id": "Q12",
+      "title": "In order to compensate for lost revenue resulting from services provided free or at a significantly reduced cost to other patients, many healthcare providers spread these unreimbursed costs to paying patients or third-party payors. This practice is known",
+      "options": [{
+          "label": "Dual choice",
+          "value": "a"
+        },
+        {
+          "label": "Cost shifting",
+          "value": "b"
+        },
+        {
+          "label": "Accreditation",
+          "value": "c"
+        },
+        {
+          "label": "Defensive medicine",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "This process is when a hospital or other health-care provider charges an insured patient more than it does an uninsured patient for the same procedure or service. "
+    },
+    {
+      "id": "Q13",
+      "title": "______________ HMOs can't medically underwrite any group – incl small groups",
+      "options": [{
+          "label": "State",
+          "value": "a"
+        },
+        {
+          "label": "Not-for-profit",
+          "value": "b"
+        },
+        {
+          "label": "For-profit",
+          "value": "c"
+        },
+        {
+          "label": "Federally qualified",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "These are generally exempted from federal, state, and local taxes."
+    },
+    {
+      "id": "Q14",
+      "title": "Because a health plan cannot decline coverage for individuals who are eligible for conversion of group health coverage to individual health coverage, the bulk of the health plan's underwriting for conversion policies is accomplished through health plan design.",
+      "options": [{
+          "label": "True",
+          "value": "a"
+        },
+        {
+          "label": "False",
+          "value": "b"
+        }
+      ],
+      "answer": "a",
+      "hint": "Effective plan design is the key to providing high-quality, cost-effective health care where they can customize their health plan depending on the eligibility."
+    },
+    {
+      "id": "Q15",
+      "title": "One true statement about cash-basis accounting is that",
+      "options": [{
+          "label": "Cash receipt, but not cash disbursement, is an important component of cash-basis accounting",
+          "value": "a"
+        },
+        {
+          "label": "Most companies use a pure cash-basis accounting system",
+          "value": "b"
+        },
+        {
+          "label": "Cash-basis accounting records revenue according to the realization principle and expenses according to the matching principle",
+          "value": "c"
+        },
+        {
+          "label": "Health insurance companies and health plans that fall under the jurisdiction of state insurance commissioners must report some items on a cash basis for statutory reporting purposes",
+          "value": "d"
+        }
+      ],
+      "answer": "d",
+      "hint": "Reporting on Cash-basis is mandatory for statutory reporting purposes for some types of Insurance companies. "
+    },
+    {
+      "id": "Q16",
+      "title": "A product is often described as having a thin margin or a wide margin. With regard to the factors that help determine the size of the margin of a health plan's product, it can correctly be stated that the",
+      "options": [{
+          "label": "Greater the risk a health plan assumes in a health plan, the thinner the product margin should be.",
+          "value": "a"
+        },
+        {
+          "label": "More that competition acts to force prices down, the wider the product margins tend to become.",
+          "value": "b"
+        },
+        {
+          "label": "Greater the demand for the product, the thinner the margin for this product tends to become.",
+          "value": "c"
+        },
+        {
+          "label": "Longer the premium rates are guaranteed to a group, the wider the health plan's margin should be.",
+          "value": "d"
+        }
+      ],
+      "answer": "d",
+      "hint": "Premium rates and Health Plan Margin are directly proportional."
+    },
+    {
+      "id": "Q17",
+      "title": "From the following answer choices, choose the term that best corresponds to this description. Barrington Health Services, Inc. contracts with a state Medicaid agency as a fiscal intermediary. Barrington does not provide medical services, but contracts with medical providers on behalf of the state Medicaid agency.",
+      "options": [{
+          "label": "Health insuring organization (HIO)",
+          "value": "a"
+        },
+        {
+          "label": "Independent practice association (IPA)",
+          "value": "b"
+        },
+        {
+          "label": "Physician practice management (PPM) company",
+          "value": "c"
+        },
+        {
+          "label": "Peer review organization (PRO)",
+          "value": "d"
+        }
+      ],
+      "answer": "a",
+      "hint": "Responsible for payment to the primary care provider chosen by the client and to any specialists who provide services"
+    },
+    {
+      "id": "Q18",
+      "title": "Health plans typically divide their costs into medical and administrative expenses. Examples of medical expenses are.",
+      "options": [{
+          "label": "Equipment costs",
+          "value": "a"
+        },
+        {
+          "label": "Salaries and benefits for executives and for all functional areas",
+          "value": "b"
+        },
+        {
+          "label": "Sales and marketing costs",
+          "value": "c"
+        },
+        {
+          "label": "Payments to providers for the delivery of healthcare",
+          "value": "d"
+        }
+      ],
+      "answer": "d",
+      "hint": "Fee for a service"
+    },
+    {
+      "id": "Q19",
+      "title": "The insurance professionals who perform RATING are called _________.",
+      "options": [{
+          "label": "Actuaries",
+          "value": "a"
+        },
+        {
+          "label": "Attorney",
+          "value": "b"
+        },
+        {
+          "label": "Underwriter",
+          "value": "c"
+        },
+        {
+          "label": "None of the Above",
+          "value": "d"
+        }
+      ],
+      "answer": "a",
+      "hint": "Is a business professional who deals with the measurement and management of risk and uncertainty"
+    },
+    {
+      "id": "Q20",
+      "title": "What is OIG?",
+      "options": [{
+          "label": "Office of the Investigation Guidelines",
+          "value": "a"
+        },
+        {
+          "label": "Office of the Inspector General",
+          "value": "b"
+        },
+        {
+          "label": "Operating and Incision Guidelines",
+          "value": "c"
+        },
+        {
+          "label": "Operations,Incisions and Gut removal",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "Office in the Federal Government, with more than 1700 employees dedicated to combating fraud."
+    },
+    {
+      "id": "Q21",
+      "title": "How long is the Patent exclusivity, as granted by the US Patent and Trademark office(USPTO)?",
+      "options": [{
+          "label": "20 years",
+          "value": "a"
+        },
+        {
+          "label": "15 years",
+          "value": "b"
+        },
+        {
+          "label": "10 years",
+          "value": "c"
+        },
+        {
+          "label": "5 years",
+          "value": "d"
+        }
+      ],
+      "answer": "a",
+      "hint": "A company may apply for a patent from the USPTO anywhere along the development lifeline of a drug and can encompass a wide range of claims."
+    },
+    {
+      "id": "Q22",
+      "title": "At what point in the development process does a pharmaceutical or a biotechnology company typically start manufacturing a new product?",
+      "options": [{
+          "label": "During Phase I Clinical trials",
+          "value": "a"
+        },
+        {
+          "label": "During Phase II Clinical Trials",
+          "value": "b"
+        },
+        {
+          "label": "After Clinical Trials",
+          "value": "c"
+        },
+        {
+          "label": "Before Clinical Trials",
+          "value": "d"
+        }
+      ],
+      "answer": "d",
+      "hint": " Preclinical development, nonclinical studies, is a stage of research that begins in this phase.Also this phase is when the testing on Human has not started."
+    },
+    {
+      "id": "Q23",
+      "title": "Which phase of the clinical trials a drug can be tested on more than 1000 people?",
+      "options": [{
+          "label": "Phase I",
+          "value": "a"
+        },
+        {
+          "label": "Phase II",
+          "value": "b"
+        },
+        {
+          "label": "Phase III",
+          "value": "c"
+        },
+        {
+          "label": "All of the above",
+          "value": "d"
+        }
+      ],
+      "answer": "c",
+      "hint": " The drugs that progress to this phase are definitively tested for effectiveness in the treatment or cure of a specific condition. "
+    },
+    {
+      "id": "Q24",
+      "title": "Immediate care is provided by an on - duty physician. The center is usually owned by private corporations in states where permitted or non - profit facilities; also called emergency care center.",
+      "options": [{
+          "label": "Hospice Care",
+          "value": "a"
+        },
+        {
+          "label": "Imaging Center",
+          "value": "b"
+        },
+        {
+          "label": "Residential Care Facility",
+          "value": "c"
+        },
+        {
+          "label": "Urgent Care center",
+          "value": "d"
+        }
+      ],
+      "answer": "d",
+      "hint": "Category of walk-in clinic focused on the delivery of ambulatory care in a dedicated medical facility outside of a traditional emergency room"
+    },
+    {
+      "id": "Q25",
+      "title": "Provides practice management services, including administrative and support services, to individual physician practices",
+      "options": [{
+          "label": "Subacute Care",
+          "value": "a"
+        },
+        {
+          "label": "Imaging Center",
+          "value": "b"
+        },
+        {
+          "label": "Management Service Organization",
+          "value": "c"
+        },
+        {
+          "label": "Therapeutic Group Home",
+          "value": "d"
+        }
+      ],
+      "answer": "c",
+      "hint": "Owned by a group of physicians, a physician hospital joint venture, or investors in conjunction with physicians"
+    },
+    {
+      "id": "Q26",
+      "title": "What are long term care facilities that specialize in the care of patients diagnosed with dementia?Choose the best option.",
+      "options": [{
+          "label": "Dementia care facilities",
+          "value": "a"
+        },
+        {
+          "label": "Federal medical centers (FMC)",
+          "value": "b"
+        },
+        {
+          "label": "Anxiety and Depression Association of America-ADAA",
+          "value": "c"
+        },
+        {
+          "label": "All of the above",
+          "value": "d"
+        }
+      ],
+      "answer": "a",
+      "hint": "These facilities offer care for people suffering from a broad category of brain diseases that cause a long term and often gradual decrease in the ability to think and remember that is great enough to affect a person's daily functioning."
+    },
+    {
+      "id": "Q27",
+      "title": "This organization does not specialize in treating individuals with mental health diagnoses.",
+      "options": [{
+          "label": "NIMH",
+          "value": "a"
+        },
+        {
+          "label": "Federal medical centers (FMC)",
+          "value": "b"
+        },
+        {
+          "label": "Anxiety and Depression Association of America-ADAA",
+          "value": "c"
+        },
+        {
+          "label": "All of the above",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "It is designated as an administrative facility, which means it holds inmates of all security classifications."
+    },
+    {
+      "id": "Q28",
+      "title": "Organizations that do not have physician partners or employment affiliations with other practice organizations",
+      "options": [{
+          "label": "Hospice Care",
+          "value": "a"
+        },
+        {
+          "label": "Solo Physician practices",
+          "value": "b"
+        },
+        {
+          "label": "Multi-Specialty group Physician Practices",
+          "value": "c"
+        },
+        {
+          "label": "Home Infusion Care",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "Usually characterized by a small staff and typically have a limited patient base"
+    },
+    {
+      "id": "Q29",
+      "title": "What is same as ambulatory care?",
+      "options": [{
+          "label": "Managed Care",
+          "value": "a"
+        },
+        {
+          "label": "Outpatient care",
+          "value": "b"
+        },
+        {
+          "label": "Health Care Organization",
+          "value": "c"
+        },
+        {
+          "label": "Emergency Care",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "This describes medical care or treatment that does not require an overnight stay in a hospital or medical facility."
+    },
+    {
+      "id": "Q30",
+      "title": "Provides benefits to subscribers who receive health care services from network providers.",
+      "options": [{
+          "label": "Intensive Case Management",
+          "value": "a"
+        },
+        {
+          "label": "Exclusive Provider Organization(EPO)",
+          "value": "b"
+        },
+        {
+          "label": "Ambulatory patients",
+          "value": "c"
+        },
+        {
+          "label": "Preferred Provider Organization",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "Usually characterized by a small staff and typically have a limited patient base"
+    },
+    {
+      "id": "Q31",
+      "title": "Which of the approaches can the states use to reduce Medicaid costs?",
+      "options": [{
+          "label": "Increase the use of Managed Care",
+          "value": "a"
+        },
+        {
+          "label": "Reduce Waste",
+          "value": "b"
+        },
+        {
+          "label": "Use Payment reform initiatives",
+          "value": "c"
+        },
+        {
+          "label": "Focus on low-risk population",
+          "value": "d"
+        }
+      ],
+      "answer": "a",
+      "hint": "This system is a system of health care emphasizing preventative medicine and home treatment."
+    },
+    {
+      "id": "Q32",
+      "title": "Who is the primary regulator of the medical technology industry in Japan?",
+      "options": [{
+          "label": "The Federal Institute for Drugs and Medical Devices",
+          "value": "a"
+        },
+        {
+          "label": "The Medicines and Healthcare Products Regulatory Agency",
+          "value": "b"
+        },
+        {
+          "label": "The Ministry of Food and Medical Devices",
+          "value": "c"
+        },
+        {
+          "label": "The Pharmaceutical and Food Safety Bureau",
+          "value": "d"
+        }
+      ],
+      "answer": "d",
+      "hint": "This implements measures for securing the efficacy and safety of drugs/quasi-drugs, cosmetics and medical devices, safety measures for medical institutions, and measures against narcotics and stimulants, while handling blood business."
+    },
+    {
+      "id": "Q33",
+      "title": "Which of the following do medical technology regulators in most mature markets supervise? ",
+      "options": [{
+          "label": "Accounting Practices",
+          "value": "a"
+        },
+        {
+          "label": "Consumer Privacy",
+          "value": "b"
+        },
+        {
+          "label": "Corporate Governance",
+          "value": "c"
+        },
+        {
+          "label": "Manufacturing Facilities",
+          "value": "d"
+        }
+      ],
+      "answer": "d",
+      "hint": "An industrial site, usually consisting of buildings and machinery."
+    },
+    {
+      "id": "Q34",
+      "title": "Which is the term that is commonly used to described the remote delivery of the Health care services to patients? ",
+      "options": [{
+          "label": "Mobile Care",
+          "value": "a"
+        },
+        {
+          "label": "Mobile Health",
+          "value": "b"
+        },
+        {
+          "label": "Telemedicine",
+          "value": "c"
+        },
+        {
+          "label": "Teletherapy",
+          "value": "d"
+        }
+      ],
+      "answer": "c",
+      "hint": "The diagnosis and treatment of patients by means of telecommunications technology in distant places."
+    },
+    {
+      "id": "Q35",
+      "title": "Who is the primary customer of the pharmaceutical companies?",
+      "options": [{
+          "label": "Government Agencies",
+          "value": "a"
+        },
+        {
+          "label": "Healthcare Providers",
+          "value": "b"
+        },
+        {
+          "label": "Health Insurance companies",
+          "value": "c"
+        },
+        {
+          "label": "Patients",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "A person/entity who helps in identifying or preventing or treating illness or disability"
+    },
+    {
+      "id": "Q36",
+      "title": "Who directs and coordinates international health activities, provides leadership on global health research and defines international standards for health care?",
+      "options": [{
+          "label": "Food and Drug Adminishtration",
+          "value": "a"
+        },
+        {
+          "label": "International Institute of Health",
+          "value": "b"
+        },
+        {
+          "label": "World Health Organisation",
+          "value": "c"
+        },
+        {
+          "label": "United Medicine Agency",
+          "value": "d"
+        }
+      ],
+      "answer": "c",
+      "hint": "This entity was established on 7 April 1948, headquartered in Geneva, Switzerland."
+    },
+    {
+      "id": "Q37",
+      "title": "What is the term used to describe drugs that are manufatured from chemical components?",
+      "options": [{
+          "label": "Biologics",
+          "value": "a"
+        },
+        {
+          "label": "Large Molecule Drugs",
+          "value": "b"
+        },
+        {
+          "label": "Vaccines",
+          "value": "c"
+        },
+        {
+          "label": "Synthetic Drugs",
+          "value": "d"
+        }
+      ],
+      "answer": "d",
+      "hint": " A drug with properties and effects similar to a known hallucinogen or narcotic but having a slightly altered chemical structure, "
+    },
+    {
+      "id": "Q38",
+      "title": "What is the term used to describe the emerging field of correcting or replacing defective genes?",
+      "options": [{
+          "label": "Bioconcology",
+          "value": "a"
+        },
+        {
+          "label": "Gene Therapy",
+          "value": "b"
+        },
+        {
+          "label": "Genomics",
+          "value": "c"
+        },
+        {
+          "label": "Nanotechnology",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "This is the therapeutic delivery of nucleic acid polymers into a patient's cells as a drug to treat disease."
+    },
+    {
+      "id": "Q39",
+      "title": "Which of the following is the largest source of expense for most of the pharmacuetical companies?",
+      "options": [{
+          "label": "General and administration",
+          "value": "a"
+        },
+        {
+          "label": "Interest expense",
+          "value": "b"
+        },
+        {
+          "label": "Research and Development",
+          "value": "c"
+        },
+        {
+          "label": "Marketing and Sales",
+          "value": "d"
+        }
+      ],
+      "answer": "d",
+      "hint": "This is a carefully crafted combination which is vital in a business growth."
+    },
+    {
+      "id": "Q40",
+      "title": "Which is the example of tertiary care?",
+      "options": [{
+          "label": "Critical Care",
+          "value": "a"
+        },
+        {
+          "label": "Emergency Care",
+          "value": "b"
+        },
+        {
+          "label": "Coronary Artery Bypass Surgery",
+          "value": "c"
+        },
+        {
+          "label": "Pain Management",
+          "value": "d"
+        }
+      ],
+      "answer": "c",
+      "hint": "It is performed to relieve angina unsatisfactorily controlled by maximum tolerated anti-ischemic medication, prevent or relieve left ventricular dysfunction, and/or reduce the risk of death."
+    },
+    {
+      "id": "Q41",
+      "title": "Which is an example of general services provided by Hospitals?",
+      "options": [{
+          "label": "Community Relations",
+          "value": "a"
+        },
+        {
+          "label": "Pathology",
+          "value": "b"
+        },
+        {
+          "label": "Clinical Information Management",
+          "value": "c"
+        },
+        {
+          "label": "Pharmacy",
+          "value": "d"
+        }
+      ],
+      "answer": "a",
+      "hint": "The relationship that a company, organization, etc. has with the people who live in the area in which it operates."
+    },
+    {
+      "id": "Q42",
+      "title": "Which systems run all software applications that supports medical actvities performed on patient while under the care of medical facility?",
+      "options": [{
+          "label": "Health Information Management System",
+          "value": "a"
+        },
+        {
+          "label": "Hospital Information System",
+          "value": "b"
+        },
+        {
+          "label": "Clinical Information Management System",
+          "value": "c"
+        },
+        {
+          "label": "Electronic Medical Records",
+          "value": "d"
+        }
+      ],
+      "answer": "c",
+      "hint": "These are computer software products that coordinate and integrate all the inherent activities involved in the management and running of a healthcare facility."
+    },
+    {
+      "id": "Q43",
+      "title": "Which reimbursement method pays Health care providers a specific fee for a service regardless of the cost incurred?",
+      "options": [{
+          "label": "Time and Materials Method",
+          "value": "a"
+        },
+        {
+          "label": "Fee-for-service method",
+          "value": "b"
+        },
+        {
+          "label": "Cost-Plus Payment method",
+          "value": "c"
+        },
+        {
+          "label": "Fixed Price Method",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "It gives an incentive for physicians to provide more treatments because payment is dependent on the quantity of care, rather than quality of care."
+    },
+    {
+      "id": "Q44",
+      "title": "What is GMP?",
+      "options": [{
+          "label": "Governing Manufacturing Principles",
+          "value": "a"
+        },
+        {
+          "label": "Good Manufacturing Practices",
+          "value": "b"
+        },
+        {
+          "label": "Guidelines for Manufacturing Processes",
+          "value": "c"
+        },
+        {
+          "label": "Guidelines for Molecular-based products",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "It is a system for ensuring that products are consistently produced and controlled according to quality standards."
+    },
+    {
+      "id": "Q45",
+      "title": "What is a rebate?",
+      "options": [{
+          "label": "The amount at which a payor reimburses a pharmacy for product dispensed.",
+          "value": "a"
+        },
+        {
+          "label": "The additional fee the pharmacies pay over WAC when purchasing products from wholesalers",
+          "value": "b"
+        },
+        {
+          "label": "An Amount paid by the manufacturer to the wholesaler/distributor to reimburse for the difference between the WAC and the Contract Price by the wholesaler, paid upon the receipt of notification from the wholesaler.",
+          "value": "c"
+        },
+        {
+          "label": "An amount offered by the manufacturer to a payor or PBM as an incentive to place its product on preferred formulary status, paid based on the utilization of the product or market share. ",
+          "value": "d"
+        }
+      ],
+      "answer": "d",
+      "hint": "Return of a portion of a purchase price by a seller to a buyer, usually on purchase of a specified quantity, or value, of goods within a specified period."
+    },
+    {
+      "id": "Q46",
+      "title": "What is API?",
+      "options": [{
+          "label": "Applicable Pharmaceutical Inquiry",
+          "value": "a"
+        },
+        {
+          "label": "Association of Physicians and Internists",
+          "value": "b"
+        },
+        {
+          "label": "Active Pharmaceutical Ingredient",
+          "value": "c"
+        },
+        {
+          "label": "Active Product Ingredient",
+          "value": "d"
+        }
+      ],
+      "answer": "c",
+      "hint": "It is also known as Pharmacon"
+    },
+    {
+      "id": "Q47",
+      "title": "What is a Chargeback?",
+      "options": [{
+          "label": "An Amount paid by the manufacturer to the wholesaler/distributor to reimburse for the difference between the WAC and the Contract Price by the wholesaler, paid upon the receipt of notification from the wholesaler.",
+          "value": "a"
+        },
+        {
+          "label": "The amount at which a payor reimburses a pharmacy for product dispensed.",
+          "value": "b"
+        },
+        {
+          "label": "The additional fee the pharmacies pay over WAC when purchasing products from wholesalers.",
+          "value": "c"
+        },
+        {
+          "label": "An amount offered by the manufacturer to a payor or PBM as an incentive to place its product on preferred formulary status, paid based on the utilization of the product or market share. ",
+          "value": "d"
+        }
+      ],
+      "answer": "a",
+      "hint": "This is mentioned as a primary point in the Wholesale Purchase Agreement"
+    },
+    {
+      "id": "Q48",
+      "title": "Which term describes requirements for patients to pay some of the costs associated with their healthcare?",
+      "options": [{
+          "label": "Co-Insuring",
+          "value": "a"
+        },
+        {
+          "label": "Co-Paying",
+          "value": "b"
+        },
+        {
+          "label": "Cost-Sharing",
+          "value": "c"
+        },
+        {
+          "label": "Premium - Sharing",
+          "value": "d"
+        }
+      ],
+      "answer": "c",
+      "hint": "This term generally includes deductibles, coinsurance, and copayments, or similar charges, but it doesn't include premiums, balance billing amounts for non-network providers, or the cost of non-covered services."
+    },
+    {
+      "id": "Q49",
+      "title": "What is the name of the National Health Insurance Plan in the US that is offered to citizens over 65 years of age and the disabled?",
+      "options": [{
+          "label": "Medicaid",
+          "value": "a"
+        },
+        {
+          "label": "Medicare",
+          "value": "b"
+        },
+        {
+          "label": "SCHIP",
+          "value": "c"
+        },
+        {
+          "label": "TRICARE",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "On July 30, 1965 President Lyndon B. Johnson made this law by signing H.R. 6675 in Independence, Missouri."
+    },
+    {
+      "id": "Q50",
+      "title": "In which country are employers with five or more employees required to provide Health Insurance to their employees?",
+      "options": [{
+          "label": "Canada",
+          "value": "a"
+        },
+        {
+          "label": "Japan",
+          "value": "b"
+        },
+        {
+          "label": "US",
+          "value": "c"
+        },
+        {
+          "label": "UK",
+          "value": "d"
+        }
+      ],
+      "answer": "b",
+      "hint": "In this country,payment for personal medical services is offered by a universal health care insurance system that provides relative equality of access, with fees set by a government committee."
+    }
+  ]
+}

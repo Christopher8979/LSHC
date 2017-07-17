@@ -1,2 +1,94 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<main class="preloader loading">
+  <div class="hit-progress-holder center">
+    <div class="hit-progress">
+      <div class="row">
+        <div class="col s3 white-text messages">
+          <p class="yellow-text text-accent-2">Hint status </p>
+          <p class="yellow-text text-accent-2">2 more for hint</p>
+          <p class="yellow-text text-accent-2">1 more for hint</p>
+          <p class="yellow-text text-accent-2">Hint revealed</p>
+        </div>
+        <div class="col s9 progress-show">
+          <div class="row">
+            <div class="col s4">
+              <div class="progress">
+                <div class="determinate"></div>
+              </div>
+            </div>
+            <div class="col s4">
+              <div class="progress">
+                <div class="determinate"></div>
+              </div>
+            </div>
+            <div class="col s4">
+              <div class="progress">
+                <div class="determinate"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="start-btn" style="display: none"></div>
+  <canvas class="z-depth-4" id="game-holder" width="900" height="450"></canvas>
+  <div class="preloader-wrapper big active">
+    <div class="spinner-layer">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div>
+      <div class="gap-patch">
+        <div class="circle"></div>
+      </div>
+      <div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+  <div id="mute-btn">Mute</div>
+</main>
+
+
+<div id="questions-modal" class="modal">
+  <div class="modal-content">
+    {{#each questions}}
+      <div class="question" id= {{this.Id}}>
+        <h5>{{this.Question_1__c}}</h5>
+
+        <div class="options">
+          {{#if this.a__c}}
+            <p>
+              <input name="{{this.Id}}" type="radio" value="{{this.a__c}}" id="{{this.Id}}-0" />
+              <label for="{{this.Id}}-0">{{this.a__c}}</label>
+            </p>
+          {{/if}}
+          {{#if this.b__c}}
+            <p>
+              <input name="{{this.Id}}" type="radio" value="{{this.b__c}}" id="{{this.Id}}-1" />
+              <label for="{{this.Id}}-1">{{this.b__c}}</label>
+            </p>
+          {{/if}}
+          {{#if this.c__c}}
+            <p>
+              <input name="{{this.Id}}" type="radio" value="{{this.c__c}}" id="{{this.Id}}-2" />
+              <label for="{{this.Id}}-2">{{this.c__c}}</label>
+            </p>
+          {{/if}}
+          {{#if this.d__c}}
+            <p>
+              <input name="{{this.Id}}" type="radio" value="{{this.d__c}}" id="{{this.Id}}-3" />
+              <label for="{{this.Id}}-3">{{this.d__c}}</label>
+            </p>
+          {{/if}}
+        </div>
+        <span class="hint hide">{{this.hint__c}}</span>
+      </div>
+    {{/each}}
+  </div>
+  <div class="modal-footer">
+    <div class="center">
+      <button type="button" id="questionClose" name="button" class="btn waves-effect waves-light red" disabled>Close</button>
+      <button type="button" id="questionSubmit" name="button" class="btn waves-effect waves-light green" disabled>Submit</button>
+    </div>
+  </div>
+</div>

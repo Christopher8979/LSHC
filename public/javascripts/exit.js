@@ -1,3 +1,6 @@
 $(document).on('initialize-exit', function() {
-  console.info('Initialized exit js');
+  var correctAnswers = parseInt($("#correct-answers-value").text());
+  if (correctAnswers == 5) {
+    $(".trophy-image").removeClass("not-complete");
+  }
 });
