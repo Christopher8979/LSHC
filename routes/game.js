@@ -197,6 +197,10 @@ router.post('/saveAttempt', function(req, res) {
   });
 });
 
+router.get('/contributors', function (req, res) {
+  res.render('contributors', require('../data/contributor-list.json'));
+});
+
 router.get('/*', function(req, res) {
   res.redirect('/');
 });

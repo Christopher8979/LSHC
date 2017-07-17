@@ -1,0 +1,62 @@
+{
+  "list": [
+    [{
+      "image": "./images/contributors/anupama.jpg",
+      "name": "Anupama Vudaru",
+      "designation": "Senior Manager",
+      "role": "Initiative Lead",
+      "showEmail": true,
+      "mail": "avudaru@deloitte.com"
+    }, {
+      "image": "./images/contributors/monika.jpg",
+      "name": "Monika Goyal",
+      "designation": "Manager",
+      "role": "Owner & Conceptualization",
+      "showEmail": true,
+      "mail": "mogoyal@deloitte.com"
+    }, {
+      "image": "./images/contributors/Ankit.jpg",
+      "name": "Ankit Saxena",
+      "designation": "Consultant",
+      "role": "Ideation",
+      "showEmail": false,
+      "mail": "ankitsaxena7@deloitte.com"
+    }],
+    [{
+      "image": "./images/contributors/gayatri.jpg",
+      "name": "Naga Usha Gayatri",
+      "designation": "Consultant",
+      "role": "UX",
+      "showEmail": false,
+      "mail": "nstp@deloitte.com"
+    }, {
+      "image": "./images/contributors/ashwin.jpg",
+      "name": "Ashwin Chandran",
+      "designation": "Business Technology Analyst",
+      "role": "UI/UX & Game/Heroku Developer",
+      "showEmail": false,
+      "mail": "ashchandran@deloitte.com"
+    }, {
+      "image": "./images/contributors/christopher.jpg",
+      "name": "Christopher Gosala",
+      "designation": "Business Technology Analyst",
+      "role": "Game/Heroku Developer",
+      "showEmail": false,
+      "mail": "cgosala@deloitte.com"
+    }, {
+      "image": "./images/contributors/rahul.jpg",
+      "name": "Rahul Tiwari",
+      "designation": "Business Technology Analyst",
+      "role": "SFDC Developer",
+      "showEmail": false,
+      "mail": "rtiwari9@deloitte.com"
+    }, {
+      "image": "./images/contributors/mansi.jpg",
+      "name": "Mansi Billaiya",
+      "designation": "Business Technology Analyst",
+      "role": "Quality Analyst",
+      "showEmail": false,
+      "mail": "mbillaiya@deloitte.com"
+    }]
+  ]
+}
