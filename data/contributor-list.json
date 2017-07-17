@@ -4,7 +4,7 @@
       "image": "./images/contributors/monika.jpg",
       "name": "Monika Goyal",
       "designation": "Manager",
-      "role": "Owner",
+      "role": "Owner & Conceptualization",
       "showEmail": true,
       "mail": "mogoyal@deloitte.com"
     },
@@ -12,7 +12,7 @@
       "image": "./images/contributors/Ankit.jpg",
       "name": "Ankit Saxena",
       "designation": "Consultant",
-      "role": "Ideas",
+      "role": "Ideation",
       "showEmail": true,
       "mail": "ankitsaxena7@deloitte.com"
     }],
