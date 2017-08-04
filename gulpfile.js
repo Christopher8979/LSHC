@@ -11,9 +11,10 @@ gulp.task('scripts', function () {
 
 gulp.task('compress', function (cb) {
   pump([
-        gulp.src('./public/javascripts/*.js'),
+        gulp.src('./public/javascripts/**/_*.js'),
+        concat('game.js'),
         uglify(),
-        gulp.dest('./public/javascripts/min/')
+        gulp.dest('./public/javascripts/')
     ],
     cb
   );
@@ -21,8 +22,8 @@ gulp.task('compress', function (cb) {
 
 gulp.task('watch', function () {
     // Watch partial js files
-    gulp.watch("./public/javascripts/**/_*.js", ['scripts', 'compress']);
+    gulp.watch("./public/javascripts/**/_*.js", ['compress']);
 })
 
 // default task
-gulp.task('default', ['scripts', 'compress', 'watch']);
+gulp.task('default', ['compress', 'watch']);
