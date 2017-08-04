@@ -39,3 +39,5 @@ jspm_packages
 # Custom Ignores
 # game.js
 .env
+
+public/javascripts/min
