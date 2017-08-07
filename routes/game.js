@@ -3,8 +3,13 @@ var router = express.Router();
 var GameService = require('../services/gameService.js');
 
 var checkHost = function(req, res, next) {
-  console.log('middleware for checking host');
-  console.log(req.host);
+  // console.log('middleware for checking host');
+  // console.log(req.host);
+
+  console.log('======================');
+  console.log(req.headers.host);
+  console.log('======================');
+  console.log(req.headers.origin);
   next();
 }
 
