@@ -2,8 +2,15 @@ var express = require('express');
 var router = express.Router();
 var GameService = require('../services/gameService.js');
 
+var checkHost = function(req, res, next) {
+  console.log('middleware for checking host');
+  console.log(req.host);
+  next();
+}
+
+
 /* GET home page. */
-router.get('/', function(req, res) {
+router.get('/', checkHost, function(req, res) {
   GameService.getWinner(function(err, winnerInfo) {
     if (err) {
       console.log(err);
@@ -197,7 +204,7 @@ router.post('/saveAttempt', function(req, res) {
   });
 });
 
-router.get('/contributors', function (req, res) {
+router.get('/contributors', function(req, res) {
   res.render('contributors', require('../data/contributor-list.json'));
 });
 
