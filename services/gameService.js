@@ -118,7 +118,13 @@ var GameService = {
 
 
   },
-  saveAttempt: function(data, callBack) {
+  createAttempt: function(data, callBack) {
+    data.Correct_Answers__c = 0;
+    data.Total_Questions_Attempted__c = 0;
+    data.Negative_Tokens_Caught__c = 0;
+    data.Positive_Tokens_Caught__c = 0;
+    data.Time_Taken__c = 0;
+    data.Token_Points__c = 0;
 
     FS.create('Player_Attempt__c', data, function(err, resp) {
       if (err) {
@@ -126,13 +132,80 @@ var GameService = {
         console.info(err);
         callBack(err, null);
       }
-
       callBack(null, resp);
+    });
+  },
+  updateAttempt: function(id, isAnswerCorrect, data, callBack) {
+    var getAttemptQuery = 'SELECT Correct_Answers__c, Total_Questions_Attempted__c, Negative_Tokens_Caught__c, Positive_Tokens_Caught__c, Attempt_Completed__c FROM Player_Attempt__c where id = \'' + id + '\'';
+    FS.Query(getAttemptQuery, function(err, resp) {
+      if (err) {
+        return callBack(err, null);
+      }
+
+      if (resp.records[0].Attempt_Completed__c) {
+        return callBack({
+          'err': 'Record is locked and cannot be edited anymore'
+        }, null);
+      } else {
+
+        delete data.answeredAs;
+        data.Total_Questions_Attempted__c = resp.records[0].Total_Questions_Attempted__c + 1;
+        data.Negative_Tokens_Caught__c = (parseInt(resp.records[0].Negative_Tokens_Caught__c, 10) + parseInt(data.Negative_Tokens_Caught__c, 10));
+        data.Positive_Tokens_Caught__c = (parseInt(resp.records[0].Positive_Tokens_Caught__c, 10) + parseInt(data.Positive_Tokens_Caught__c, 10));
+        data.Token_Points__c = (data.Positive_Tokens_Caught__c - data.Negative_Tokens_Caught__c) * 10;
+
+
+        if (isAnswerCorrect) {
+          data.Correct_Answers__c = resp.records[0].Correct_Answers__c + 1;
+        }
+
+        if (data.Correct_Answers__c === 5 || data.Time_Taken__c >= 120) {
+          data.Attempt_Completed__c = true;
+        }
+
+        FS.upsert('Player_Attempt__c', data, id, function(err, updatedData) {
+          if (err) {
+            return callBack(err, null);
+          }
+          callBack(null, data.Attempt_Completed__c || false);
+        });
+      }
+
+    });
+  },
+  saveAttempt: function(id, data, callBack) {
+    data.Time_Taken__c = 120;
+    data.Attempt_Completed__c = true;
+
+    var getAttemptQuery = 'SELECT Negative_Tokens_Caught__c, Positive_Tokens_Caught__c FROM Player_Attempt__c where id = \'' + id + '\'';
+    FS.Query(getAttemptQuery, function(err, resp) {
+      if (err) {
+        return callBack(err, null);
+      }
+
+      if (resp.records[0].Attempt_Completed__c) {
+        return callBack({
+          'err': 'Record is locked and cannot be edited anymore'
+        }, null);
+      } else {
+
+        data.Negative_Tokens_Caught__c = (parseInt(resp.records[0].Negative_Tokens_Caught__c, 10) + parseInt(data.Negative_Tokens_Caught__c, 10));
+        data.Positive_Tokens_Caught__c = (parseInt(resp.records[0].Positive_Tokens_Caught__c, 10) + parseInt(data.Positive_Tokens_Caught__c, 10));
+        data.Token_Points__c = (data.Positive_Tokens_Caught__c - data.Negative_Tokens_Caught__c) * 10;
+
+        FS.upsert('Player_Attempt__c', data, id, function(err, resp) {
+          if (err) {
+            return callBack(err, null);
+          }
+          callBack(null, resp);
+        });
+      }
+
     });
   },
   // gets current winner from SFDC.
   getWinner: function(callBack) {
-    var query = "Select Id, Player__r.Name, Final_Score__c,Player__r.Email__c  From Player_Attempt__c Order BY Final_Score__c DESC limit 1";
+    var query = "Select Id, Player__r.Name, Final_Score__c, Player__r.Email__c  From Player_Attempt__c where Attempt_Completed__c = true Order BY Final_Score__c DESC limit 1";
 
     FS.Query(query, function(err, data) {
       if (err) {
@@ -144,7 +217,7 @@ var GameService = {
   },
   // get last attempts of a user
   lastAttempts: function(id, offset, callBack) {
-    var query = "SELECT Correct_Answers__c, Final_Score__c, Id, Name, Negative_Tokens_Caught__c, Player__c, Positive_Tokens_Caught__c, Time_Taken__c, Token_Points__c, Total_Questions_Attempted__c, Total_Tokens_Caught__c FROM Player_Attempt__c where player__c in (Select id from Players__c where id = \'" + id + "\' ) ORDER BY CreatedDate DESC limit " + offset;
+    var query = "SELECT Correct_Answers__c, Final_Score__c, Id, Name, Negative_Tokens_Caught__c, Player__c, Positive_Tokens_Caught__c, Time_Taken__c, Token_Points__c, Total_Questions_Attempted__c, Total_Tokens_Caught__c FROM Player_Attempt__c where Attempt_Completed__c = true AND player__c in (Select id from Players__c where id = \'" + id + "\' ) ORDER BY CreatedDate DESC limit " + offset;
 
     FS.Query(query, function(err, data) {
       if (err) {
