@@ -196,14 +196,20 @@ router.get('/game-over/:id', function(req, res) {
   });
 });
 
-router.post('/saveAttempt', function(req, res) {
-  if (!req.body) {
+router.post('/saveAttempt/:id', function(req, res) {
+  if (!(req.params && req.params.id)) {
     return res.status(400).jsonp({
-      'status': 'Attempt details not sent in ajax call'
+      'status': 'didnt recieve attempt id to modify'
     });
   }
 
-  GameService.saveAttempt(req.body, function(err, resp) {
+  if (!req.body) {
+    return res.status(400).jsonp({
+      'status': 'Player details not sent in ajax call'
+    });
+  }
+
+  GameService.saveAttempt(req.params.id, req.body, function(err, resp) {
     if (err) {
       console.info('Error wihile saving this attempt');
       console.log(err);

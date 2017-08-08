@@ -169,13 +169,13 @@ var GameService = {
 
     });
   },
-  saveAttempt: function(data, callBack) {
-
-    FS.create('Player_Attempt__c', data, function(err, resp) {
+  saveAttempt: function(id, data, callBack) {
+    data.Time_Taken__c = 120;
+    data.Attempt_Completed__c = true;
+    
+    FS.upsert('Player_Attempt__c', data, id, function(err, resp) {
       if (err) {
-        console.info('Error wile saving attempt data in SFDC');
-        console.info(err);
-        callBack(err, null);
+        return callBack(err, null);
       }
       callBack(null, resp);
     });
