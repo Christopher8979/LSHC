@@ -644,16 +644,13 @@ $('#questionSubmit').on('click', function() {
   var referenceHolder = ['a', 'b', 'c', 'd'];
   $.ajax({
     method: 'POST',
-    url: '/check-answer/' + id,
+    url: '/check-answer/' + $('#mute-btn').data('id') + '/' + id,
     data: {
       answeredAs: value,
-      attemptID: $('#mute-btn').data('id'),
-      meta: {
-        Negative_Tokens_Caught__c: negTokenCount,
-        Positive_Tokens_Caught__c: posTokenCount,
-        Time_Taken__c: parseInt((createjs.Ticker.getTime(true) / 1000).toFixed(0), 10),
-        Token_Points__c: (posTokenCount - negTokenCount) * 10
-      }
+      Negative_Tokens_Caught__c: negTokenCount,
+      Positive_Tokens_Caught__c: posTokenCount,
+      Time_Taken__c: parseInt((createjs.Ticker.getTime(true) / 1000).toFixed(0), 10),
+      Token_Points__c: (posTokenCount - negTokenCount) * 10
     },
     cache: false,
     success: function(resp) {

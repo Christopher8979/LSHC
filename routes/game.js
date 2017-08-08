@@ -88,8 +88,6 @@ router.get('/rules/:id', function(req, res) {
       console.info('Error while getting attempts');
       return res.render('/');
     }
-    console.info('Attempts data: \n');
-    console.info(data);
 
     for (var i = 0; i < NO_OF_ATTEMPTS; i++) {
       if (!data[i]) {
@@ -110,7 +108,6 @@ router.get('/play-game/:id', function(req, res) {
   }
 
   GameService.getQuestions(function(questions) {
-    console.log('got questions');
     GameService.createAttempt({
       Player__c: req.params.id
     }, function(err, resp) {
@@ -118,7 +115,6 @@ router.get('/play-game/:id', function(req, res) {
         console.log(err);
         return res.render('500', 'Something went wrong in the backend');
       }
-      console.log('created attempt');
       res.render('play-game', {
         title: 'Playing game now',
         questions: questions,
@@ -128,9 +124,10 @@ router.get('/play-game/:id', function(req, res) {
   });
 });
 
-router.post('/check-answer/:id', function(req, res) {
+router.post('/check-answer/:attempt/:id', function(req, res) {
   var questionNo = req.params.id;
   var answeredAs = req.body.answeredAs;
+  var attemptID = req.params.attempt;
 
   GameService.checkAnswer(questionNo, answeredAs, function(err, response) {
     if (err) {
@@ -142,7 +139,20 @@ router.post('/check-answer/:id', function(req, res) {
       });
     }
 
-    res.status(200).jsonp(response);
+    GameService.updateAttempt(attemptID, response.answeredCorrect, req.body, function(err, update) {
+
+      if (err) {
+        console.info('Error wihile checking answers');
+        console.log(err);
+        return res.status(400).jsonp({
+          'status': 'something went wrong',
+          'err': err
+        });
+      }
+      res.status(200).jsonp(response);
+      
+    });
+
   });
 });
 

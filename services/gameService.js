@@ -135,6 +135,27 @@ var GameService = {
       callBack(null, resp);
     });
   },
+  updateAttempt: function(id, isAnswerCorrect, data, callBack) {
+    var getAttemptQuery = 'SELECT Correct_Answers__c, Total_Questions_Attempted__c FROM Player_Attempt__c where id = \'' + id + '\'';
+    FS.Query(getAttemptQuery, function(err, resp) {
+      if (err) {
+        return callBack(err, null);
+      }
+      delete data.answeredAs;
+      data.Total_Questions_Attempted__c = resp.records[0].Total_Questions_Attempted__c + 1;
+
+      if (isAnswerCorrect) {
+        data.Correct_Answers__c = resp.records[0].Correct_Answers__c + 1;
+      }
+
+      FS.upsert('Player_Attempt__c', data, id, function(err, updatedData) {
+        if (err) {
+          return callBack(err, null);
+        }
+        callBack();
+      });
+    });
+  },
   saveAttempt: function(data, callBack) {
 
     FS.create('Player_Attempt__c', data, function(err, resp) {
