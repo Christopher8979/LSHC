@@ -163,7 +163,7 @@ var GameService = {
           if (err) {
             return callBack(err, null);
           }
-          callBack(data.Attempt_Completed__c || false);
+          callBack(null, data.Attempt_Completed__c || false);
         });
       }
 
@@ -172,7 +172,7 @@ var GameService = {
   saveAttempt: function(id, data, callBack) {
     data.Time_Taken__c = 120;
     data.Attempt_Completed__c = true;
-    
+
     FS.upsert('Player_Attempt__c', data, id, function(err, resp) {
       if (err) {
         return callBack(err, null);

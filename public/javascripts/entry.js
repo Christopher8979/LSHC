@@ -3,7 +3,7 @@ $(document).on('initialize-entry', function() {
   $('select').material_select();
 
   $('#enterGame').on('click', function(e) {
-    
+
     var $form = $('#credForm');
     var validForm = validateEntryForm($form);
 
@@ -11,7 +11,6 @@ $(document).on('initialize-entry', function() {
 
       // clear errors and setup the game
       $form.removeClass('fill-all');
-      localStorage.setItem('player', $('#name').val());
 
       // Populate data to be verified in salesforce
       var data = {};
@@ -87,9 +86,9 @@ $(document).on('initialize-entry', function() {
 
 
 function validateEntryForm($form) {
-  
+
   // var noOfFiels = $(form).find('.input-field').length;
-  
+
   // Initialize Valid to false
   var valid = true;
 

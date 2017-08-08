@@ -5,6 +5,7 @@ var maxQuestions = 5;
 var attemptedQuestions = 0;
 var posTokenCount = 0;
 var negTokenCount = 0;
+var gameOver = false;
 
 $('.modal').modal({
   dismissible: false
@@ -52,7 +53,9 @@ $('#questionClose').on('click', function() {
       if (currectAnswers === maxQuestions) {
         $(document).trigger("play-pause");
         $(document).trigger("show-loader");
-        $(document).trigger("game-over", ['with-in-time']);
+        if (gameOver) {
+          location.href = "/game-over/" + location.pathname.split('/').pop();
+        }
       }
     }, 600);
     $('.question').eq(nextQuestionIndex).remove();
@@ -113,6 +116,9 @@ $('#questionSubmit').on('click', function() {
         $(question).find('p').eq(referenceHolder.indexOf(resp.correctOption)).addClass('correct-answer');
       }
       $('#questionClose').removeAttr('disabled');
+      if (resp.endGame) {
+        gameOver = true;
+      }
     },
     error: function(err) {
       console.info(err);
@@ -141,8 +147,6 @@ $(document).on('hint-indicator-change', function(event, count) {
 });
 
 $(document).on('game-over', function(event, how) {
-  localStorage.setItem('completedIn', createjs.Ticker.getTime(true));
-  localStorage.setItem('how', how);
 
   if (how === 'time-out') {
     $.ajax({
@@ -153,7 +157,7 @@ $(document).on('game-over', function(event, how) {
         Negative_Tokens_Caught__c: negTokenCount,
         Positive_Tokens_Caught__c: posTokenCount,
         Token_Points__c: (posTokenCount - negTokenCount) * 10
-      }
+      },
       success: function(resp) {
         location.href = "/game-over/" + location.pathname.split('/').pop();
       },
