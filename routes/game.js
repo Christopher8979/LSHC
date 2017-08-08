@@ -139,7 +139,7 @@ router.post('/check-answer/:attempt/:id', function(req, res) {
       });
     }
 
-    GameService.updateAttempt(attemptID, response.answeredCorrect, req.body, function(err, update) {
+    GameService.updateAttempt(attemptID, response.answeredCorrect, req.body, function(err, stopGame) {
 
       if (err) {
         console.info('Error wihile checking answers');
@@ -149,8 +149,9 @@ router.post('/check-answer/:attempt/:id', function(req, res) {
           'err': err
         });
       }
+      // if stopGame === true game has to end
+      response.endGame = stopGame;
       res.status(200).jsonp(response);
-      
     });
 
   });

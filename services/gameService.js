@@ -136,24 +136,37 @@ var GameService = {
     });
   },
   updateAttempt: function(id, isAnswerCorrect, data, callBack) {
-    var getAttemptQuery = 'SELECT Correct_Answers__c, Total_Questions_Attempted__c FROM Player_Attempt__c where id = \'' + id + '\'';
+    var getAttemptQuery = 'SELECT Correct_Answers__c, Total_Questions_Attempted__c, Attempt_Completed__c FROM Player_Attempt__c where id = \'' + id + '\'';
     FS.Query(getAttemptQuery, function(err, resp) {
       if (err) {
         return callBack(err, null);
       }
-      delete data.answeredAs;
-      data.Total_Questions_Attempted__c = resp.records[0].Total_Questions_Attempted__c + 1;
 
-      if (isAnswerCorrect) {
-        data.Correct_Answers__c = resp.records[0].Correct_Answers__c + 1;
+      if (resp.records[0].Attempt_Completed__c) {
+        return callBack({
+          'err': 'Record is locked and cannot be edited anymore'
+        }, null);
+      } else {
+
+        delete data.answeredAs;
+        data.Total_Questions_Attempted__c = resp.records[0].Total_Questions_Attempted__c + 1;
+
+        if (isAnswerCorrect) {
+          data.Correct_Answers__c = resp.records[0].Correct_Answers__c + 1;
+        }
+
+        if (data.Correct_Answers__c === 5 || data.Time_Taken__c >= 120) {
+          data.Attempt_Completed__c = true;
+        }
+
+        FS.upsert('Player_Attempt__c', data, id, function(err, updatedData) {
+          if (err) {
+            return callBack(err, null);
+          }
+          callBack(data.Attempt_Completed__c || false);
+        });
       }
 
-      FS.upsert('Player_Attempt__c', data, id, function(err, updatedData) {
-        if (err) {
-          return callBack(err, null);
-        }
-        callBack();
-      });
     });
   },
   saveAttempt: function(data, callBack) {
