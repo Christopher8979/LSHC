@@ -2,20 +2,8 @@ var express = require('express');
 var router = express.Router();
 var GameService = require('../services/gameService.js');
 
-var checkHost = function(req, res, next) {
-  // console.log('middleware for checking host');
-  // console.log(req.host);
-
-  console.log('======================');
-  console.log(req.headers.host);
-  console.log('======================');
-  console.log(req.headers.origin);
-  next();
-}
-
-
 /* GET home page. */
-router.get('/', checkHost, function(req, res) {
+router.get('/', function(req, res) {
   GameService.getWinner(function(err, winnerInfo) {
     if (err) {
       console.log(err);
@@ -122,9 +110,20 @@ router.get('/play-game/:id', function(req, res) {
   }
 
   GameService.getQuestions(function(questions) {
-    res.render('play-game', {
-      title: 'Playing game now',
-      questions: questions
+    console.log('got questions');
+    GameService.createAttempt({
+      Player__c: req.params.id
+    }, function(err, resp) {
+      if (err) {
+        console.log(err);
+        return res.render('500', 'Something went wrong in the backend');
+      }
+      console.log('created attempt');
+      res.render('play-game', {
+        title: 'Playing game now',
+        questions: questions,
+        attemptID: resp.id
+      });
     });
   });
 });

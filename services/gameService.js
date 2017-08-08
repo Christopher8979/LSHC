@@ -118,6 +118,23 @@ var GameService = {
 
 
   },
+  createAttempt: function(data, callBack) {
+    data.Correct_Answers__c = 0;
+    data.Total_Questions_Attempted__c = 0;
+    data.Negative_Tokens_Caught__c = 0;
+    data.Positive_Tokens_Caught__c = 0;
+    data.Time_Taken__c = 0;
+    data.Token_Points__c = 0;
+
+    FS.create('Player_Attempt__c', data, function(err, resp) {
+      if (err) {
+        console.info('Error wile saving attempt data in SFDC');
+        console.info(err);
+        callBack(err, null);
+      }
+      callBack(null, resp);
+    });
+  },
   saveAttempt: function(data, callBack) {
 
     FS.create('Player_Attempt__c', data, function(err, resp) {
@@ -126,7 +143,6 @@ var GameService = {
         console.info(err);
         callBack(err, null);
       }
-
       callBack(null, resp);
     });
   },
