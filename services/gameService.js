@@ -135,7 +135,7 @@ var GameService = {
       callBack(null, resp);
     });
   },
-  updateAttempt: function(id, isAnswerCorrect, data, callBack) {
+  updateAttempt: function(id, isAnswerCorrect, rawData, callBack) {
     var getAttemptQuery = 'SELECT Correct_Answers__c, Total_Questions_Attempted__c, Negative_Tokens_Caught__c, Positive_Tokens_Caught__c, Attempt_Completed__c FROM Player_Attempt__c where id = \'' + id + '\'';
     FS.Query(getAttemptQuery, function(err, resp) {
       if (err) {
@@ -148,7 +148,12 @@ var GameService = {
         }, null);
       } else {
 
-        delete data.answeredAs;
+        var data = {
+          Negative_Tokens_Caught__c: rawData.Negative_Tokens_Caught__c,
+          Positive_Tokens_Caught__c: rawData.Positive_Tokens_Caught__c,
+          Time_Taken__c: rawData.Time_Taken__c
+        };
+
         data.Total_Questions_Attempted__c = resp.records[0].Total_Questions_Attempted__c + 1;
         data.Negative_Tokens_Caught__c = (parseInt(resp.records[0].Negative_Tokens_Caught__c, 10) + parseInt(data.Negative_Tokens_Caught__c, 10));
         data.Positive_Tokens_Caught__c = (parseInt(resp.records[0].Positive_Tokens_Caught__c, 10) + parseInt(data.Positive_Tokens_Caught__c, 10));
@@ -173,9 +178,14 @@ var GameService = {
 
     });
   },
-  saveAttempt: function(id, data, callBack) {
-    data.Time_Taken__c = 120;
-    data.Attempt_Completed__c = true;
+  saveAttempt: function(id, rawData, callBack) {
+
+    var data = {
+      Time_Taken__c: 120,
+      Attempt_Completed__c: true,
+      Negative_Tokens_Caught__c: rawData.Negative_Tokens_Caught__c,
+      Positive_Tokens_Caught__c: rawData.Positive_Tokens_Caught__c
+    }
 
     var getAttemptQuery = 'SELECT Negative_Tokens_Caught__c, Positive_Tokens_Caught__c FROM Player_Attempt__c where id = \'' + id + '\'';
     FS.Query(getAttemptQuery, function(err, resp) {
