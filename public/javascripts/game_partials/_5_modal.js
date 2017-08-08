@@ -100,12 +100,13 @@ $('#questionSubmit').on('click', function() {
       answeredAs: value,
       Negative_Tokens_Caught__c: negTokenCount,
       Positive_Tokens_Caught__c: posTokenCount,
-      Time_Taken__c: parseInt((createjs.Ticker.getTime(true) / 1000).toFixed(0), 10),
-      Token_Points__c: (posTokenCount - negTokenCount) * 10
+      Time_Taken__c: parseInt((createjs.Ticker.getTime(true) / 1000).toFixed(0), 10)
     },
     cache: false,
     success: function(resp) {
       attemptedQuestions++;
+      negTokenCount = 0;
+      posTokenCount = 0;
       if (resp.answeredCorrect) {
         $(question).addClass('valid');
         currectAnswers++;
@@ -155,8 +156,7 @@ $(document).on('game-over', function(event, how) {
       cache: false,
       data: {
         Negative_Tokens_Caught__c: negTokenCount,
-        Positive_Tokens_Caught__c: posTokenCount,
-        Token_Points__c: (posTokenCount - negTokenCount) * 10
+        Positive_Tokens_Caught__c: posTokenCount
       },
       success: function(resp) {
         location.href = "/game-over/" + location.pathname.split('/').pop();
