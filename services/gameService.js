@@ -1,6 +1,7 @@
 var QUESTIONS = require('../data/questions.json').questions;
 var _ = require('lodash');
 var FS = require('./ForceService.js');
+var ASYNC = require('async');
 
 
 var randomizeQuestions = function(questions, callBack) {
@@ -119,21 +120,47 @@ var GameService = {
 
   },
   createAttempt: function(data, callBack) {
-    data.Correct_Answers__c = 0;
-    data.Total_Questions_Attempted__c = 0;
-    data.Negative_Tokens_Caught__c = 0;
-    data.Positive_Tokens_Caught__c = 0;
-    data.Time_Taken__c = 0;
-    data.Token_Points__c = 0;
 
-    FS.create('Player_Attempt__c', data, function(err, resp) {
+    var getUncheckedRecordsQuery = 'Select Id, Attempt_Completed__c From Player_Attempt__c where Attempt_Completed__c = false and player__c =\'' + data.Player__c + '\'';
+
+    FS.Query(getUncheckedRecordsQuery, function(err, resp) {
       if (err) {
-        console.info('Error wile saving attempt data in SFDC');
-        console.info(err);
-        callBack(err, null);
+        return callBack(err, null);
       }
-      callBack(null, resp);
+
+      ASYNC.each(resp.records, function(item, cb) {
+        FS.upsert('Player_Attempt__c', {
+          Attempt_Completed__c: true
+        }, item.Id, function(err, resp) {
+          if (err) {
+            return cb(err, null);
+          }
+          cb(null, resp);
+        });
+      }, function(err) {
+        if (err) {
+          return callBack(err, null);
+        }
+
+        
+        data.Correct_Answers__c = 0;
+        data.Total_Questions_Attempted__c = 0;
+        data.Negative_Tokens_Caught__c = 0;
+        data.Positive_Tokens_Caught__c = 0;
+        data.Time_Taken__c = 0;
+        data.Token_Points__c = 0;
+
+        FS.create('Player_Attempt__c', data, function(err, resp) {
+          if (err) {
+            console.info('Error wile saving attempt data in SFDC');
+            console.info(err);
+            callBack(err, null);
+          }
+          callBack(null, resp);
+        });
+      });
     });
+
   },
   updateAttempt: function(id, isAnswerCorrect, rawData, callBack) {
     var getAttemptQuery = 'SELECT Correct_Answers__c, Total_Questions_Attempted__c, Negative_Tokens_Caught__c, Positive_Tokens_Caught__c, Attempt_Completed__c FROM Player_Attempt__c where id = \'' + id + '\'';
