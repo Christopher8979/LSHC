@@ -125,6 +125,11 @@ router.get('/play-game/:id', function(req, res) {
 });
 
 router.post('/check-answer/:attempt/:id', function(req, res) {
+
+  if (!(req.params && req.params.attempt && req.params.id )) {
+    return res.render('400', 'Proper params are not provided');
+  }
+
   var questionNo = req.params.id;
   var answeredAs = req.body.answeredAs;
   var attemptID = req.params.attempt;
