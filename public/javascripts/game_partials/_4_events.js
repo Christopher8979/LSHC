@@ -29,6 +29,7 @@ tokenCollected = function(token, flag) {
     token.notCollectd = false;
     score.value = (flag) ? score.value + 10 : score.value - 10;
     score.ob.text = "SCORE:" + (score.value);
+    hash = sign(score.value + Math.floor(new Date().getUTCMinutes()/5));
 
     // Set default sound to quarter the main volume of the game
     var soundVol = sound.volume * effectVolRatio;
@@ -169,3 +170,10 @@ $(document).on("minusSound", function() {
     volume: (playVol * effectVolRatio)
   });
 })
+
+// Custom function to get signature
+function setHash() {
+  var a = score.value;
+  var b = Math.floor(new Date().getUTCMinutes()/5);
+  hash = sign(a + b);
+};
