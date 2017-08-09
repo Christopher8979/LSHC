@@ -142,7 +142,7 @@ var GameService = {
           return callBack(err, null);
         }
 
-        
+
         data.Correct_Answers__c = 0;
         data.Total_Questions_Attempted__c = 0;
         data.Negative_Tokens_Caught__c = 0;
@@ -163,7 +163,7 @@ var GameService = {
 
   },
   updateAttempt: function(id, isAnswerCorrect, rawData, callBack) {
-    var getAttemptQuery = 'SELECT Correct_Answers__c, Total_Questions_Attempted__c, Negative_Tokens_Caught__c, Positive_Tokens_Caught__c, Attempt_Completed__c FROM Player_Attempt__c where id = \'' + id + '\'';
+    var getAttemptQuery = 'SELECT Correct_Answers__c,Time_Taken__c, Total_Questions_Attempted__c, Negative_Tokens_Caught__c, Positive_Tokens_Caught__c, Attempt_Completed__c FROM Player_Attempt__c where id = \'' + id + '\'';
     FS.Query(getAttemptQuery, function(err, resp) {
       if (err) {
         return callBack(err, null);
@@ -182,8 +182,21 @@ var GameService = {
         };
 
         data.Total_Questions_Attempted__c = resp.records[0].Total_Questions_Attempted__c + 1;
-        data.Negative_Tokens_Caught__c = (parseInt(resp.records[0].Negative_Tokens_Caught__c, 10) + parseInt(data.Negative_Tokens_Caught__c, 10));
-        data.Positive_Tokens_Caught__c = (parseInt(resp.records[0].Positive_Tokens_Caught__c, 10) + parseInt(data.Positive_Tokens_Caught__c, 10));
+        if (parseInt(data.Negative_Tokens_Caught__c, 10) > 10) {
+          data.Negative_Tokens_Caught__c = 0;
+        } else {
+          data.Negative_Tokens_Caught__c = (parseInt(resp.records[0].Negative_Tokens_Caught__c, 10) + parseInt(data.Negative_Tokens_Caught__c, 10));
+        }
+
+        if (parseInt(data.Positive_Tokens_Caught__c, 10) > 10) {
+          data.Positive_Tokens_Caught__c = 0;
+        } else {
+          data.Positive_Tokens_Caught__c = (parseInt(resp.records[0].Positive_Tokens_Caught__c, 10) + parseInt(data.Positive_Tokens_Caught__c, 10));
+        }
+
+
+        data.Time_Taken__c = (parseInt(data.Time_Taken__c, 10) <= parseInt(resp.records[0].Time_Taken__c, 10)) ? 120 : parseInt(data.Time_Taken__c, 10);
+
         data.Token_Points__c = (data.Positive_Tokens_Caught__c - data.Negative_Tokens_Caught__c) * 10;
 
 
