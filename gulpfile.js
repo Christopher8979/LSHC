@@ -13,7 +13,12 @@ gulp.task('compress', function (cb) {
   pump([
         gulp.src('./public/javascripts/**/_*.js'),
         concat('game.js'),
-        uglify(),
+        uglify({
+            mangle: {
+                keep_fnames: false,
+            },
+            toplevel: true,
+        }),
         gulp.dest('./public/javascripts/')
     ],
     cb
