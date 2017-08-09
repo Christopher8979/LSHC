@@ -182,18 +182,13 @@ var GameService = {
         };
 
         data.Total_Questions_Attempted__c = resp.records[0].Total_Questions_Attempted__c + 1;
-        if (parseInt(data.Negative_Tokens_Caught__c, 10) > 10) {
-          data.Negative_Tokens_Caught__c = 0;
-        } else {
+        if (parseInt(data.Negative_Tokens_Caught__c, 10) < 15) {
           data.Negative_Tokens_Caught__c = (parseInt(resp.records[0].Negative_Tokens_Caught__c, 10) + parseInt(data.Negative_Tokens_Caught__c, 10));
         }
 
-        if (parseInt(data.Positive_Tokens_Caught__c, 10) > 10) {
-          data.Positive_Tokens_Caught__c = 0;
-        } else {
+        if (parseInt(data.Positive_Tokens_Caught__c, 10) < 15) {
           data.Positive_Tokens_Caught__c = (parseInt(resp.records[0].Positive_Tokens_Caught__c, 10) + parseInt(data.Positive_Tokens_Caught__c, 10));
         }
-
 
         data.Time_Taken__c = (parseInt(data.Time_Taken__c, 10) <= parseInt(resp.records[0].Time_Taken__c, 10)) ? 120 : parseInt(data.Time_Taken__c, 10);
 
