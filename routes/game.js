@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var GameService = require('../services/gameService.js');
-var md5 = require('../services/md5');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -126,11 +125,8 @@ router.get('/play-game/:id', function(req, res) {
 });
 
 router.post('/check-answer/:attempt/:id', function(req, res) {
-  var tokenScore = (req.body.Positive_Tokens_Caught__c - req.body.Negative_Tokens_Caught__c) * 10
-  var hash = md5(tokenScore + Math.floor(new Date().getUTCMinutes()/5));
-  console.log(Math.floor(new Date().getUTCMinutes()/5));
 
-  if (!(req.params && req.params.attempt && req.params.id && hash == req.body.Sign__c)) {
+  if (!(req.params && req.params.attempt && req.params.id)) {
     // TODO: this is an AJAX call, i dont think you can render a page here
     return res.render('400', 'Proper params are not provided');
   }
@@ -207,10 +203,8 @@ router.get('/game-over/:id', function(req, res) {
 });
 
 router.post('/saveAttempt/:id', function(req, res) {
-  var tokenScore = (req.body.Positive_Tokens_Caught__c - req.body.Negative_Tokens_Caught__c) * 10
-  var hash = md5(tokenScore + Math.floor(new Date().getUTCMinutes()/5));
 
-  if (!(req.params && req.params.id && hash == req.body.Sign__c)) {
+  if (!(req.params && req.params.id)) {
     return res.status(400).jsonp({
       'status': 'didnt recieve attempt id to modify'
     });

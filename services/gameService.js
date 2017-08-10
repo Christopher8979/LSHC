@@ -2,6 +2,7 @@ var QUESTIONS = require('../data/questions.json').questions;
 var _ = require('lodash');
 var FS = require('./ForceService.js');
 var ASYNC = require('async');
+var md5 = require('./md5');
 
 
 var randomizeQuestions = function(questions, callBack) {
@@ -169,6 +170,16 @@ var GameService = {
         return callBack(err, null);
       }
 
+      // Validate the Token signature
+      var valid = checkHash(rawData, resp.records[0]);
+      if (!valid) {
+        return callBack({
+          'err': 'Signature does not match'
+        }, null);
+      }
+
+      
+
       if (resp.records[0].Attempt_Completed__c) {
         return callBack({
           'err': 'Record is locked and cannot be edited anymore'
@@ -233,6 +244,13 @@ var GameService = {
         return callBack(err, null);
       }
 
+      // Validate the Token Signature
+      if (!checkHash(rawData, resp.records[0])) {
+        return callBack({
+          'err': 'Signature does not match'
+        }, null);
+      }
+
       if (resp.records[0].Attempt_Completed__c) {
         return callBack({
           'err': 'Record is locked and cannot be edited anymore'
@@ -277,6 +295,16 @@ var GameService = {
       return callBack(null, data.records);
     });
   }
+}
+
+function checkHash(reqData, sfData) {
+  var pToken = (parseInt(sfData.Positive_Tokens_Caught__c, 10) + parseInt(reqData.Positive_Tokens_Caught__c, 10))
+  var nToken = (parseInt(sfData.Negative_Tokens_Caught__c, 10) + parseInt(reqData.Negative_Tokens_Caught__c, 10))
+  var tokenScore = (pToken -nToken) * 10
+  var hash = md5(tokenScore + Math.floor(new Date().getUTCMinutes()/5));
+  console.log(Math.floor(new Date().getUTCMinutes()/5));
+
+  return (hash === reqData.Sign__c)
 }
 
 
