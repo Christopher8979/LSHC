@@ -20,8 +20,6 @@ $(document).on('initialize-entry', function() {
         data[$(ele).data('params')] = $(ele).val();
       });
 
-      console.log(data);
-
       $.ajax({
         url: '/checkUser',
         data: data,
