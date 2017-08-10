@@ -1,9 +1,4 @@
 $(document).on('initialize-game', function () {
-
-    if (localStorage.getItem('player') === null) {
-        location.href = '/';
-    }
-
     stage = new createjs.Stage('game-holder');
 
     // get canvas width and height for later calculations:
