@@ -123,7 +123,9 @@ $('#questionSubmit').on('click', function() {
       }
     },
     error: function(err) {
-      console.info(err);
+      Materialize.toast("Your Session has timedout. You will be redirected now", 5000, '', function () {
+        window.location = "/";
+      });
     }
   });
 });
@@ -164,7 +166,9 @@ $(document).on('game-over', function(event, how) {
         location.href = "/game-over/" + location.pathname.split('/').pop();
       },
       error: function(err) {
-        console.log(err);
+        Materialize.toast("Your Session has timedout. You will be redirected now", 5000, '', function () {
+          window.location = "/";
+        });
       }
     });
   }
