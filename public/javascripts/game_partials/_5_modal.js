@@ -100,7 +100,8 @@ $('#questionSubmit').on('click', function() {
       answeredAs: value,
       Negative_Tokens_Caught__c: negTokenCount,
       Positive_Tokens_Caught__c: posTokenCount,
-      Time_Taken__c: parseInt((createjs.Ticker.getTime(true) / 1000).toFixed(0), 10)
+      Time_Taken__c: parseInt((createjs.Ticker.getTime(true) / 1000).toFixed(0), 10),
+      Sign__c: hash
     },
     cache: false,
     success: function(resp) {
@@ -122,7 +123,9 @@ $('#questionSubmit').on('click', function() {
       }
     },
     error: function(err) {
-      console.info(err);
+      Materialize.toast("Your Session has timedout. You will be redirected now", 5000, '', function () {
+        window.location = "/";
+      });
     }
   });
 });
@@ -148,7 +151,7 @@ $(document).on('hint-indicator-change', function(event, count) {
 });
 
 $(document).on('game-over', function(event, how) {
-
+  // TODO: Dont we need a time taken here too?
   if (how === 'time-out') {
     $.ajax({
       url: '/saveAttempt/' + $('#mute-btn').data('id'),
@@ -156,13 +159,16 @@ $(document).on('game-over', function(event, how) {
       cache: false,
       data: {
         Negative_Tokens_Caught__c: negTokenCount,
-        Positive_Tokens_Caught__c: posTokenCount
+        Positive_Tokens_Caught__c: posTokenCount,
+        Sign__c: hash
       },
       success: function(resp) {
         location.href = "/game-over/" + location.pathname.split('/').pop();
       },
       error: function(err) {
-        console.log(err);
+        Materialize.toast("Your Session has timedout. You will be redirected now", 5000, '', function () {
+          window.location = "/";
+        });
       }
     });
   }

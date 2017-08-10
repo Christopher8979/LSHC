@@ -12,6 +12,8 @@ var star = {
 };
 var paused = false;
 var tokensCaught = 0;
+var hash;
+setHash();
 
 var IMAGES_HOLDER = [{
   src: "Sky.png",
